@@ -1,0 +1,102 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "user@example.com",
+      "name": "John Doe",
+      "password": "password123"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "t1",
+      "userId": 1,
+      "type": "expense",
+      "category": "Food",
+      "amount": 50,
+      "date": "2024-06-01",
+      "description": "Groceries"
+    },
+    {
+      "id": "t2",
+      "userId": 1,
+      "type": "income",
+      "category": "Salary",
+      "amount": 3000,
+      "date": "2024-06-01",
+      "description": "Monthly Salary"
+    },
+    {
+      "id": "t3",
+      "userId": 1,
+      "type": "expense",
+      "category": "Entertainment",
+      "amount": 100,
+      "date": "2024-06-02",
+      "description": "Movie tickets"
+    },
+    {
+      "id": "t4",
+      "userId": 1,
+      "type": "expense",
+      "category": "Utilities",
+      "amount": 150,
+      "date": "2024-06-03",
+      "description": "Electricity bill"
+    },
+    {
+      "id": "t5",
+      "userId": 1,
+      "type": "income",
+      "category": "Freelance",
+      "amount": 500,
+      "date": "2024-06-04",
+      "description": "Freelance project"
+    },
+    {
+      "id": "t6",
+      "userId": 1,
+      "type": "expense",
+      "category": "Transportation",
+      "amount": 20,
+      "date": "2024-06-05",
+      "description": "Bus fare"
+    },
+    {
+      "id": "t7",
+      "userId": 1,
+      "type": "expense",
+      "category": "Health",
+      "amount": 200,
+      "date": "2024-06-06",
+      "description": "Doctor's appointment"
+    },
+    {
+      "id": "t8",
+      "userId": 1,
+      "type": "income",
+      "category": "Investment",
+      "amount": 1000,
+      "date": "2024-06-07",
+      "description": "Stock dividends"
+    },
+    {
+      "id": "t9",
+      "userId": 1,
+      "type": "expense",
+      "category": "Education",
+      "amount": 300,
+      "date": "2024-06-08",
+      "description": "Online course"
+    },
+    {
+      "id": "t10",
+      "userId": 1,
+      "type": "expense",
+      "category": "Miscellaneous",
+      "amount": 75,
+      "date": "2024-06-09",
+      "description": "Gift for friend"
+    }
+  ]
+}
