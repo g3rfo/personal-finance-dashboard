@@ -1,31 +1,19 @@
-import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "./features/store/hooks";
-import {
-  fetchTransactions,
-} from "./features/store/asyncThunks/transactionsThunks";
+import { Route, Routes } from "react-router-dom";
+import Aside from "./components/aside/Aside";
 
 function App() {
-  const { transactions, loading, error } = useAppSelector(
-    (state) => state.transactions,
-  );
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(fetchTransactions(1));
-  }, [dispatch]);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
-
   return (
-    <div>
-      <ul>
-        {transactions.map((tx) => (
-          <li key={tx.id}>
-            {tx.type.toUpperCase()}: {tx.category} - ${tx.amount} on {tx.date}
-          </li>
-        ))}
-      </ul>
+    <div className="w-full h-screen flex">
+      <Aside />
+
+      <Routes>
+        <Route path="/" element={<div>Home</div>} />
+        <Route path="/transactions" element={<div>Transactions</div>} />
+        <Route path="/categories" element={<div>Categories</div>} />
+        <Route path="/budgets" element={<div>Budgets</div>} />
+        <Route path="/analytics" element={<div>Analytics</div>} />
+        <Route path="/settings" element={<div>Settings</div>} />
+      </Routes>
     </div>
   );
 }
