@@ -14,7 +14,7 @@ function Navbar() {
     <>
       <Outline className="p-4 flex-1 items-start">
         <nav className="w-full flex flex-col gap-2">
-          <NavbarLink path="/">
+          <NavbarLink path="/dashboard">
             <IconLayoutDashboard stroke={1.5} />
             Dashboard
           </NavbarLink>

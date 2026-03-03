@@ -1,18 +1,42 @@
-import { Route, Routes } from "react-router-dom";
-import Aside from "./components/aside/Aside";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import PageWrap from "./components/pages/authorised/PageWrap";
+import AuthPage from "./components/pages/notAuthorised/AuthPage";
+import RequireAuth from "./components/pages/RequireAuth";
+import { useEffect } from "react";
 
 function App() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      navigate("/dashboard");
+    }
+  }, []);
+
   return (
     <div className="w-full h-screen flex">
-      <Aside />
-
       <Routes>
-        <Route path="/" element={<div>Home</div>} />
-        <Route path="/transactions" element={<div>Transactions</div>} />
-        <Route path="/categories" element={<div>Categories</div>} />
-        <Route path="/budgets" element={<div>Budgets</div>} />
-        <Route path="/analytics" element={<div>Analytics</div>} />
-        <Route path="/settings" element={<div>Settings</div>} />
+        <Route path="/auth" element={<AuthPage />} />
+        <Route element={<RequireAuth />}>
+          <Route
+            key="dashboard"
+            path="/dashboard"
+            element={<PageWrap>Dashboard</PageWrap>}
+          />
+          <Route
+            key="transactions"
+            path="/transactions"
+            element={<PageWrap>Transactions</PageWrap>}
+          />
+          <Route path="/categories" element={<PageWrap>Categories</PageWrap>} />
+          <Route path="/budgets" element={<PageWrap>Budgets</PageWrap>} />
+          <Route path="/analytics" element={<PageWrap>Analytics</PageWrap>} />
+          <Route path="/settings" element={<PageWrap>Settings</PageWrap>} />
+        </Route>
+        <Route>
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+        </Route>
       </Routes>
     </div>
   );
