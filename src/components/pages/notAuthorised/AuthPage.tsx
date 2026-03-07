@@ -11,6 +11,7 @@ import { Button } from "../../ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "@/features/store/hooks";
 import axios from "axios";
+import { loginUser } from "@/features/store/slices/userSlice";
 
 const apiURL = import.meta.env.VITE_SERVER_URL;
 
@@ -45,7 +46,7 @@ function AuthPage() {
 
       const user = response.data[0];
 
-      dispatch({ type: "user/loginUser", payload: user });
+      dispatch(loginUser(user));
       localStorage.setItem("token", user.id);
       navigate("/dashboard");
     } catch (error) {
