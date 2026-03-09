@@ -46,7 +46,7 @@ function AuthPage() {
 
       const user = response.data[0];
 
-      dispatch(loginUser(user));
+      dispatch(loginUser({ name: user.name, email: user.email }));
       localStorage.setItem("token", user.id);
       navigate("/dashboard");
     } catch (error) {

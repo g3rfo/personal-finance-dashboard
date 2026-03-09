@@ -4,14 +4,24 @@ import AuthPage from "./components/pages/notAuthorised/AuthPage";
 import RequireAuth from "./components/pages/RequireAuth";
 import { useEffect } from "react";
 import DashboardPage from "./components/pages/authorised/dashboardPage/DashboardPage";
+import { useAppDispatch } from "./features/store/hooks";
+import { fetchUserData } from "./features/store/asyncThunks/userThunks";
+import { loginUser } from "./features/store/slices/userSlice";
 
 function App() {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    const userData = localStorage.getItem("userData");
 
     if (token) {
+      if (userData) {
+        dispatch(loginUser(JSON.parse(userData)));
+      } else {
+        dispatch(fetchUserData(token));
+      }
       navigate("/dashboard");
     }
   }, []);

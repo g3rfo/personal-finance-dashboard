@@ -38,6 +38,7 @@ const transactionsSlice = createSlice({
         state.loading = false;
         state.error = action.error?.message || "Failed to fetch transactions";
       })
+      
       .addCase(addTransaction.pending, (state) => {
         state.loading = true;
         state.error = null;
