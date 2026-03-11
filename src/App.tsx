@@ -1,9 +1,9 @@
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
-import PageWrap from "./components/pages/authorised/PageWrap";
-import AuthPage from "./components/pages/notAuthorised/AuthPage";
+import PageWrap from "./components/pages/authorized/PageWrap";
+import AuthPage from "./components/pages/notAuthorized/AuthPage";
 import RequireAuth from "./components/pages/RequireAuth";
 import { useEffect } from "react";
-import DashboardPage from "./components/pages/authorised/dashboardPage/DashboardPage";
+import DashboardPage from "./components/pages/authorized/dashboardPage/DashboardPage";
 import { useAppDispatch } from "./features/store/hooks";
 import { fetchUserData } from "./features/store/asyncThunks/userThunks";
 import { loginUser } from "./features/store/slices/userSlice";
@@ -27,7 +27,7 @@ function App() {
   }, []);
 
   return (
-    <div className="w-full h-screen flex">
+    <div className="w-full min-h-screen flex">
       <Routes>
         <Route path="/auth" element={<AuthPage />} />
         <Route element={<RequireAuth />}>
