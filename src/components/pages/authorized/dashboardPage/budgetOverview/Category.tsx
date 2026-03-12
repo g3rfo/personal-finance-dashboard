@@ -32,7 +32,7 @@ function Category({ name, spent, budget, icon, color }: CategoryProps) {
             style={{ backgroundColor: `${color}1A` }}
             className={`bg-[${color}] flex justify-center items-center rounded-md w-8 h-8`}
           >
-            <IconComponent color={color} size={18} />
+            <IconComponent color={color} size={24} />
           </div>
           <FieldTitle>{name}</FieldTitle>
         </div>
