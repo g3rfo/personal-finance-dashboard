@@ -4,8 +4,17 @@ import { IconPlus } from "@tabler/icons-react";
 import HeaderTitle from "../header/HeaderTitle";
 import Stats from "./stats/Stats";
 import BudgetOverview from "./budgetOverview/BudgetOverview";
+import { useEffect } from "react";
+import { fetchCategories } from "@/features/store/asyncThunks/categoriesThunks";
+import { useAppDispatch } from "@/features/store/hooks";
 
 function DashboardPage() {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, []);
+
   return (
     <>
       <PageHeader>

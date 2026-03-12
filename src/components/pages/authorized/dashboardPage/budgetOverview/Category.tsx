@@ -10,7 +10,7 @@ interface CategoryProps {
   name: string;
   spent: number;
   budget: number;
-  icon: React.ComponentType<{ color?: string; size?: number }>;
+  icon: React.ComponentType<{ color: string; size: number }>;
   color: string;
 }
 

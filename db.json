@@ -107,5 +107,52 @@
       "date": "2024-06-09",
       "description": "Gift for friend"
     }
+  ],
+  "categories": [
+    {
+      "id": "1c1",
+      "userId": "1",
+      "name": "Housing",
+      "type": "expense",
+      "budget": 2000,
+      "iconName": "housing",
+      "color": "red"
+    },
+    {
+      "id": "1c2",
+      "userId": "1",
+      "name": "Transportation",
+      "type": "expense",
+      "budget": 1000,
+      "iconName": "transport",
+      "color": "purple"
+    },
+    {
+      "id": "1c3",
+      "userId": "1",
+      "name": "Food",
+      "type": "expense",
+      "budget": 600,
+      "iconName": "food",
+      "color": "orange"
+    },
+    {
+      "id": "1c4",
+      "userId": "1",
+      "name": "Healthcare",
+      "type": "expense",
+      "budget": 500,
+      "iconName": "healthcare",
+      "color": "pink"
+    },
+    {
+      "id": "1c5",
+      "userId": "1",
+      "name": "Salary",
+      "type": "income",
+      "budget": 3000,
+      "iconName": "savings",
+      "color": "lime"
+    }
   ]
 }
