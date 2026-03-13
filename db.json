@@ -5,6 +5,12 @@
       "email": "user@example.com",
       "name": "John Doe",
       "password": "password123"
+    },
+    {
+      "id": "2273",
+      "name": "user2",
+      "email": "user2@example.com",
+      "password": "password123"
     }
   ],
   "transactions": [

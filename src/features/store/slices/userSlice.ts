@@ -1,6 +1,6 @@
 import type { User } from "@/types/user.type";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import { fetchUserData } from "../asyncThunks/userThunks";
+import { fetchUserData, registerUser } from "../asyncThunks/userThunks";
 
 const initialState: User = {
   name: "",
@@ -21,12 +21,20 @@ const userSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(
-      fetchUserData.fulfilled,
-      (state, action: PayloadAction<User>) => {
-        saveUserData(state, action.payload);
-      },
-    );
+    builder
+      .addCase(
+        fetchUserData.fulfilled,
+        (state, action: PayloadAction<User>) => {
+          saveUserData(state, action.payload);
+        },
+      )
+      .addCase(
+        registerUser.fulfilled,
+        (state, action: PayloadAction<User & { id: string }>) => {
+          saveUserData(state, { name: action.payload.name, email: action.payload.email });
+          localStorage.setItem("token", action.payload.id);
+        },
+      );
   },
 });
 

@@ -1,3 +1,4 @@
+import type { UserRegistrationData } from "@/types/user.type";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -12,6 +13,16 @@ export const fetchUserData = createAsyncThunk(
       },
     });
 
-    return { name: response.data[0].name, email: response.data[0].email };
+    return { name: response.data.name, email: response.data.email };
+  },
+);
+
+export const registerUser = createAsyncThunk(
+  "user/registerUser",
+  async (userData: UserRegistrationData) => {
+    const response = await axios.post(`${apiURL}/users`, {
+      ...userData, 
+    });
+    return { id: response.data.id, name: response.data.name, email: response.data.email};
   },
 );

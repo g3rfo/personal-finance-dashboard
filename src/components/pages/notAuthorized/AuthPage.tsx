@@ -54,10 +54,12 @@ function AuthPage() {
         return;
       }
 
-      const user = response.data[0];
+      const user = response.data;
 
       dispatch(loginUser({ name: user.name, email: user.email }));
+      
       localStorage.setItem("token", user.id);
+      
       navigate("/dashboard");
     } catch (error) {
       alert("Login failed: " + error);
@@ -123,7 +125,7 @@ function AuthPage() {
             {pending ? <Spinner className="size-6" /> : "Sign In"}
           </Button>
           <Link
-            to="/register"
+            to="/registration"
             className="text-base text-primary hover:underline"
           >
             Don't have an account? Register

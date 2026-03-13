@@ -7,6 +7,7 @@ import DashboardPage from "./components/pages/authorized/dashboardPage/Dashboard
 import { useAppDispatch } from "./features/store/hooks";
 import { fetchUserData } from "./features/store/asyncThunks/userThunks";
 import { loginUser } from "./features/store/slices/userSlice";
+import RegistrationPage from "./components/pages/notAuthorized/RegistrationPage";
 
 function App() {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ function App() {
       if (userData) {
         dispatch(loginUser(JSON.parse(userData)));
       } else {
-        dispatch(fetchUserData(token));
+        dispatch(fetchUserData(parseInt(token)));
       }
       navigate("/dashboard");
     }
@@ -30,6 +31,7 @@ function App() {
     <div className="w-full min-h-screen flex">
       <Routes>
         <Route path="/auth" element={<AuthPage />} />
+        <Route path="/registration" element={<RegistrationPage />} />
         <Route element={<RequireAuth />}>
           <Route
             key="dashboard"
