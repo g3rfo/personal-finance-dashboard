@@ -12,6 +12,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "@/features/store/hooks";
 import axios from "axios";
 import { loginUser } from "@/features/store/slices/userSlice";
+import { useState } from "react";
+import { Spinner } from "@/components/ui/spinner";
 
 const apiURL = import.meta.env.VITE_SERVER_URL;
 
@@ -24,14 +26,19 @@ function AuthPage() {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm<AuthFormData>();
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
+  const [pending, setPending] = useState<boolean>(false);
+
   const onSubmit: SubmitHandler<AuthFormData> = async (data: AuthFormData) => {
     try {
+      setPending(true);
+
       const response = await axios.get(`${apiURL}/users`, {
         params: {
           email: data.email,
@@ -40,7 +47,10 @@ function AuthPage() {
       });
 
       if (!response.data.length) {
-        alert("Invalid credentials");
+        setError("email", {
+          type: "server",
+          message: "Invalid email or password",
+        });
         return;
       }
 
@@ -52,19 +62,25 @@ function AuthPage() {
     } catch (error) {
       alert("Login failed: " + error);
       return;
+    } finally {
+      setPending(false);
     }
   };
 
   return (
-    <div className="w-full h-full flex justify-center items-center">
+    <div className="w-full h-screen flex justify-center items-center">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-80 p-6 bg-white rounded-lg shadow-md"
       >
         <FieldGroup>
-          <FieldLegend>Sign in to your account</FieldLegend>
+          <FieldLegend data-variant="title">
+            Sign in to your account
+          </FieldLegend>
           <Field>
-            <FieldLabel htmlFor="email">Email</FieldLabel>
+            <FieldLabel className="text-md" htmlFor="email">
+              Email
+            </FieldLabel>
             <Input
               id="email"
               type="email"
@@ -77,11 +93,15 @@ function AuthPage() {
               })}
             />
             {errors.email && (
-              <FieldDescription>{errors.email.message}</FieldDescription>
+              <FieldDescription className="text-destructive">
+                {errors.email.message}
+              </FieldDescription>
             )}
           </Field>
           <Field>
-            <FieldLabel htmlFor="password">Password</FieldLabel>
+            <FieldLabel className="text-md" htmlFor="password">
+              Password
+            </FieldLabel>
             <Input
               id="password"
               type="password"
@@ -94,11 +114,18 @@ function AuthPage() {
               })}
             />
             {errors.password && (
-              <FieldDescription>{errors.password.message}</FieldDescription>
+              <FieldDescription className="text-destructive">
+                {errors.password.message}
+              </FieldDescription>
             )}
           </Field>
-          <Button type="submit">Sign In</Button>
-          <Link to="/register" className="text-sm text-primary hover:underline">
+          <Button className="text-base" type="submit" disabled={pending}>
+            {pending ? <Spinner className="size-6" /> : "Sign In"}
+          </Button>
+          <Link
+            to="/register"
+            className="text-base text-primary hover:underline"
+          >
             Don't have an account? Register
           </Link>
         </FieldGroup>
