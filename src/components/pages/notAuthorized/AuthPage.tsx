@@ -54,12 +54,10 @@ function AuthPage() {
         return;
       }
 
-      const user = response.data;
+      const user = response.data[0];
 
       dispatch(loginUser({ name: user.name, email: user.email }));
-      
-      localStorage.setItem("token", user.id);
-      
+
       navigate("/dashboard");
     } catch (error) {
       alert("Login failed: " + error);

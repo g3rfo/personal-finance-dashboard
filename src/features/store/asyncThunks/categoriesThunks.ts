@@ -16,7 +16,7 @@ export const fetchCategories = createAsyncThunk(
 
     const categories: Category[] = response.data.map(
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      ({ userId, ...category }: Category & { userId: string }) => category,
+      ({ userId, ...category }: { userId: string } & Category) => category,
     );
 
     return categories;

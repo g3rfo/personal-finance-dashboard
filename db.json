@@ -7,7 +7,7 @@
       "password": "password123"
     },
     {
-      "id": "2273",
+      "id": "e4bd",
       "name": "user2",
       "email": "user2@example.com",
       "password": "password123"
@@ -159,6 +159,87 @@
       "budget": 3000,
       "iconName": "savings",
       "color": "lime"
+    },
+    {
+      "id": "e4bdc2",
+      "name": "Shopping",
+      "budget": 400,
+      "type": "expense",
+      "iconName": "shopping",
+      "color": "pink",
+      "userId": "e4bd"
+    },
+    {
+      "id": "e4bdc1",
+      "name": "Food & Dinning",
+      "budget": 600,
+      "type": "expense",
+      "iconName": "food",
+      "color": "orange",
+      "userId": "e4bd"
+    },
+    {
+      "id": "e4bdc3",
+      "name": "Rent",
+      "budget": 1200,
+      "type": "expense",
+      "iconName": "housing",
+      "color": "red",
+      "userId": "e4bd"
+    },
+    {
+      "id": "e4bdc4",
+      "name": "Entertainment",
+      "budget": 200,
+      "type": "expense",
+      "iconName": "entertainment",
+      "color": "sky",
+      "userId": "e4bd"
+    },
+    {
+      "id": "e4bdc5",
+      "name": "Education",
+      "budget": 300,
+      "type": "expense",
+      "iconName": "education",
+      "color": "blue",
+      "userId": "e4bd"
+    },
+    {
+      "id": "e4bdc6",
+      "name": "HealthCare",
+      "budget": 150,
+      "type": "expense",
+      "iconName": "healthcare",
+      "color": "pinkred",
+      "userId": "e4bd"
+    },
+    {
+      "id": "e4bdc7",
+      "name": "Transportation",
+      "budget": 300,
+      "type": "expense",
+      "iconName": "transport",
+      "color": "purple",
+      "userId": "e4bd"
+    },
+    {
+      "id": "e4bdc8",
+      "name": "Salary",
+      "budget": 0,
+      "type": "income",
+      "iconName": "savings",
+      "color": "green",
+      "userId": "e4bd"
+    },
+    {
+      "id": "e4bdc9",
+      "name": "Investment",
+      "budget": 0,
+      "type": "income",
+      "iconName": "investments",
+      "color": "aquagreen",
+      "userId": "e4bd"
     }
   ]
 }

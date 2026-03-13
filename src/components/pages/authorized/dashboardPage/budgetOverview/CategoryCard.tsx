@@ -14,7 +14,7 @@ interface CategoryProps {
   color: string;
 }
 
-function Category({ name, spent, budget, icon, color }: CategoryProps) {
+function CategoryCard({ name, spent, budget, icon, color }: CategoryProps) {
   const IconComponent = icon;
   const progressValue = (spent / budget) * 100;
   const progressColor =
@@ -50,4 +50,4 @@ function Category({ name, spent, budget, icon, color }: CategoryProps) {
   );
 }
 
-export default Category;
+export default CategoryCard;

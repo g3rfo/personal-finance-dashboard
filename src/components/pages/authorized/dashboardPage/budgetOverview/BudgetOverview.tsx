@@ -1,10 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Category from "./Category";
 import { CATEGORY_ICONS } from "@/constants/categoryIcons";
 import { CATEGORY_COLORS } from "@/constants/categoryColors";
 import { useAppSelector } from "@/features/store/hooks";
 import { selectCategoriesNames } from "@/features/store/selectors/categoriesSelectors";
 import { transactionsSumupByCategories } from "@/utils/transactionsSumupByCategories";
+import CategoryCard from "./CategoryCard";
 
 function BudgetOverview() {
   const { categories, loading, error } = useAppSelector((state) => state.categories);
@@ -20,8 +20,8 @@ function BudgetOverview() {
       <CardContent className="flex flex-col gap-2">
         {loading && <p>Loading...</p>}
         {error && <p className="text-red-500">{error}</p>}
-        {!loading && !error && categories.map((category) => (
-          <Category
+        {!loading && !error && categories?.map((category) => (
+          <CategoryCard
             key={category.id}
             name={category.name}
             spent={spentByCategories[category.name] || 0}
