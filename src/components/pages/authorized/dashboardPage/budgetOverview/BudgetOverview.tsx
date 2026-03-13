@@ -3,9 +3,14 @@ import Category from "./Category";
 import { CATEGORY_ICONS } from "@/constants/categoryIcons";
 import { CATEGORY_COLORS } from "@/constants/categoryColors";
 import { useAppSelector } from "@/features/store/hooks";
+import { selectCategoriesNames } from "@/features/store/selectors/categoriesSelectors";
+import { transactionsSumupByCategories } from "@/utils/transactionsSumupByCategories";
 
 function BudgetOverview() {
   const { categories, loading, error } = useAppSelector((state) => state.categories);
+  const categoriesNames = useAppSelector(selectCategoriesNames) || [];
+  const transactions = useAppSelector((state) => state.transactions.transactions) || [];
+  const spentByCategories = transactionsSumupByCategories(transactions, categoriesNames) || {};
 
   return (
     <Card className="flex-1 min-w-135">
@@ -19,7 +24,7 @@ function BudgetOverview() {
           <Category
             key={category.id}
             name={category.name}
-            spent={400}
+            spent={spentByCategories[category.name] || 0}
             budget={category.budget}
             icon={CATEGORY_ICONS[category.iconName]}
             color={CATEGORY_COLORS[category.color]}

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Aside from "../../aside/Aside";
 import { useAppDispatch, useAppSelector } from "@/features/store/hooks";
 import { fetchTransactions } from "@/features/store/asyncThunks/transactionsThunks";
+import { fetchCategories } from "@/features/store/asyncThunks/categoriesThunks";
 
 function PageWrap({ children }: { children: React.ReactNode }) {
   const { loading, error } = useAppSelector(
@@ -11,6 +12,7 @@ function PageWrap({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     dispatch(fetchTransactions());
+    dispatch(fetchCategories());
   }, []);
 
   return (
