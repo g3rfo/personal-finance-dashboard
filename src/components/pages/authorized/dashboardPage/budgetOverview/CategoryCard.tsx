@@ -8,21 +8,40 @@ import { Progress } from "@/components/ui/progress";
 
 interface CategoryProps {
   name: string;
+  type: "income" | "expense";
   spent: number;
   budget: number;
   icon: React.ComponentType<{ color: string; size: number }>;
   color: string;
 }
 
-function CategoryCard({ name, spent, budget, icon, color }: CategoryProps) {
+function CategoryCard({
+  name,
+  type,
+  spent,
+  budget,
+  icon,
+  color,
+}: CategoryProps) {
   const IconComponent = icon;
   const progressValue = (spent / budget) * 100;
-  const progressColor =
-    progressValue < 80
-      ? `#16A34A`
-      : progressValue < 100
-        ? `#F59E0B`
-        : `#EF4444`;
+  let progressColor: string;
+
+  if (type === "expense") {
+    progressColor =
+      progressValue < 80
+        ? `#16A34A`
+        : progressValue < 100
+          ? `#F59E0B`
+          : `#EF4444`;
+  } else {
+    progressColor =
+      progressValue < 80
+        ? `#EF4444`
+        : progressValue < 100
+          ? `#F59E0B`
+          : `#16A34A`;
+  }
 
   return (
     <Field className="gap-2">

@@ -24,6 +24,7 @@ function BudgetOverview() {
           <CategoryCard
             key={category.id}
             name={category.name}
+            type={category.type}
             spent={spentByCategories[category.name] || 0}
             budget={category.budget}
             icon={CATEGORY_ICONS[category.iconName]}
