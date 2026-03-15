@@ -1,10 +1,11 @@
 import PageHeader from "../header/PageHeader";
-import HeaderButton from "../header/HeaderButton";
 import { IconPlus } from "@tabler/icons-react";
 import HeaderTitle from "../header/HeaderTitle";
 import Stats from "./stats/Stats";
 import BudgetOverview from "./budgetOverview/BudgetOverview";
 import RecentTransactions from "./recentTransaction/RecentTransaction";
+import Popup from "@/components/ui/Popup";
+import { Button } from "@/components/ui/button";
 
 function DashboardPage() {
   return (
@@ -14,9 +15,16 @@ function DashboardPage() {
           title="Dashboard"
           description="Welcome back! Here's your financial overview"
         />
-        <HeaderButton>
-          <IconPlus /> Add Transaction
-        </HeaderButton>
+        <Popup
+          trigger={
+            <Button>
+              <IconPlus /> Add Transaction
+            </Button>
+          }
+          title="Add Transaction"
+          description=""
+          content={<p>Form</p>}
+        />
       </PageHeader>
       <Stats />
       <div className="flex flex-wrap gap-4">
