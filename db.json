@@ -15,151 +15,97 @@
   ],
   "transactions": [
     {
-      "id": "1t1",
-      "userId": "1",
-      "type": "expense",
-      "category": "Food",
-      "amount": 50,
-      "date": "2024-06-01",
-      "description": "Groceries"
-    },
-    {
-      "id": "1t2",
-      "userId": "1",
+      "id": "e4bdt1",
+      "userId": "e4bd",
+      "name": "Monthly salary",
       "type": "income",
       "category": "Salary",
-      "amount": 3000,
-      "date": "2024-06-01",
-      "description": "Monthly Salary"
+      "amount": 3200,
+      "date": "2026-03-01"
     },
     {
-      "id": "1t3",
-      "userId": "1",
+      "id": "e4bdt2",
+      "userId": "e4bd",
+      "name": "Apartment rent",
       "type": "expense",
-      "category": "Entertainment",
-      "amount": 100,
-      "date": "2024-06-02",
-      "description": "Movie tickets"
+      "category": "Rent",
+      "amount": 1200,
+      "date": "2026-03-02"
     },
     {
-      "id": "1t4",
-      "userId": "1",
+      "id": "e4bdt3",
+      "userId": "e4bd",
+      "name": "Groceries and snacks",
       "type": "expense",
-      "category": "Utilities",
-      "amount": 150,
-      "date": "2024-06-03",
-      "description": "Electricity bill"
+      "category": "Food & Dinning",
+      "amount": 86,
+      "date": "2026-03-03"
     },
     {
-      "id": "1t5",
-      "userId": "1",
-      "type": "income",
-      "category": "Freelance",
-      "amount": 500,
-      "date": "2024-06-04",
-      "description": "Freelance project"
-    },
-    {
-      "id": "1t6",
-      "userId": "1",
+      "id": "e4bdt4",
+      "userId": "e4bd",
+      "name": "Fuel refill",
       "type": "expense",
       "category": "Transportation",
-      "amount": 20,
-      "date": "2024-06-05",
-      "description": "Bus fare"
+      "amount": 34,
+      "date": "2026-03-04"
     },
     {
-      "id": "1t7",
-      "userId": "1",
+      "id": "e4bdt5",
+      "userId": "e4bd",
+      "name": "Cinema tickets",
       "type": "expense",
-      "category": "Health",
-      "amount": 200,
-      "date": "2024-06-06",
-      "description": "Doctor's appointment"
+      "category": "Entertainment",
+      "amount": 58,
+      "date": "2026-03-05"
     },
     {
-      "id": "1t8",
-      "userId": "1",
+      "id": "e4bdt6",
+      "userId": "e4bd",
+      "name": "New headphones",
+      "type": "expense",
+      "category": "Shopping",
+      "amount": 149,
+      "date": "2026-03-06"
+    },
+    {
+      "id": "e4bdt7",
+      "userId": "e4bd",
+      "name": "Pharmacy purchase",
+      "type": "expense",
+      "category": "HealthCare",
+      "amount": 45,
+      "date": "2026-03-07"
+    },
+    {
+      "id": "e4bdt8",
+      "userId": "e4bd",
+      "name": "ETF dividend payout",
       "type": "income",
       "category": "Investment",
-      "amount": 1000,
-      "date": "2024-06-07",
-      "description": "Stock dividends"
+      "amount": 180,
+      "date": "2026-03-08"
     },
     {
-      "id": "1t9",
-      "userId": "1",
+      "id": "e4bdt9",
+      "userId": "e4bd",
+      "name": "Online course subscription",
       "type": "expense",
       "category": "Education",
-      "amount": 300,
-      "date": "2024-06-08",
-      "description": "Online course"
+      "amount": 99,
+      "date": "2026-03-09"
     },
     {
-      "id": "1t10",
-      "userId": "1",
+      "id": "e4bdt10",
+      "userId": "e4bd",
+      "name": "Lunch with coworkers",
       "type": "expense",
-      "category": "Miscellaneous",
-      "amount": 75,
-      "date": "2024-06-09",
-      "description": "Gift for friend"
-    },
-    {
-      "id": "1t11",
-      "userId": "1",
-      "type": "expense",
-      "category": "Miscellaneous",
-      "amount": 75,
-      "date": "2024-06-09",
-      "description": "Gift for friend"
+      "category": "Food & Dinning",
+      "amount": 27,
+      "date": "2026-03-10"
     }
   ],
   "categories": [
-    {
-      "id": "1c1",
-      "userId": "1",
-      "name": "Housing",
-      "type": "expense",
-      "budget": 2000,
-      "iconName": "housing",
-      "color": "red"
-    },
-    {
-      "id": "1c2",
-      "userId": "1",
-      "name": "Transportation",
-      "type": "expense",
-      "budget": 1000,
-      "iconName": "transport",
-      "color": "purple"
-    },
-    {
-      "id": "1c3",
-      "userId": "1",
-      "name": "Food",
-      "type": "expense",
-      "budget": 600,
-      "iconName": "food",
-      "color": "orange"
-    },
-    {
-      "id": "1c4",
-      "userId": "1",
-      "name": "Healthcare",
-      "type": "expense",
-      "budget": 500,
-      "iconName": "healthcare",
-      "color": "pink"
-    },
-    {
-      "id": "1c5",
-      "userId": "1",
-      "name": "Salary",
-      "type": "income",
-      "budget": 3000,
-      "iconName": "savings",
-      "color": "lime"
-    },
     {
       "id": "e4bdc2",
       "name": "Shopping",

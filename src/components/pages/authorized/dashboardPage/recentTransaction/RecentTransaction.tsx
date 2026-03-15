@@ -2,13 +2,18 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import TransactionCard from "./TransactionCard";
-import {
-  IconCreditCardPay,
-  IconShoppingCart,
-  IconTax,
-} from "@tabler/icons-react";
+import { useAppSelector } from "@/features/store/hooks";
+import { selectCategoriesDataForTransactions } from "@/features/store/selectors/categoriesSelectors";
+import { CATEGORY_ICONS } from "@/constants/categoryIcons";
+import { CATEGORY_COLORS } from "@/constants/categoryColors";
 
 function RecentTransactions() {
+  const { transactions, loading, error } = useAppSelector(
+    (state) => state.transactions,
+  );
+  const categoryData =
+    useAppSelector(selectCategoriesDataForTransactions) || {};
+
   return (
     <Card className="flex-1 min-w-135">
       <CardHeader className="flex justify-between">
@@ -22,35 +27,32 @@ function RecentTransactions() {
         </Button>
       </CardHeader>
       <CardContent className="flex flex-col gap-2">
-        <TransactionCard
-          name="Grocery Shopping"
-          date="Mar 15, 2026"
-          amount={150.0}
-          type="EXPENSE"
-          icon={IconShoppingCart}
-          categoryColor="#EF4444"
-        />
-        <TransactionCard
-          name="Salary"
-          date="Mar 10, 2026"
-          amount={3000.0}
-          type="INCOME"
-          icon={IconTax}
-          categoryColor="#10B981"
-        />
-        <TransactionCard
-          name="Electricity Bill"
-          date="Mar 5, 2026"
-          amount={100.0}
-          type="EXPENSE"
-          icon={IconCreditCardPay}
-          categoryColor="#F59E0B"
-        />
-        {/* {loading && <p>Loading...</p>}
+        {loading && <p>Loading...</p>}
         {error && <p className="text-red-500">{error}</p>}
-        {!loading && !error && categories?.map((category) => (
-          
-        ))} */}
+        {!loading && !error && transactions?.length === 0 && (
+          <p className="text-center">No transactions yet</p>
+        )}
+        {!loading &&
+          !error &&
+          transactions?.map((transaction) => (
+            (() => {
+              const transactionCategoryData = categoryData[transaction.category];
+              const iconName = transactionCategoryData?.iconName ?? "shopping";
+              const colorName = transactionCategoryData?.color ?? "gray";
+
+              return (
+            <TransactionCard
+              key={transaction.id}
+              name={transaction.name}
+              date={transaction.date}
+              amount={transaction.amount}
+              type={transaction.type}
+              icon={CATEGORY_ICONS[iconName]}
+              categoryColor={CATEGORY_COLORS[colorName] ?? "#6B7280"}
+            />
+              );
+            })()
+          ))}
       </CardContent>
     </Card>
   );

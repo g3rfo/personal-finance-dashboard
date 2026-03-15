@@ -11,3 +11,17 @@ export const selectCategoriesNames = createSelector(
     return categories?.map((c) => c.name);
   }
 )
+
+export const selectCategoriesDataForTransactions = createSelector(
+  [selectCategories],
+  (categories) => {
+    const categoryData: Record<string, { color: string; iconName: string }> = {};
+    categories?.forEach((category) => {
+      categoryData[category.name] = {
+        color: category.color,
+        iconName: category.iconName,
+      };
+    });
+    return categoryData;
+  }
+);

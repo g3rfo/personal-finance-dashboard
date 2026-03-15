@@ -4,13 +4,14 @@ import {
   FieldGroup,
   FieldTitle,
 } from "@/components/ui/field";
+import { IconShoppingCart } from "@tabler/icons-react";
 
 interface TransactionCardProps {
   name: string;
   date: string;
   amount: number;
-  type: "INCOME" | "EXPENSE";
-  icon: React.ComponentType<{ color: string; size: number }>;
+  type: "income" | "expense";
+  icon?: React.ComponentType<{ color: string; size: number }>;
   categoryColor: string;
 }
 
@@ -19,11 +20,12 @@ function TransactionCard({
   date,
   amount,
   type,
-  icon: IconComponent,
+  icon,
   categoryColor,
 }: TransactionCardProps) {
-  const amountColor = type === "INCOME" ? "text-primary" : "text-destructive";
-  const amountSign = type === "INCOME" ? "+" : "-";
+  const IconComponent = icon ?? IconShoppingCart;
+  const amountColor = type === "income" ? "text-primary" : "text-destructive";
+  const amountSign = type === "income" ? "+" : "-";
 
   return (
     <Field orientation="horizontal" className="gap-2 py-1 px-3">
@@ -41,7 +43,7 @@ function TransactionCard({
           </FieldDescription>
         </FieldGroup>
       </FieldTitle>
-      <FieldDescription className={`text-sm font-bold ${amountColor}`}>
+      <FieldDescription className={`text-sm font-semibold ${amountColor}`}>
         {amountSign}${amount.toFixed(2)}
       </FieldDescription>
     </Field>
