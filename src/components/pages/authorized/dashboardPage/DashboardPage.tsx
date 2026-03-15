@@ -4,6 +4,7 @@ import { IconPlus } from "@tabler/icons-react";
 import HeaderTitle from "../header/HeaderTitle";
 import Stats from "./stats/Stats";
 import BudgetOverview from "./budgetOverview/BudgetOverview";
+import RecentTransactions from "./recentTransaction/RecentTransaction";
 
 function DashboardPage() {
   return (
@@ -20,6 +21,7 @@ function DashboardPage() {
       <Stats />
       <div className="flex flex-wrap gap-4">
         <BudgetOverview />
+        <RecentTransactions />
       </div>
     </>
   );

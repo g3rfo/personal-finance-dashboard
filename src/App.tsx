@@ -21,7 +21,7 @@ function App() {
       if (userData) {
         dispatch(loginUser(JSON.parse(userData)));
       } else {
-        dispatch(fetchUserData(parseInt(token)));
+        dispatch(fetchUserData(token));
       }
       navigate("/dashboard");
     }

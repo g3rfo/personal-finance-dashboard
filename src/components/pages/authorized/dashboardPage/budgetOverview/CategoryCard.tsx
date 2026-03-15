@@ -30,7 +30,7 @@ function CategoryCard({ name, spent, budget, icon, color }: CategoryProps) {
         <div className="flex items-center gap-2">
           <div
             style={{ backgroundColor: `${color}1A` }}
-            className={`bg-[${color}] flex justify-center items-center rounded-md w-8 h-8`}
+            className={`flex justify-center items-center rounded-md w-8 h-8`}
           >
             <IconComponent color={color} size={24} />
           </div>
