@@ -11,6 +11,12 @@
       "name": "user2",
       "email": "user2@example.com",
       "password": "password123"
+    },
+    {
+      "id": "c5e0",
+      "name": "user3",
+      "email": "user3@example.com",
+      "password": "password123"
     }
   ],
   "transactions": [
@@ -186,6 +192,87 @@
       "iconName": "investments",
       "color": "aquagreen",
       "userId": "e4bd"
+    },
+    {
+      "id": "c5e0c1",
+      "name": "Food & Dinning",
+      "budget": 600,
+      "type": "expense",
+      "iconName": "food",
+      "color": "orange",
+      "userId": "c5e0"
+    },
+    {
+      "id": "c5e0c2",
+      "name": "Shopping",
+      "budget": 400,
+      "type": "expense",
+      "iconName": "shopping",
+      "color": "pink",
+      "userId": "c5e0"
+    },
+    {
+      "id": "c5e0c3",
+      "name": "Rent",
+      "budget": 1200,
+      "type": "expense",
+      "iconName": "housing",
+      "color": "red",
+      "userId": "c5e0"
+    },
+    {
+      "id": "c5e0c4",
+      "name": "Entertainment",
+      "budget": 200,
+      "type": "expense",
+      "iconName": "entertainment",
+      "color": "sky",
+      "userId": "c5e0"
+    },
+    {
+      "id": "c5e0c5",
+      "name": "Education",
+      "budget": 300,
+      "type": "expense",
+      "iconName": "education",
+      "color": "blue",
+      "userId": "c5e0"
+    },
+    {
+      "id": "c5e0c6",
+      "name": "HealthCare",
+      "budget": 150,
+      "type": "expense",
+      "iconName": "healthcare",
+      "color": "pinkred",
+      "userId": "c5e0"
+    },
+    {
+      "id": "c5e0c7",
+      "name": "Transportation",
+      "budget": 300,
+      "type": "expense",
+      "iconName": "transport",
+      "color": "purple",
+      "userId": "c5e0"
+    },
+    {
+      "id": "c5e0c8",
+      "name": "Salary",
+      "budget": 0,
+      "type": "income",
+      "iconName": "savings",
+      "color": "green",
+      "userId": "c5e0"
+    },
+    {
+      "id": "c5e0c9",
+      "name": "Investment",
+      "budget": 0,
+      "type": "income",
+      "iconName": "investments",
+      "color": "aquagreen",
+      "userId": "c5e0"
     }
   ]
 }

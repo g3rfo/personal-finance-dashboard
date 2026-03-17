@@ -55,8 +55,7 @@ function AuthPage() {
       }
 
       const user = response.data[0];
-
-      dispatch(loginUser({ name: user.name, email: user.email }));
+      dispatch(loginUser({ name: user.name, email: user.email, token: user.id }));
 
       navigate("/dashboard");
     } catch (error) {

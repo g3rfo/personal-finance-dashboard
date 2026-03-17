@@ -5,12 +5,12 @@ function RequireAuth() {
   const userData = localStorage.getItem("userData");
   const location = useLocation();
 
-  if (!token || token === undefined) {
+  if (!token) {
     resetData();
     return <Navigate to="/auth" state={{ from: location }} replace />;
   }
 
-  if (!userData || userData === undefined) {
+  if (!userData) {
     resetData();
     return <Navigate to="/auth" state={{ from: location }} replace />;
   }
