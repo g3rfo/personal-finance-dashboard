@@ -7,13 +7,12 @@ import {
   FieldLabel,
   FieldLegend,
 } from "../../ui/field";
-import { Button } from "../../ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "@/features/store/hooks";
 import axios from "axios";
 import { loginUser } from "@/features/store/slices/userSlice";
 import { useState } from "react";
-import { Spinner } from "@/components/ui/spinner";
+import SubmitButton from "@/components/ui/SubmitButton";
 
 const apiURL = import.meta.env.VITE_SERVER_URL;
 
@@ -118,9 +117,7 @@ function AuthPage() {
               </FieldDescription>
             )}
           </Field>
-          <Button className="text-base" type="submit" disabled={pending}>
-            {pending ? <Spinner className="size-6" /> : "Sign In"}
-          </Button>
+          <SubmitButton pending={pending} title="Sign In" />
           <Link
             to="/registration"
             className="text-base text-primary hover:underline"

@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
 import { Calendar } from "@/components/ui/calendar";
 import {
   Field,
@@ -36,9 +35,13 @@ import {
   useWatch,
 } from "react-hook-form";
 import DialogCloseButton from "@/components/ui/DialogCloseButton";
+import { addTransaction } from "@/features/store/asyncThunks/transactionsThunks";
+import { generateTransactionId } from "@/utils/idGenerators";
+import { useAppDispatch, useAppSelector } from "@/features/store/hooks";
+import SubmitButton from "@/components/ui/SubmitButton";
 
 interface AddTransactionFormValues {
-  title: string;
+  name: string;
   amount: number;
   type: "income" | "expense";
   category: string;
@@ -54,10 +57,12 @@ function AddTransactionForm({
   expenseCategories,
   incomeCategories,
 }: AddTransactionFormProps) {
+  // Set default type and category based on available categories
   const defaultType: "income" | "expense" =
     expenseCategories.length > 0 ? "expense" : "income";
-  const defaultCategory =
-    (defaultType === "expense" ? expenseCategories[0] : incomeCategories[0])!;
+  const defaultCategory = (
+    defaultType === "expense" ? expenseCategories[0] : incomeCategories[0]
+  )!;
 
   const {
     control,
@@ -67,7 +72,7 @@ function AddTransactionForm({
     formState: { errors },
   } = useForm<AddTransactionFormValues>({
     defaultValues: {
-      title: "",
+      name: "",
       amount: 0,
       type: defaultType,
       category: defaultCategory,
@@ -75,19 +80,40 @@ function AddTransactionForm({
     },
   });
 
+  // Transaction state management
+  const dispatch = useAppDispatch();
+  const { transactions } = useAppSelector((state) => state.transactions);
+  const [pending, setPending] = useState<boolean>(false);
+
+  // Watch type and category to update category options dynamically
   const selectedType = useWatch({ control, name: "type" });
   const selectedCategory = useWatch({ control, name: "category" });
   const categoryOptions =
     selectedType === "expense" ? expenseCategories : incomeCategories;
 
+  // Ensure category is valid when type changes
   useEffect(() => {
     if (!categoryOptions.includes(selectedCategory)) {
       setValue("category", categoryOptions[0], { shouldValidate: true });
     }
   }, [categoryOptions, selectedCategory, setValue]);
 
-  const onSubmit: SubmitHandler<AddTransactionFormValues> = (data) => {
-    console.log(data.title, data.amount, data.type, data.category, data.date);
+  // Handle form submission
+  const onSubmit: SubmitHandler<AddTransactionFormValues> = async (data) => {
+    try {
+      setPending(true);
+      const userId = localStorage.getItem("token");
+      if (!userId) {
+        throw new Error("User ID not found. Please log in again.");
+      }
+
+      const transactionId = generateTransactionId(transactions, userId);
+      dispatch(addTransaction({ id: transactionId, userId: userId, ...data }));
+    } catch (error) {
+      console.error("Error adding transaction:", error);
+    } finally {
+      setPending(false);
+    }
   };
 
   return (
@@ -95,26 +121,26 @@ function AddTransactionForm({
       <FieldGroup>
         <FieldSeparator />
         <Field>
-          <FieldLabel htmlFor="title">Title</FieldLabel>
+          <FieldLabel htmlFor="name">Name</FieldLabel>
           <Input
-            id="title"
+            id="name"
             type="text"
-            placeholder="Enter transaction title"
-            {...register("title", {
-              required: "Title is required",
+            placeholder="Enter transaction name"
+            {...register("name", {
+              required: "Name is required",
               minLength: {
                 value: 3,
-                message: "Title must be at least 3 characters",
+                message: "Name must be at least 3 characters",
               },
               maxLength: {
                 value: 50,
-                message: "Title must be at most 50 characters",
+                message: "Name must be at most 50 characters",
               },
             })}
           />
-          {errors.title && (
+          {errors.name && (
             <FieldDescription className="text-destructive">
-              {errors.title.message}
+              {errors.name.message}
             </FieldDescription>
           )}
         </Field>
@@ -247,10 +273,8 @@ function AddTransactionForm({
       </FieldGroup>
       <FieldGroup>
         <Field orientation="horizontal">
-          <Button type="submit" className="flex-1">
-            Submit
-          </Button>
           <DialogCloseButton />
+          <SubmitButton pending={pending} title="Add Transaction" />
         </Field>
       </FieldGroup>
     </form>
@@ -258,5 +282,3 @@ function AddTransactionForm({
 }
 
 export default AddTransactionForm;
-
-

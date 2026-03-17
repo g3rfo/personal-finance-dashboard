@@ -109,6 +109,24 @@
       "category": "Food & Dinning",
       "amount": 27,
       "date": "2026-03-10"
+    },
+    {
+      "id": "c5e0t1",
+      "userId": "c5e0",
+      "name": "Salary",
+      "amount": 3000,
+      "type": "income",
+      "category": "Salary",
+      "date": "2026-03-17"
+    },
+    {
+      "id": "c5e0t2",
+      "userId": "c5e0",
+      "name": "Rent",
+      "amount": 1400,
+      "type": "expense",
+      "category": "Rent",
+      "date": "2026-03-16"
     }
   ],
   "categories": [
