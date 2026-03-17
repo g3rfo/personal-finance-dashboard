@@ -10,7 +10,17 @@ export const selectCategoriesNames = createSelector(
   (categories) => {
     return categories?.map((c) => c.name);
   }
-)
+);
+
+export const makeSelectCategoriesNamesByType = (type: "income" | "expense") =>
+  createSelector([selectCategories], (categories) =>
+    categories
+      ?.filter((c) => c.type === type)
+      .map((c) => c.name)
+  );
+
+export const selectExpenseCategoriesNames = makeSelectCategoriesNamesByType("expense");
+export const selectIncomeCategoriesNames = makeSelectCategoriesNamesByType("income");
 
 export const selectCategoriesDataForTransactions = createSelector(
   [selectCategories],

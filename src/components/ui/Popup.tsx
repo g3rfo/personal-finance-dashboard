@@ -21,9 +21,7 @@ function Popup({ trigger, content, title, description }: PopupProps) {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
-          <DialogDescription>
-            {description}
-          </DialogDescription>
+          <DialogDescription>{description}</DialogDescription>
         </DialogHeader>
         {content}
       </DialogContent>

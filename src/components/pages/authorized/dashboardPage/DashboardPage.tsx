@@ -6,6 +6,7 @@ import BudgetOverview from "./budgetOverview/BudgetOverview";
 import RecentTransactions from "./recentTransaction/RecentTransaction";
 import Popup from "@/components/ui/Popup";
 import { Button } from "@/components/ui/button";
+import AddTransactionFormContent from "./addTransactions/AddTransactionFormContent";
 
 function DashboardPage() {
   return (
@@ -23,7 +24,7 @@ function DashboardPage() {
           }
           title="Add Transaction"
           description=""
-          content={<p>Form</p>}
+          content={<AddTransactionFormContent />}
         />
       </PageHeader>
       <Stats />
