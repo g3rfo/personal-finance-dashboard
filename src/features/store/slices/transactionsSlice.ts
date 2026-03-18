@@ -2,6 +2,7 @@ import type { Transaction } from "../../../types/transaction.type";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import {
   addTransaction,
+  deleteTransaction,
   fetchTransactions,
 } from "../asyncThunks/transactionsThunks";
 
@@ -23,6 +24,7 @@ const transactionsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      // fetchTransactions
       .addCase(fetchTransactions.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -38,7 +40,8 @@ const transactionsSlice = createSlice({
         state.loading = false;
         state.error = action.error?.message || "Failed to fetch transactions";
       })
-      
+
+      // addTransaction
       .addCase(addTransaction.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -53,6 +56,25 @@ const transactionsSlice = createSlice({
       .addCase(addTransaction.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error?.message || "Failed to add transaction";
+      })
+
+      // deleteTransaction
+      .addCase(deleteTransaction.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(
+        deleteTransaction.fulfilled,
+        (state, action: PayloadAction<string>) => {
+          state.loading = false;
+          state.transactions = state.transactions.filter(
+            (t) => t.id !== action.payload,
+          );
+        },
+      )
+      .addCase(deleteTransaction.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error?.message || "Failed to delete transaction";
       });
   },
 });

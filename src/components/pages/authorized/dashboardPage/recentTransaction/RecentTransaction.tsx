@@ -34,25 +34,26 @@ function RecentTransactions() {
         )}
         {!loading &&
           !error &&
-          transactions?.map((transaction) => (
+          transactions?.map((transaction) =>
             (() => {
-              const transactionCategoryData = categoryData[transaction.category];
+              const transactionCategoryData =
+                categoryData[transaction.category];
               const iconName = transactionCategoryData?.iconName ?? "shopping";
               const colorName = transactionCategoryData?.color ?? "gray";
 
               return (
-            <TransactionCard
-              key={transaction.id}
-              name={transaction.name}
-              date={transaction.date}
-              amount={transaction.amount}
-              type={transaction.type}
-              icon={CATEGORY_ICONS[iconName]}
-              categoryColor={CATEGORY_COLORS[colorName] ?? "#6B7280"}
-            />
+                <TransactionCard
+                  key={transaction.id}
+                  name={transaction.name}
+                  date={transaction.date}
+                  amount={transaction.amount}
+                  type={transaction.type}
+                  icon={CATEGORY_ICONS[iconName]}
+                  categoryColor={CATEGORY_COLORS[colorName] ?? "#6B7280"}
+                />
               );
-            })()
-          ))}
+            })(),
+          )}
       </CardContent>
     </Card>
   );

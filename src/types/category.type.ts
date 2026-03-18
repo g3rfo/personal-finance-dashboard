@@ -6,3 +6,7 @@ export interface Category {
   iconName: string;
   color: string;
 }
+
+export interface CategoryResponse extends Category {
+  userId: string;
+}

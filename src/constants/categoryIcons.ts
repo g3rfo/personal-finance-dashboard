@@ -44,4 +44,4 @@ export const CATEGORY_ICONS: {
   technology: IconDevicesPc,
   hobbies: IconRollerSkating,
   emergency: IconFireExtinguisher,
-};
+} as const;

@@ -11,4 +11,4 @@ export const CATEGORY_COLORS: { [key: string]: string } = {
   red: "#EF4444",
   orange: "#F59E0B",
   yellow: "#EAB308",
-}
+} as const;

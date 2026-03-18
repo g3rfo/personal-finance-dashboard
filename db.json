@@ -17,6 +17,12 @@
       "name": "user3",
       "email": "user3@example.com",
       "password": "password123"
+    },
+    {
+      "id": "a117",
+      "name": "user4",
+      "email": "user4@example.com",
+      "password": "password123"
     }
   ],
   "transactions": [
@@ -127,6 +133,24 @@
       "type": "expense",
       "category": "Rent",
       "date": "2026-03-16"
+    },
+    {
+      "id": "c5e0t3",
+      "name": "Taxi",
+      "amount": 240,
+      "type": "expense",
+      "category": "Transportation",
+      "date": "2026-03-18",
+      "userId": "c5e0"
+    },
+    {
+      "id": "c5e0t4",
+      "name": "Temka",
+      "amount": 10000,
+      "type": "income",
+      "category": "Investment",
+      "date": "2026-03-18",
+      "userId": "c5e0"
     }
   ],
   "categories": [

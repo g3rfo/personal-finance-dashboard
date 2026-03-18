@@ -1,4 +1,4 @@
-import type { User } from "@/types/user.type";
+import type { User, UserAuthData } from "@/types/user.type";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { fetchUserData, registerUser } from "../asyncThunks/userThunks";
 
@@ -18,7 +18,7 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    loginUser: (state, action: PayloadAction<User & { token?: string }>) => {
+    loginUser: (state, action: PayloadAction<UserAuthData>) => {
       saveUserData(state, action.payload);
 
       if (action.payload.token) {
@@ -41,9 +41,12 @@ const userSlice = createSlice({
       )
       .addCase(
         registerUser.fulfilled,
-        (state, action: PayloadAction<User & { id: string }>) => {
-          saveUserData(state, { name: action.payload.name, email: action.payload.email });
-          localStorage.setItem("token", action.payload.id);
+        (state, action: PayloadAction<UserAuthData>) => {
+          saveUserData(state, {
+            name: action.payload.name,
+            email: action.payload.email,
+          });
+          localStorage.setItem("token", action.payload.token);
         },
       );
   },
@@ -52,4 +55,3 @@ const userSlice = createSlice({
 export const { loginUser, logoutUser } = userSlice.actions;
 
 export default userSlice.reducer;
-

@@ -1,5 +1,8 @@
 import { useAppSelector } from "@/features/store/hooks";
-import { selectExpenseCategoriesNames, selectIncomeCategoriesNames } from "@/features/store/selectors/categoriesSelectors";
+import {
+  selectExpenseCategoriesNames,
+  selectIncomeCategoriesNames,
+} from "@/features/store/selectors/categoriesSelectors";
 import ErrorTransactionForm from "./ErrorTransactionForm";
 import AddTransactionForm from "./AddTransactionForm";
 
@@ -10,9 +13,7 @@ function AddTransactionFormContent() {
     expenseCategories.length === 0 && incomeCategories.length === 0;
 
   if (hasNoCategories) {
-    return (
-      <ErrorTransactionForm />
-    );
+    return <ErrorTransactionForm />;
   }
 
   return (

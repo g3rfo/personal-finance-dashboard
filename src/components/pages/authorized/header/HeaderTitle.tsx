@@ -1,4 +1,9 @@
-function HeaderTitle({ title, description }: { title: string; description: string }) {
+interface HeaderTitleProps {
+  title: string;
+  description: string;
+}
+
+function HeaderTitle({ title, description }: HeaderTitleProps) {
   return (
     <div>
       <h1 className="text-2xl font-bold">{title}</h1>

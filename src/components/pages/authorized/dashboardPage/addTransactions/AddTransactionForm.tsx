@@ -102,13 +102,14 @@ function AddTransactionForm({
   const onSubmit: SubmitHandler<AddTransactionFormValues> = async (data) => {
     try {
       setPending(true);
+
       const userId = localStorage.getItem("token");
       if (!userId) {
         throw new Error("User ID not found. Please log in again.");
       }
 
       const transactionId = generateTransactionId(transactions, userId);
-      dispatch(addTransaction({ id: transactionId, userId: userId, ...data }));
+      dispatch(addTransaction({ id: transactionId, ...data }));
     } catch (error) {
       console.error("Error adding transaction:", error);
     } finally {

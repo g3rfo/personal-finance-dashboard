@@ -40,6 +40,7 @@ const categoriesSlice = createSlice({
         state.loading = false;
         state.error = action.error.message || "Failed to fetch categories";
       })
+
       // Add category
       .addCase(addCategory.pending, (state) => {
         state.loading = true;
@@ -56,6 +57,7 @@ const categoriesSlice = createSlice({
         state.loading = false;
         state.error = action.error.message || "Failed to add category";
       })
+
       // Delete category
       .addCase(deleteCategory.pending, (state) => {
         state.loading = true;

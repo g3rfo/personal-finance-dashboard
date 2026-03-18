@@ -1,5 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { Field, FieldDescription, FieldGroup, FieldLabel, FieldLegend } from "@/components/ui/field";
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+  FieldLegend,
+} from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Spinner } from "@/components/ui/spinner";
 import { registerUser } from "@/features/store/asyncThunks/userThunks";
@@ -27,10 +33,10 @@ function RegistrationPage() {
 
   const [pending, setPending] = useState<boolean>(false);
 
-  const onSubmit: SubmitHandler<RegistrationFormData> = async (data: RegistrationFormData) => {
+  const onSubmit: SubmitHandler<RegistrationFormData> = async (data) => {
     try {
       setPending(true);
-    
+
       const isUserExist = await isUserAlreadyExist(data.email);
 
       if (isUserExist) {
@@ -40,7 +46,7 @@ function RegistrationPage() {
         });
         return;
       }
-    
+
       if (data.password !== data.passwordConfirm) {
         setError("passwordConfirm", {
           type: "server",
@@ -49,7 +55,13 @@ function RegistrationPage() {
         return;
       }
 
-      dispatch(registerUser({ name: data.name, email: data.email, password: data.password }));
+      dispatch(
+        registerUser({
+          name: data.name,
+          email: data.email,
+          password: data.password,
+        }),
+      );
 
       navigate("/dashboard");
     } catch (error) {
@@ -59,7 +71,6 @@ function RegistrationPage() {
     }
   };
 
-
   return (
     <div className="w-full h-screen flex justify-center items-center">
       <form
@@ -67,9 +78,7 @@ function RegistrationPage() {
         className="w-80 p-6 bg-white rounded-lg shadow-md"
       >
         <FieldGroup>
-          <FieldLegend data-variant="title">
-            Registration
-          </FieldLegend>
+          <FieldLegend data-variant="title">Registration</FieldLegend>
           <Field>
             <FieldLabel className="text-md" htmlFor="name">
               Name
@@ -79,8 +88,7 @@ function RegistrationPage() {
               type="text"
               {...register("name", {
                 required: "Name is required",
-              },
-              )}
+              })}
             />
             {errors.name && (
               <FieldDescription className="text-destructive">
@@ -154,10 +162,7 @@ function RegistrationPage() {
           <Button className="text-base" type="submit" disabled={pending}>
             {pending ? <Spinner className="size-6" /> : "Register"}
           </Button>
-          <Link
-            to="/auth"
-            className="text-base text-primary hover:underline"
-          >
+          <Link to="/auth" className="text-base text-primary hover:underline">
             Already have an account? Sign in
           </Link>
         </FieldGroup>

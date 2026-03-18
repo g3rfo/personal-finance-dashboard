@@ -73,4 +73,4 @@ export const DEFAULT_CATEGORIES: Category[] = [
     iconName: "investments",
     color: "aquagreen",
   },
-];
+] as const;

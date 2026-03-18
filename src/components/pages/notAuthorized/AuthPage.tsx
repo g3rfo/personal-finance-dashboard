@@ -13,6 +13,7 @@ import axios from "axios";
 import { loginUser } from "@/features/store/slices/userSlice";
 import { useState } from "react";
 import SubmitButton from "@/components/ui/SubmitButton";
+import { type UserServerResponse } from "@/types/user.type";
 
 const apiURL = import.meta.env.VITE_SERVER_URL;
 
@@ -34,18 +35,18 @@ function AuthPage() {
 
   const [pending, setPending] = useState<boolean>(false);
 
-  const onSubmit: SubmitHandler<AuthFormData> = async (data: AuthFormData) => {
+  const onSubmit: SubmitHandler<AuthFormData> = async (formData) => {
     try {
       setPending(true);
 
-      const response = await axios.get(`${apiURL}/users`, {
+      const { data } = await axios.get<UserServerResponse[]>(`${apiURL}/users`, {
         params: {
-          email: data.email,
-          password: data.password,
+          email: formData.email,
+          password: formData.password,
         },
       });
 
-      if (!response.data.length) {
+      if (!data || data.length === 0) {
         setError("email", {
           type: "server",
           message: "Invalid email or password",
@@ -53,8 +54,9 @@ function AuthPage() {
         return;
       }
 
-      const user = response.data[0];
-      dispatch(loginUser({ name: user.name, email: user.email, token: user.id }));
+      dispatch(
+        loginUser({ name: data[0].name, email: data[0].email, token: data[0].id }),
+      );
 
       navigate("/dashboard");
     } catch (error) {
