@@ -1,9 +1,12 @@
 export interface Transaction {
   id: string;
-  userId: number;
+  name: string;
   type: "income" | "expense";
   category: string;
   amount: number;
   date: string;
-  description: string;
+}
+
+export interface TransactionResponse extends Transaction {
+  userId: string;
 }

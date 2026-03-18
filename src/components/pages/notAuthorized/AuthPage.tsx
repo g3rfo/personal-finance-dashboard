@@ -7,10 +7,13 @@ import {
   FieldLabel,
   FieldLegend,
 } from "../../ui/field";
-import { Button } from "../../ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "@/features/store/hooks";
 import axios from "axios";
+import { loginUser } from "@/features/store/slices/userSlice";
+import { useState } from "react";
+import SubmitButton from "@/components/ui/SubmitButton";
+import { type UserServerResponse } from "@/types/user.type";
 
 const apiURL = import.meta.env.VITE_SERVER_URL;
 
@@ -23,47 +26,61 @@ function AuthPage() {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm<AuthFormData>();
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<AuthFormData> = async (data: AuthFormData) => {
+  const [pending, setPending] = useState<boolean>(false);
+
+  const onSubmit: SubmitHandler<AuthFormData> = async (formData) => {
     try {
-      const response = await axios.get(`${apiURL}/users`, {
+      setPending(true);
+
+      const { data } = await axios.get<UserServerResponse[]>(`${apiURL}/users`, {
         params: {
-          email: data.email,
-          password: data.password,
+          email: formData.email,
+          password: formData.password,
         },
       });
 
-      if (!response.data.length) {
-        alert("Invalid credentials");
+      if (!data || data.length === 0) {
+        setError("email", {
+          type: "server",
+          message: "Invalid email or password",
+        });
         return;
       }
 
-      const user = response.data[0];
+      dispatch(
+        loginUser({ name: data[0].name, email: data[0].email, token: data[0].id }),
+      );
 
-      dispatch({ type: "user/loginUser", payload: user });
-      localStorage.setItem("token", user.id);
       navigate("/dashboard");
     } catch (error) {
       alert("Login failed: " + error);
       return;
+    } finally {
+      setPending(false);
     }
   };
 
   return (
-    <div className="w-full h-full flex justify-center items-center">
+    <div className="w-full h-screen flex justify-center items-center">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-80 p-6 bg-white rounded-lg shadow-md"
       >
         <FieldGroup>
-          <FieldLegend>Sign in to your account</FieldLegend>
+          <FieldLegend data-variant="title">
+            Sign in to your account
+          </FieldLegend>
           <Field>
-            <FieldLabel htmlFor="email">Email</FieldLabel>
+            <FieldLabel className="text-md" htmlFor="email">
+              Email
+            </FieldLabel>
             <Input
               id="email"
               type="email"
@@ -76,11 +93,15 @@ function AuthPage() {
               })}
             />
             {errors.email && (
-              <FieldDescription>{errors.email.message}</FieldDescription>
+              <FieldDescription className="text-destructive">
+                {errors.email.message}
+              </FieldDescription>
             )}
           </Field>
           <Field>
-            <FieldLabel htmlFor="password">Password</FieldLabel>
+            <FieldLabel className="text-md" htmlFor="password">
+              Password
+            </FieldLabel>
             <Input
               id="password"
               type="password"
@@ -93,11 +114,16 @@ function AuthPage() {
               })}
             />
             {errors.password && (
-              <FieldDescription>{errors.password.message}</FieldDescription>
+              <FieldDescription className="text-destructive">
+                {errors.password.message}
+              </FieldDescription>
             )}
           </Field>
-          <Button type="submit">Sign In</Button>
-          <Link to="/register" className="text-sm text-primary hover:underline">
+          <SubmitButton pending={pending} title="Sign In" />
+          <Link
+            to="/registration"
+            className="text-base text-primary hover:underline"
+          >
             Don't have an account? Register
           </Link>
         </FieldGroup>
