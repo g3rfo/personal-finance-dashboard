@@ -151,6 +151,24 @@
       "category": "Investment",
       "date": "2026-03-18",
       "userId": "c5e0"
+    },
+    {
+      "id": "c5e0t5",
+      "name": "Tabletki",
+      "amount": 30,
+      "type": "expense",
+      "category": "HealthCare",
+      "date": "2026-03-10",
+      "userId": "c5e0"
+    },
+    {
+      "id": "c5e0t6",
+      "name": "Bulochka",
+      "amount": 5,
+      "type": "expense",
+      "category": "Food & Dinning",
+      "date": "2026-03-20",
+      "userId": "c5e0"
     }
   ],
   "categories": [

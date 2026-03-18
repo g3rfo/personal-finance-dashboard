@@ -22,3 +22,14 @@ export const selectStats = createSelector(
     };
   },
 );
+
+export const selectSortedTransactions = createSelector(
+  [selectTransactions],
+  (transactions) => {
+    return transactions
+      ? [...transactions].sort(
+          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+        )
+      : transactions;
+  }
+);

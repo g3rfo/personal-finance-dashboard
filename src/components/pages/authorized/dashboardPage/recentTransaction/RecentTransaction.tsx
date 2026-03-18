@@ -6,11 +6,12 @@ import { useAppSelector } from "@/features/store/hooks";
 import { selectCategoriesDataForTransactions } from "@/features/store/selectors/categoriesSelectors";
 import { CATEGORY_ICONS } from "@/constants/categoryIcons";
 import { CATEGORY_COLORS } from "@/constants/categoryColors";
+import { selectSortedTransactions } from "@/features/store/selectors/transactionsSelectors";
 
 function RecentTransactions() {
-  const { transactions, loading, error } = useAppSelector(
-    (state) => state.transactions,
-  );
+  const { loading, error } = useAppSelector((state) => state.transactions);
+
+  const transactions = useAppSelector(selectSortedTransactions);
   const categoryData =
     useAppSelector(selectCategoriesDataForTransactions) || {};
 
