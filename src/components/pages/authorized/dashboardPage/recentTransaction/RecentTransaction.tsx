@@ -7,6 +7,7 @@ import { selectCategoriesDataForTransactions } from "@/features/store/selectors/
 import { CATEGORY_ICONS } from "@/constants/categoryIcons";
 import { CATEGORY_COLORS } from "@/constants/categoryColors";
 import { selectSortedTransactions } from "@/features/store/selectors/transactionsSelectors";
+import { formatDate } from "@/utils/formatDate";
 
 function RecentTransactions() {
   const { loading, error } = useAppSelector((state) => state.transactions);
@@ -46,7 +47,7 @@ function RecentTransactions() {
                 <TransactionCard
                   key={transaction.id}
                   name={transaction.name}
-                  date={transaction.date}
+                  date={formatDate(new Date(transaction.date))}
                   amount={transaction.amount}
                   type={transaction.type}
                   icon={CATEGORY_ICONS[iconName]}

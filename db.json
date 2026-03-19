@@ -33,7 +33,7 @@
       "type": "income",
       "category": "Salary",
       "amount": 3200,
-      "date": "2026-03-01"
+      "date": "2026-03-01T00:00:00.000Z"
     },
     {
       "id": "e4bdt2",
@@ -42,7 +42,7 @@
       "type": "expense",
       "category": "Rent",
       "amount": 1200,
-      "date": "2026-03-02"
+      "date": "2026-03-02T00:00:00.000Z"
     },
     {
       "id": "e4bdt3",
@@ -51,7 +51,7 @@
       "type": "expense",
       "category": "Food & Dinning",
       "amount": 86,
-      "date": "2026-03-03"
+      "date": "2026-03-03T00:00:00.000Z"
     },
     {
       "id": "e4bdt4",
@@ -60,7 +60,7 @@
       "type": "expense",
       "category": "Transportation",
       "amount": 34,
-      "date": "2026-03-04"
+      "date": "2026-03-04T00:00:00.000Z"
     },
     {
       "id": "e4bdt5",
@@ -69,7 +69,7 @@
       "type": "expense",
       "category": "Entertainment",
       "amount": 58,
-      "date": "2026-03-05"
+      "date": "2026-03-05T00:00:00.000Z"
     },
     {
       "id": "e4bdt6",
@@ -78,7 +78,7 @@
       "type": "expense",
       "category": "Shopping",
       "amount": 149,
-      "date": "2026-03-06"
+      "date": "2026-03-06T00:00:00.000Z"
     },
     {
       "id": "e4bdt7",
@@ -87,7 +87,7 @@
       "type": "expense",
       "category": "HealthCare",
       "amount": 45,
-      "date": "2026-03-07"
+      "date": "2026-03-07T00:00:00.000Z"
     },
     {
       "id": "e4bdt8",
@@ -96,7 +96,7 @@
       "type": "income",
       "category": "Investment",
       "amount": 180,
-      "date": "2026-03-08"
+      "date": "2026-03-08T00:00:00.000Z"
     },
     {
       "id": "e4bdt9",
@@ -105,7 +105,7 @@
       "type": "expense",
       "category": "Education",
       "amount": 99,
-      "date": "2026-03-09"
+      "date": "2026-03-09T00:00:00.000Z"
     },
     {
       "id": "e4bdt10",
@@ -114,7 +114,7 @@
       "type": "expense",
       "category": "Food & Dinning",
       "amount": 27,
-      "date": "2026-03-10"
+      "date": "2026-03-10T00:00:00.000Z"
     },
     {
       "id": "c5e0t1",
@@ -123,7 +123,7 @@
       "amount": 3000,
       "type": "income",
       "category": "Salary",
-      "date": "2026-03-17"
+      "date": "2026-03-17T00:00:00.000Z"
     },
     {
       "id": "c5e0t2",
@@ -132,7 +132,7 @@
       "amount": 1400,
       "type": "expense",
       "category": "Rent",
-      "date": "2026-03-16"
+      "date": "2026-03-16T00:00:00.000Z"
     },
     {
       "id": "c5e0t3",
@@ -140,7 +140,7 @@
       "amount": 240,
       "type": "expense",
       "category": "Transportation",
-      "date": "2026-03-18",
+      "date": "2026-03-18T00:00:00.000Z",
       "userId": "c5e0"
     },
     {
@@ -149,7 +149,7 @@
       "amount": 10000,
       "type": "income",
       "category": "Investment",
-      "date": "2026-03-18",
+      "date": "2026-03-18T00:00:00.000Z",
       "userId": "c5e0"
     },
     {
@@ -158,7 +158,7 @@
       "amount": 30,
       "type": "expense",
       "category": "HealthCare",
-      "date": "2026-03-10",
+      "date": "2026-03-10T00:00:00.000Z",
       "userId": "c5e0"
     },
     {
@@ -167,7 +167,79 @@
       "amount": 5,
       "type": "expense",
       "category": "Food & Dinning",
-      "date": "2026-03-20",
+      "date": "2026-03-20T00:00:00.000Z",
+      "userId": "c5e0"
+    },
+    {
+      "id": "c5e0t7",
+      "name": "New pants",
+      "amount": 400,
+      "type": "expense",
+      "category": "Shopping",
+      "date": "2026-04-01T00:00:00.000Z",
+      "userId": "c5e0"
+    },
+    {
+      "id": "c5e0t8",
+      "name": "Books",
+      "amount": 300,
+      "type": "expense",
+      "category": "Education",
+      "date": "2026-02-28T00:00:00.000Z",
+      "userId": "c5e0"
+    },
+    {
+      "id": "c5e0t9",
+      "name": "Rent",
+      "amount": 5999,
+      "type": "expense",
+      "category": "Rent",
+      "date": "2026-03-19T00:00:00.000Z",
+      "userId": "c5e0"
+    },
+    {
+      "id": "c5e0t10",
+      "name": "Rent",
+      "amount": 6000,
+      "type": "expense",
+      "category": "Rent",
+      "date": "2026-04-01T00:00:00.000Z",
+      "userId": "c5e0"
+    },
+    {
+      "id": "c5e0t11",
+      "name": "Salary",
+      "amount": 1000,
+      "type": "income",
+      "category": "Salary",
+      "date": "2026-03-19T00:00:00.000Z",
+      "userId": "c5e0"
+    },
+    {
+      "id": "c5e0t12",
+      "name": "From input",
+      "amount": 1000,
+      "type": "income",
+      "category": "Investment",
+      "date": "2026-03-19T11:36:21.727Z",
+      "userId": "c5e0"
+    },
+    {
+      "id": "c5e0t13",
+      "name": "From calendar",
+      "amount": 1000,
+      "type": "income",
+      "category": "Investment",
+      "date": "2026-03-19T11:36:30.703Z",
+      "userId": "c5e0"
+    },
+    {
+      "id": "c5e0t14",
+      "name": "From calendar",
+      "amount": 1500,
+      "type": "income",
+      "category": "Investment",
+      "date": "2026-03-19T11:36:44.535Z",
       "userId": "c5e0"
     }
   ],

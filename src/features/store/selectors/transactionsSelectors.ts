@@ -5,22 +5,46 @@ export const selectTransactions = (state: RootState) => {
   return state.transactions.transactions;
 };
 
-export const selectStats = createSelector(
+export const selectThisMonthTransactions = createSelector(
   [selectTransactions],
   (transactions) => {
-    return {
-      total: transactions?.reduce(
-        (sum, t) => (t.type === "income" ? sum + t.amount : sum - t.amount),
-        0,
-      ),
-      income: transactions
-        ?.filter((t) => t.type === "income")
-        .reduce((sum, t) => sum + t.amount, 0),
-      expenses: transactions
-        ?.filter((t) => t.type === "expense")
-        .reduce((sum, t) => sum + t.amount, 0),
-    };
+    const today = new Date();
+    const thisMonth = today.getMonth();
+    const thisYear = today.getFullYear();
+
+    return transactions?.filter((t) => {
+      const transactionDate = new Date(t.date);
+      return (
+        transactionDate.getMonth() === thisMonth &&
+        transactionDate.getFullYear() === thisYear
+      );
+    });
   },
+);
+
+const calculateStats = (
+  transactions: ReturnType<typeof selectTransactions>,
+) => {
+  return (
+    transactions?.reduce(
+      (acc, transaction) => {
+        if (transaction.type === "income") {
+          acc.income += transaction.amount;
+        } else {
+          acc.expenses += transaction.amount;
+        }
+
+        acc.total = acc.income - acc.expenses;
+        return acc;
+      },
+      { total: 0, income: 0, expenses: 0 },
+    ) ?? { total: 0, income: 0, expenses: 0 }
+  );
+};
+
+export const selectStats = createSelector(
+  [selectThisMonthTransactions],
+  (transactions) => calculateStats(transactions),
 );
 
 export const selectSortedTransactions = createSelector(
@@ -31,5 +55,5 @@ export const selectSortedTransactions = createSelector(
           (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
         )
       : transactions;
-  }
+  },
 );

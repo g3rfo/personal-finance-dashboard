@@ -27,7 +27,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { IconCalendarWeek, IconCoin } from "@tabler/icons-react";
-import { formatDate } from "@/utils/formatDate";
 import {
   Controller,
   type SubmitHandler,
@@ -53,6 +52,34 @@ interface AddTransactionFormProps {
   incomeCategories: string[];
 }
 
+const toInputDateString = (date: Date) => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+};
+
+const parseInputDateString = (value: string) => {
+  const [year, month, day] = value.split("-").map(Number);
+  return new Date(year, month - 1, day);
+};
+
+const inputDateStringWithCurrentTimeToIso = (value: string) => {
+  const [year, month, day] = value.split("-").map(Number);
+  const now = new Date();
+
+  return new Date(
+    year,
+    month - 1,
+    day,
+    now.getHours(),
+    now.getMinutes(),
+    now.getSeconds(),
+    now.getMilliseconds(),
+  ).toISOString();
+};
+
 function AddTransactionForm({
   expenseCategories,
   incomeCategories,
@@ -76,7 +103,7 @@ function AddTransactionForm({
       amount: 0,
       type: defaultType,
       category: defaultCategory,
-      date: formatDate(new Date()),
+      date: toInputDateString(new Date()),
     },
   });
 
@@ -109,6 +136,9 @@ function AddTransactionForm({
       }
 
       const transactionId = generateTransactionId(transactions, userId);
+
+      data.date = inputDateStringWithCurrentTimeToIso(data.date);
+
       dispatch(addTransaction({ id: transactionId, ...data }));
     } catch (error) {
       console.error("Error adding transaction:", error);
@@ -246,7 +276,7 @@ function AddTransactionForm({
                   id="date"
                   type="date"
                   value={field.value}
-                  onChange={field.onChange}
+                  onChange={(e) => field.onChange(e.target.value)}
                 />
                 <InputGroupAddon align="inline-end">
                   <Popover>
@@ -255,8 +285,14 @@ function AddTransactionForm({
                     </PopoverTrigger>
                     <PopoverContent align="end" data-side="top">
                       <Calendar
-                        selected={new Date(field.value)}
-                        onSelect={(date) => field.onChange(formatDate(date))}
+                        selected={
+                          field.value
+                            ? parseInputDateString(field.value)
+                            : undefined
+                        }
+                        onSelect={(date) =>
+                          field.onChange(date ? toInputDateString(date) : "")
+                        }
                         mode="single"
                       />
                     </PopoverContent>

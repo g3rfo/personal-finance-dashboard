@@ -5,6 +5,7 @@ import { useAppSelector } from "@/features/store/hooks";
 import { selectCategoriesNames } from "@/features/store/selectors/categoriesSelectors";
 import { transactionsSumupByCategories } from "@/utils/transactionsSumupByCategories";
 import CategoryCard from "./CategoryCard";
+import { selectThisMonthTransactions } from "@/features/store/selectors/transactionsSelectors";
 
 function BudgetOverview() {
   const { categories, loading, error } = useAppSelector(
@@ -12,7 +13,7 @@ function BudgetOverview() {
   );
   const categoriesNames = useAppSelector(selectCategoriesNames) || [];
   const transactions =
-    useAppSelector((state) => state.transactions.transactions) || [];
+    useAppSelector(selectThisMonthTransactions) || [];
   const spentByCategories =
     transactionsSumupByCategories(transactions, categoriesNames) || {};
 
