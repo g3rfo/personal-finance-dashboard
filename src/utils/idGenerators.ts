@@ -14,4 +14,3 @@ const createIdGenerator = (prefix: string) => {
 };
 
 export const generateCategoryId = createIdGenerator("c");
-export const generateTransactionId = createIdGenerator("t");

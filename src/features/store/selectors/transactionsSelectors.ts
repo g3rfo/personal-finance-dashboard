@@ -1,29 +1,12 @@
 import { createSelector } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
 
-export const selectTransactions = (state: RootState) => {
-  return state.transactions.transactions;
+export const selectMonthlyTransactions = (state: RootState) => {
+  return state.transactions.monthly.transactions;
 };
 
-export const selectThisMonthTransactions = createSelector(
-  [selectTransactions],
-  (transactions) => {
-    const today = new Date();
-    const thisMonth = today.getMonth();
-    const thisYear = today.getFullYear();
-
-    return transactions?.filter((t) => {
-      const transactionDate = new Date(t.date);
-      return (
-        transactionDate.getMonth() === thisMonth &&
-        transactionDate.getFullYear() === thisYear
-      );
-    });
-  },
-);
-
 const calculateStats = (
-  transactions: ReturnType<typeof selectTransactions>,
+  transactions: ReturnType<typeof selectMonthlyTransactions>,
 ) => {
   return (
     transactions?.reduce(
@@ -43,17 +26,6 @@ const calculateStats = (
 };
 
 export const selectStats = createSelector(
-  [selectThisMonthTransactions],
+  [selectMonthlyTransactions],
   (transactions) => calculateStats(transactions),
-);
-
-export const selectSortedTransactions = createSelector(
-  [selectTransactions],
-  (transactions) => {
-    return transactions
-      ? [...transactions].sort(
-          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-        )
-      : transactions;
-  },
 );

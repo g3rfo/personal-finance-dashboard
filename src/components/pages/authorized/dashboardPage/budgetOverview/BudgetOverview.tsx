@@ -5,15 +5,16 @@ import { useAppSelector } from "@/features/store/hooks";
 import { selectCategoriesNames } from "@/features/store/selectors/categoriesSelectors";
 import { transactionsSumupByCategories } from "@/utils/transactionsSumupByCategories";
 import CategoryCard from "./CategoryCard";
-import { selectThisMonthTransactions } from "@/features/store/selectors/transactionsSelectors";
+import Loading from "@/components/ui/Loading";
 
 function BudgetOverview() {
   const { categories, loading, error } = useAppSelector(
     (state) => state.categories,
   );
   const categoriesNames = useAppSelector(selectCategoriesNames) || [];
-  const transactions =
-    useAppSelector(selectThisMonthTransactions) || [];
+  const transactions = useAppSelector(
+    (state) => state.transactions.monthly.transactions,
+  );
   const spentByCategories =
     transactionsSumupByCategories(transactions, categoriesNames) || {};
 
@@ -23,7 +24,7 @@ function BudgetOverview() {
         <CardTitle className="text-lg">Budget Overview</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-2">
-        {loading && <p>Loading...</p>}
+        {loading && <Loading />}
         {error && <p className="text-red-500">{error}</p>}
         {!loading && !error && categories?.length === 0 && (
           <p className="text-center">No categories found. Please add some.</p>

@@ -35,11 +35,12 @@ import {
 } from "react-hook-form";
 import DialogCloseButton from "@/components/ui/DialogCloseButton";
 import { addTransaction } from "@/features/store/asyncThunks/transactionsThunks";
-import { generateTransactionId } from "@/utils/idGenerators";
-import { useAppDispatch, useAppSelector } from "@/features/store/hooks";
+import { useAppDispatch } from "@/features/store/hooks";
 import SubmitButton from "@/components/ui/SubmitButton";
+import { formatDateForInput, formatDateToStore } from "@/utils/dateFormatters";
 
 interface AddTransactionFormValues {
+  userId: string;
   name: string;
   amount: number;
   type: "income" | "expense";
@@ -52,34 +53,6 @@ interface AddTransactionFormProps {
   incomeCategories: string[];
 }
 
-const toInputDateString = (date: Date) => {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-
-  return `${year}-${month}-${day}`;
-};
-
-const parseInputDateString = (value: string) => {
-  const [year, month, day] = value.split("-").map(Number);
-  return new Date(year, month - 1, day);
-};
-
-const inputDateStringWithCurrentTimeToIso = (value: string) => {
-  const [year, month, day] = value.split("-").map(Number);
-  const now = new Date();
-
-  return new Date(
-    year,
-    month - 1,
-    day,
-    now.getHours(),
-    now.getMinutes(),
-    now.getSeconds(),
-    now.getMilliseconds(),
-  ).toISOString();
-};
-
 function AddTransactionForm({
   expenseCategories,
   incomeCategories,
@@ -91,6 +64,8 @@ function AddTransactionForm({
     defaultType === "expense" ? expenseCategories[0] : incomeCategories[0]
   )!;
 
+  const userId = localStorage.getItem("token") || "";
+
   const {
     control,
     register,
@@ -99,17 +74,17 @@ function AddTransactionForm({
     formState: { errors },
   } = useForm<AddTransactionFormValues>({
     defaultValues: {
+      userId,
       name: "",
       amount: 0,
       type: defaultType,
       category: defaultCategory,
-      date: toInputDateString(new Date()),
+      date: formatDateForInput(new Date()),
     },
   });
 
   // Transaction state management
   const dispatch = useAppDispatch();
-  const { transactions } = useAppSelector((state) => state.transactions);
   const [pending, setPending] = useState<boolean>(false);
 
   // Watch type and category to update category options dynamically
@@ -130,16 +105,13 @@ function AddTransactionForm({
     try {
       setPending(true);
 
-      const userId = localStorage.getItem("token");
-      if (!userId) {
+      if (!data.userId) {
         throw new Error("User ID not found. Please log in again.");
       }
 
-      const transactionId = generateTransactionId(transactions, userId);
+      data.date = formatDateToStore(data.date);
 
-      data.date = inputDateStringWithCurrentTimeToIso(data.date);
-
-      dispatch(addTransaction({ id: transactionId, ...data }));
+      dispatch(addTransaction(data));
     } catch (error) {
       console.error("Error adding transaction:", error);
     } finally {
@@ -269,7 +241,8 @@ function AddTransactionForm({
           <Controller
             name="date"
             control={control}
-            rules={{ required: "Date is required" }}
+            rules={{ required: "Date is required", max: { value: formatDateForInput(new Date()), message: "Date cannot be in the future" } } }
+            
             render={({ field }) => (
               <InputGroup>
                 <InputGroupInput
@@ -285,15 +258,16 @@ function AddTransactionForm({
                     </PopoverTrigger>
                     <PopoverContent align="end" data-side="top">
                       <Calendar
-                        selected={
-                          field.value
-                            ? parseInputDateString(field.value)
-                            : undefined
-                        }
-                        onSelect={(date) =>
-                          field.onChange(date ? toInputDateString(date) : "")
+                        selected={new Date(field.value)}
+                        onSelect={(date: Date | undefined) =>
+                          field.onChange(
+                            typeof date === "undefined"
+                              ? ""
+                              : formatDateForInput(date),
+                          )
                         }
                         mode="single"
+                        disabled={(date) => date > new Date()}
                       />
                     </PopoverContent>
                   </Popover>

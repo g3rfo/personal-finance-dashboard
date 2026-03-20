@@ -1,14 +1,15 @@
 import { useEffect } from "react";
 import Aside from "../../aside/Aside";
 import { useAppDispatch } from "@/features/store/hooks";
-import { fetchTransactions } from "@/features/store/asyncThunks/transactionsThunks";
+import { fetchMonthlyTransactions, fetchTransactions } from "@/features/store/asyncThunks/transactionsThunks";
 import { fetchCategories } from "@/features/store/asyncThunks/categoriesThunks";
 
 function PageWrap({ children }: { children: React.ReactNode }) {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchTransactions());
+    dispatch(fetchTransactions(1));
+    dispatch(fetchMonthlyTransactions());
     dispatch(fetchCategories());
   }, []);
 
