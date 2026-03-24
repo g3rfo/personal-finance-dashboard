@@ -1,0 +1,69 @@
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { FieldLabel } from "@/components/ui/field";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import useMonthFilter from "@/hooks/useMonthFilter";
+import { IconCalendarWeek, IconX } from "@tabler/icons-react";
+
+function MonthFilter() {
+  const {
+    month,
+    range,
+    handleMonthInputChange,
+    handleCalendarChange,
+    handleCalendarMonthChange,
+    handleClear,
+  } = useMonthFilter();
+
+  return (
+    <div className="flex items-center gap-2">
+      <FieldLabel htmlFor="month" className="text-sm font-medium text-gray-700">
+        Month
+      </FieldLabel>
+      <InputGroup className="w-full">
+        <InputGroupInput
+          id="month"
+          placeholder="Select a month"
+          type="month"
+          value={month}
+          onChange={(e) => handleMonthInputChange(e.target.value)}
+          className="text-gray-700"
+        />
+        <InputGroupAddon align="inline-end">
+          <Popover>
+            <PopoverTrigger asChild>
+              <IconCalendarWeek cursor="pointer" />
+            </PopoverTrigger>
+            <PopoverContent align="end" data-side="top">
+              <Calendar
+                key={month}
+                mode="range"
+                showOutsideDays={false}
+                defaultMonth={range.from}
+                selected={range}
+                onSelect={() => handleCalendarChange(month)}
+                onMonthChange={(month) => handleCalendarMonthChange(month)}
+              />
+            </PopoverContent>
+          </Popover>
+        </InputGroupAddon>
+        <InputGroupAddon align="inline-end">
+          <Button variant="ghost" size="sm" onClick={handleClear}>
+            <IconX />
+          </Button>
+        </InputGroupAddon>
+      </InputGroup>
+    </div>
+  );
+}
+
+export default MonthFilter;

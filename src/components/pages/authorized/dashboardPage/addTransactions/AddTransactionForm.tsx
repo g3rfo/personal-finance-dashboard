@@ -140,6 +140,7 @@ function AddTransactionForm({
                 message: "Name must be at most 50 characters",
               },
             })}
+            className="focus-visible:border-none focus-visible:ring-3 focus-visible:ring-primary"
           />
           {errors.name && (
             <FieldDescription className="text-destructive">
@@ -167,6 +168,7 @@ function AddTransactionForm({
               placeholder="Enter amount"
               min={0.01}
               step={0.01}
+              className=""
             />
           </InputGroup>
           {errors.amount && (
@@ -241,8 +243,13 @@ function AddTransactionForm({
           <Controller
             name="date"
             control={control}
-            rules={{ required: "Date is required", max: { value: formatDateForInput(new Date()), message: "Date cannot be in the future" } } }
-            
+            rules={{
+              required: "Date is required",
+              max: {
+                value: formatDateForInput(new Date()),
+                message: "Date cannot be in the future",
+              },
+            }}
             render={({ field }) => (
               <InputGroup>
                 <InputGroupInput

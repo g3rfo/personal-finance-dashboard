@@ -11,8 +11,9 @@ export const formatToOutputDate = (
   return `${month} ${day}, ${year}`;
 };
 
-export const getMonthlyDateBounds = () => {
-  const now = new Date();
+export const getMonthlyDateBounds = (month?: Date) => {
+  const now: Date = month ? month : new Date();
+ 
   const startDate = new Date(
     now.getFullYear(),
     now.getMonth(),

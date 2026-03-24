@@ -8,6 +8,7 @@ import { useAppDispatch } from "./features/store/hooks";
 import { fetchUserData } from "./features/store/asyncThunks/userThunks";
 import { loginUser } from "./features/store/slices/userSlice";
 import RegistrationPage from "./components/pages/notAuthorized/RegistrationPage";
+import TransactionsPage from "./components/pages/authorized/transactionPage/TransactionsPage";
 
 function App() {
   const navigate = useNavigate();
@@ -45,7 +46,11 @@ function App() {
           <Route
             key="transactions"
             path="/transactions"
-            element={<PageWrap>Transactions</PageWrap>}
+            element={
+              <PageWrap>
+                <TransactionsPage />
+              </PageWrap>
+            }
           />
           <Route path="/categories" element={<PageWrap>Categories</PageWrap>} />
           <Route path="/budgets" element={<PageWrap>Budgets</PageWrap>} />
