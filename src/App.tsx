@@ -1,4 +1,10 @@
-import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import PageWrap from "./components/pages/authorized/PageWrap";
 import AuthPage from "./components/pages/notAuthorized/AuthPage";
 import RequireAuth from "./components/pages/RequireAuth";
@@ -12,6 +18,7 @@ import TransactionsPage from "./components/pages/authorized/transactionPage/Tran
 
 function App() {
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -24,9 +31,16 @@ function App() {
       } else {
         dispatch(fetchUserData(token));
       }
-      navigate("/dashboard");
+
+      if (
+        location.pathname === "/" ||
+        location.pathname === "/auth" ||
+        location.pathname === "/registration"
+      ) {
+        navigate("/dashboard", { replace: true });
+      }
     }
-  }, []);
+  }, [dispatch, location.pathname, navigate]);
 
   return (
     <div className="w-full min-h-screen flex">

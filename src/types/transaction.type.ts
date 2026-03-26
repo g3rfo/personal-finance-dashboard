@@ -17,4 +17,4 @@ export interface PaginatedTransactionsResponse {
   total: number;
 }
 
-export type TransactionType = "All" | "Income" | "Expense";
+export type TransactionType = "all" | "income" | "expense";

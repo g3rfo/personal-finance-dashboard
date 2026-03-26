@@ -1,15 +1,18 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import ManagerHeader from "./managerHeader/ManagerHeader";
+import ManagerContent from "./transactionsManagerTable/TransactionsManagerTable";
+import useTransactionsManager from "@/hooks/useTransactionsManager";
 
 function TransactionsManager() {
+  useTransactionsManager();
+
   return (
-    <Card>
+    <Card className="min-w-135">
       <CardHeader>
         <ManagerHeader />
       </CardHeader>
       <CardContent>
-        Here you can manage your transactions. Add, edit, or delete your income
-        and expenses to keep track of your finances effectively.
+        <ManagerContent />
       </CardContent>
     </Card>
   );

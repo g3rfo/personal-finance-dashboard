@@ -29,6 +29,7 @@ import {
 import { IconCalendarWeek, IconCoin } from "@tabler/icons-react";
 import {
   Controller,
+  type SubmitErrorHandler,
   type SubmitHandler,
   useForm,
   useWatch,
@@ -106,12 +107,12 @@ function AddTransactionForm({
       setPending(true);
 
       if (!data.userId) {
-        throw new Error("User ID not found. Please log in again.");
+        return;
       }
 
       data.date = formatDateToStore(data.date);
 
-      dispatch(addTransaction(data));
+      await dispatch(addTransaction(data)).unwrap();
     } catch (error) {
       console.error("Error adding transaction:", error);
     } finally {
@@ -119,8 +120,18 @@ function AddTransactionForm({
     }
   };
 
+  const onInvalid: SubmitErrorHandler<AddTransactionFormValues> = () => {
+    setPending(false);
+  };
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        void handleSubmit(onSubmit, onInvalid)(event);
+      }}
+      className="space-y-6"
+    >
       <FieldGroup>
         <FieldSeparator />
         <Field>

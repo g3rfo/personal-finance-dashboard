@@ -6,18 +6,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useAppDispatch, useAppSelector } from "@/features/store/hooks";
-import { selectCategoriesNames } from "@/features/store/selectors/categoriesSelectors";
+import { useAppDispatch } from "@/features/store/hooks";
 import { setCategoryFilter } from "@/features/store/slices/transactionsFilterSlice";
+import useCategoryFilter from "@/hooks/useCategoryFilter";
 
 function CategoryFilter() {
-  const categories = [
-    "All Categories",
-    ...useAppSelector(selectCategoriesNames),
-  ];
-
-  const { category } = useAppSelector((state) => state.transactionsFilter);
-
+  const { category, categories } = useCategoryFilter();
   const dispatch = useAppDispatch();
 
   return (

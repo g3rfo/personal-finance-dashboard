@@ -15,6 +15,14 @@ import useMonthFilter from "@/hooks/useMonthFilter";
 import { IconCalendarWeek, IconX } from "@tabler/icons-react";
 
 function MonthFilter() {
+  const minDate = new Date(2025, 0, 1);
+  const maxDate = new Date();
+  const maxMonthEnd = new Date(
+    maxDate.getFullYear(),
+    maxDate.getMonth() + 1,
+    0,
+  );
+
   const {
     month,
     range,
@@ -52,6 +60,9 @@ function MonthFilter() {
                 selected={range}
                 onSelect={() => handleCalendarChange(month)}
                 onMonthChange={(month) => handleCalendarMonthChange(month)}
+                startMonth={minDate}
+                endMonth={maxDate}
+                disabled={{ before: minDate, after: maxMonthEnd }}
               />
             </PopoverContent>
           </Popover>

@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
+import type { TransactionType } from "@/types/transaction.type";
 
 interface TypeButtonProps {
-  type: string;
+  type: TransactionType;
   isSelected: boolean;
   selectedColor: string;
   onClick: () => void;
@@ -23,7 +24,7 @@ function TypeButton({
       }}
       onClick={onClick}
     >
-      <span className="text-sm font-medium">{type}</span>
+      {type.charAt(0).toUpperCase() + type.slice(1)}
     </Button>
   );
 }

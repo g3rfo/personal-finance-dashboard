@@ -1,22 +1,39 @@
-import { useAppDispatch } from "@/features/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/features/store/hooks";
 import { setMonthFilter } from "@/features/store/slices/transactionsFilterSlice";
 import { getMonthlyDateBounds } from "@/utils/dateFormatters";
 import { useEffect, useState } from "react";
 import type { DateRange } from "react-day-picker";
+import { useDebouncedCallback } from "use-debounce";
 
 function useMonthFilter() {
-  const [month, setMonth] = useState<string>(
-    new Date().toISOString().slice(0, 7),
+  const dispatch = useAppDispatch();
+  const { monthFrom, monthTo } = useAppSelector(
+    (state) => state.transactionsFilter,
   );
 
+  // States
+  const [month, setMonth] = useState<string>(() => {
+    if (monthFrom && monthTo) {
+      const from = new Date(monthFrom);
+      return `${from.getFullYear()}-${String(from.getMonth() + 1).padStart(2, "0")}`;
+    }
+    return "";
+  });
+
   const [range, setRange] = useState<DateRange>(() => {
-    const d = new Date();
+    if (monthFrom && monthTo) {
+      return {
+        from: new Date(monthFrom),
+        to: new Date(monthTo),
+      };
+    }
     return {
-      from: new Date(d.getFullYear(), d.getMonth(), 1),
-      to: new Date(d.getFullYear(), d.getMonth() + 1, 0),
+      from: undefined,
+      to: undefined,
     };
   });
 
+  // Change handlers
   const updateRangeFromMonth = (month: string) => {
     const [year, mon] = month.split("-");
     const m = parseInt(mon) - 1;
@@ -29,7 +46,6 @@ function useMonthFilter() {
   };
 
   const handleMonthInputChange = (value: string) => {
-    if (!/^\d{4}-\d{2}$/.test(value)) return; // Validate "YYYY-MM" format
     setMonth(value);
     updateRangeFromMonth(value);
   };
@@ -54,20 +70,25 @@ function useMonthFilter() {
     setRange({ from: undefined, to: undefined });
   };
 
-  const dispatch = useAppDispatch();
+  // Effects
+  const debouncedHandleMonthChange = useDebouncedCallback(
+    (nextMonth: string) => {
+      if (!nextMonth) {
+        dispatch(setMonthFilter({ monthFrom: undefined, monthTo: undefined }));
+        return;
+      }
+
+      const { startDate: monthFrom, nextMonthStartDate: monthTo } =
+        getMonthlyDateBounds(new Date(nextMonth));
+
+      dispatch(setMonthFilter({ monthFrom, monthTo }));
+    },
+    500,
+  );
 
   useEffect(() => {
-    if (!month) {
-      dispatch(setMonthFilter({ from: undefined, to: undefined }));
-      return;
-    }
-
-    const { startDate: from, nextMonthStartDate: to } = getMonthlyDateBounds(
-      new Date(month),
-    );
-
-    dispatch(setMonthFilter({ from, to }));
-  }, [month, dispatch]);
+    debouncedHandleMonthChange(month);
+  }, [month, debouncedHandleMonthChange]);
 
   return {
     month,

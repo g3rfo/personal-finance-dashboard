@@ -2,23 +2,22 @@ import type { TransactionType } from "@/types/transaction.type";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 export interface DateRange {
-  from?: string;
-  to?: string;
+  monthFrom?: string;
+  monthTo?: string;
 }
 
 interface TransactionsFilterState {
-  monthRange: DateRange;
+  monthFrom: string;
+  monthTo: string;
   category: string;
   type: TransactionType;
 }
 
 const initialState: TransactionsFilterState = {
-  monthRange: {
-    from: undefined,
-    to: undefined,
-  },
+  monthFrom: "",
+  monthTo: "",
   category: "All Categories",
-  type: "All",
+  type: "all",
 };
 
 const transactionsFilterSlice = createSlice({
@@ -26,31 +25,14 @@ const transactionsFilterSlice = createSlice({
   initialState,
   reducers: {
     setMonthFilter(state, action: PayloadAction<DateRange>) {
-      state.monthRange = action.payload;
-      console.log(
-        state.monthRange.from,
-        state.monthRange.to,
-        state.category,
-        state.type,
-      );
+      state.monthFrom = action.payload.monthFrom || "";
+      state.monthTo = action.payload.monthTo || "";
     },
     setCategoryFilter(state, action: PayloadAction<string>) {
       state.category = action.payload;
-      console.log(
-        state.monthRange.from,
-        state.monthRange.to,
-        state.category,
-        state.type,
-      );
     },
     setTypeFilter(state, action: PayloadAction<TransactionType>) {
       state.type = action.payload;
-      console.log(
-        state.monthRange.from,
-        state.monthRange.to,
-        state.category,
-        state.type,
-      );
     },
   },
 });

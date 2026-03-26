@@ -178,6 +178,87 @@
       "category": "Food & Dinning",
       "date": "2026-02-12T19:09:55.242Z",
       "id": "dtPgWtL"
+    },
+    {
+      "userId": "c5e0",
+      "name": "Invest",
+      "amount": 1000,
+      "type": "income",
+      "category": "Investment",
+      "date": "2026-03-26T16:39:03.202Z",
+      "id": "BFE5BGr"
+    },
+    {
+      "userId": "c5e0",
+      "name": "Last",
+      "amount": 1000,
+      "type": "expense",
+      "category": "Rent",
+      "date": "2026-03-26T16:49:46.042Z",
+      "id": "_9KV_mU"
+    },
+    {
+      "userId": "c5e0",
+      "name": "try",
+      "amount": 10,
+      "type": "expense",
+      "category": "Food & Dinning",
+      "date": "2026-03-26T16:53:43.767Z",
+      "id": "rVfPA_E"
+    },
+    {
+      "userId": "c5e0",
+      "name": "gfgdfg",
+      "amount": 21,
+      "type": "expense",
+      "category": "Food & Dinning",
+      "date": "2026-03-26T16:55:18.090Z",
+      "id": "e5qhAa0"
+    },
+    {
+      "userId": "c5e0",
+      "name": "Try to reload",
+      "amount": 10,
+      "type": "expense",
+      "category": "Food & Dinning",
+      "date": "2026-03-26T17:41:18.716Z",
+      "id": "WZTOjTj"
+    },
+    {
+      "userId": "c5e0",
+      "name": "gdfghdf",
+      "amount": 10,
+      "type": "expense",
+      "category": "Food & Dinning",
+      "date": "2026-03-26T17:42:16.312Z",
+      "id": "rUMHPhp"
+    },
+    {
+      "userId": "c5e0",
+      "name": "gfdlgjkdfkg",
+      "amount": 10,
+      "type": "expense",
+      "category": "Food & Dinning",
+      "date": "2026-03-26T17:48:03.810Z",
+      "id": "v49LNbt"
+    },
+    {
+      "userId": "c5e0",
+      "name": "gjfdkgdf",
+      "amount": 20,
+      "type": "expense",
+      "category": "Food & Dinning",
+      "date": "2026-03-26T18:06:09.082Z",
+      "id": "3zBwFQA"
+    },
+    {
+      "userId": "c5e0",
+      "name": "fdfdh",
+      "amount": 20,
+      "type": "income",
+      "category": "Salary",
+      "date": "2026-03-26T18:06:23.007Z",
+      "id": "4spCZ-6"
     }
   ],
   "categories": [

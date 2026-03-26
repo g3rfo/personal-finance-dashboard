@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "@/features/store/hooks";
 import { setTypeFilter } from "@/features/store/slices/transactionsFilterSlice";
 
 function TypeFilter() {
-  const types = ["All", "Income", "Expense"] as TransactionType[];
+  const types = ["all", "income", "expense"] as TransactionType[];
   const color = "primary";
   const { type } = useAppSelector((state) => state.transactionsFilter);
   const dispatch = useAppDispatch();
