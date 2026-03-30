@@ -1,4 +1,4 @@
-import { fetchFilteredTransactions } from "@/features/store/asyncThunks/transactionsThunks";
+import { deleteTransaction, fetchFilteredTransactions } from "@/features/store/asyncThunks/transactionsThunks";
 import { useAppDispatch, useAppSelector } from "@/features/store/hooks";
 
 function useManagerContent() {
@@ -25,6 +25,10 @@ function useManagerContent() {
     );
   };
 
+  const onDeleteHandler = (transactionId: string) => {
+    dispatch(deleteTransaction(transactionId));
+  };
+
   return {
     transactions,
     viewMoreHandler,
@@ -32,6 +36,8 @@ function useManagerContent() {
     loading,
     transactionsLength,
     error,
+    onDeleteHandler,
+
   };
 }
 

@@ -72,15 +72,6 @@
       "userId": "c5e0"
     },
     {
-      "id": "c5e0t7",
-      "name": "New pants",
-      "amount": 400,
-      "type": "expense",
-      "category": "Shopping",
-      "date": "2026-04-01T00:00:00.000Z",
-      "userId": "c5e0"
-    },
-    {
       "id": "c5e0t8",
       "name": "Books",
       "amount": 300,
@@ -160,15 +151,6 @@
       "category": "Investment",
       "date": "2026-03-20T18:50:32.715Z",
       "id": "6KWb3Fj"
-    },
-    {
-      "userId": "c5e0",
-      "name": "Large transaction",
-      "amount": 10000,
-      "type": "expense",
-      "category": "Rent",
-      "date": "2026-04-01T18:05:47.964Z",
-      "id": "nfZfGl3"
     },
     {
       "userId": "c5e0",

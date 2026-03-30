@@ -7,7 +7,7 @@ import TransactionAmount from "../../../dashboardPage/recentTransaction/recentTr
 import ChangeOrDelete from "@/components/ui/ChangeOrDelete";
 
 function TransactionsList() {
-  const { transactions } = useManagerContent();
+  const { transactions, onDeleteHandler } = useManagerContent();
   const transactionsOutputInfo = useTransactionOutputInfo(transactions);
 
   return transactions.map((transaction, index) => {
@@ -32,7 +32,7 @@ function TransactionsList() {
           />
         </TableCell>
         <TableCell align="right">
-          <ChangeOrDelete />
+          <ChangeOrDelete onDelete={() => onDeleteHandler(transaction.id)} />
         </TableCell>
       </TableRow>
     );
