@@ -11,6 +11,11 @@ import {
   fetchTransactions,
 } from "../asyncThunks/transactionsThunks";
 import { TRANSACTIONS_PER_PAGE } from "@/constants/transactions";
+import {
+  transactionsFulfilledState,
+  transactionsPendingState,
+  transactionsRejectedState,
+} from "@/utils/transactionsStateUtils";
 
 interface PaginatedTransactionsState {
   transactions: Transaction[];
@@ -21,7 +26,7 @@ interface PaginatedTransactionsState {
   error: string | null;
 }
 
-interface TransactionsState {
+export interface TransactionsState {
   paginated: PaginatedTransactionsState;
   monthly: {
     transactions: Transaction[];
@@ -145,57 +150,30 @@ const transactionsSlice = createSlice({
 
       // addTransaction
       .addCase(addTransaction.pending, (state) => {
-        state.paginated.loading = true;
-        state.monthly.loading = true;
-        state.filtered.loading = true;
-        state.paginated.error = null;
-        state.monthly.error = null;
-        state.filtered.error = null;
+        transactionsPendingState(state);
       })
       .addCase(addTransaction.fulfilled, (state) => {
-        state.paginated.loading = false;
-        state.monthly.loading = false;
-        state.filtered.loading = false;
+        transactionsFulfilledState(state);
       })
       .addCase(addTransaction.rejected, (state, action) => {
-        state.paginated.loading = false;
-        state.monthly.loading = false;
-        state.filtered.loading = false;
-
-        state.paginated.error =
-          action.error?.message || "Failed to add transaction";
-        state.monthly.error =
-          action.error?.message || "Failed to add transaction";
-        state.filtered.error =
-          action.error?.message || "Failed to add transaction";
+        transactionsRejectedState(
+          state,
+          action.error?.message || "Failed to add transaction",
+        );
       })
 
       // deleteTransaction
       .addCase(deleteTransaction.pending, (state) => {
-        state.paginated.loading = true;
-        state.monthly.loading = true;
-        state.filtered.loading = true;
-
-        state.paginated.error = null;
-        state.monthly.error = null;
-        state.filtered.error = null;
+        transactionsPendingState(state);
       })
       .addCase(deleteTransaction.fulfilled, (state) => {
-        state.paginated.loading = false;
-        state.monthly.loading = false;
-        state.filtered.loading = false;
+        transactionsFulfilledState(state);
       })
       .addCase(deleteTransaction.rejected, (state, action) => {
-        state.paginated.loading = false;
-        state.monthly.loading = false;
-        state.filtered.loading = false;
-
-        state.paginated.error =
-          action.error?.message || "Failed to delete transaction";
-        state.monthly.error =
-          action.error?.message || "Failed to delete transaction";
-        state.filtered.error =
-          action.error?.message || "Failed to delete transaction";
+        transactionsRejectedState(
+          state,
+          action.error?.message || "Failed to delete transaction",
+        );
       });
   },
 });

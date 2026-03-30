@@ -90,15 +90,6 @@
       "userId": "c5e0"
     },
     {
-      "id": "c5e0t10",
-      "name": "Rent",
-      "amount": 6000,
-      "type": "expense",
-      "category": "Rent",
-      "date": "2026-04-01T00:00:00.000Z",
-      "userId": "c5e0"
-    },
-    {
       "userId": "e4bd",
       "name": "Prev month",
       "amount": 1000,
