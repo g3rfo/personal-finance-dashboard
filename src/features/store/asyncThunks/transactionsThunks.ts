@@ -138,3 +138,22 @@ export const deleteTransaction = createAsyncThunk(
     }
   },
 );
+
+export const updateTransaction = createAsyncThunk(
+  "transactions/updateTransaction",
+  async (transactionData: Omit<Transaction, "userID">) => {
+    const userId = localStorage.getItem("token");
+    if (!userId) {
+      throw new Error("User ID not found in localStorage");
+    }
+
+    const { data } = await axios.patch<Transaction>(
+      `${apiURL}/transactions/${transactionData.id}`,
+      transactionData,
+    );
+
+    if (data.id !== transactionData.id) {
+      throw new Error("Transaction id mismatch");
+    }
+  },
+);

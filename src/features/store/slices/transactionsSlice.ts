@@ -9,6 +9,7 @@ import {
   fetchFilteredTransactions,
   fetchMonthlyTransactions,
   fetchTransactions,
+  updateTransaction,
 } from "../asyncThunks/transactionsThunks";
 import { TRANSACTIONS_PER_PAGE } from "@/constants/transactions";
 import {
@@ -173,6 +174,20 @@ const transactionsSlice = createSlice({
         transactionsRejectedState(
           state,
           action.error?.message || "Failed to delete transaction",
+        );
+      })
+
+      // updateTransaction
+      .addCase(updateTransaction.pending, (state) => {
+        transactionsPendingState(state);
+      })
+      .addCase(updateTransaction.fulfilled, (state) => {
+        transactionsFulfilledState(state);
+      })
+      .addCase(updateTransaction.rejected, (state, action) => {
+        transactionsRejectedState(
+          state,
+          action.error?.message || "Failed to update transaction",
         );
       });
   },
