@@ -6,13 +6,13 @@ import BudgetOverview from "./budgetOverview/BudgetOverview";
 import RecentTransactions from "./recentTransaction/RecentTransactions";
 import Popup from "@/components/ui/Popup";
 import { Button } from "@/components/ui/button";
-import AddTransactionFormContent from "./addTransactions/AddTransactionFormContent";
 import {
   fetchMonthlyTransactions,
   fetchTransactions,
 } from "@/features/store/asyncThunks/transactionsThunks";
 import { useEffect } from "react";
 import { useAppDispatch } from "@/features/store/hooks";
+import TransactionFormContent from "@/components/ui/forms/TransactionFormContent";
 
 function DashboardPage() {
   const dispatch = useAppDispatch();
@@ -37,7 +37,7 @@ function DashboardPage() {
           }
           title="Add Transaction"
           description=""
-          content={<AddTransactionFormContent />}
+          content={<TransactionFormContent />}
         />
       </PageHeader>
       <Stats />

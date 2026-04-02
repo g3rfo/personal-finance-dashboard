@@ -232,6 +232,33 @@
       "category": "Salary",
       "date": "2026-03-26T18:06:23.007Z",
       "id": "4spCZ-6"
+    },
+    {
+      "userId": "c5e0",
+      "name": "gfjkdfkgjdfgkd",
+      "amount": 4214,
+      "type": "expense",
+      "category": "Education",
+      "date": "2026-03-31T20:45:06.797Z",
+      "id": "ctuDBFR"
+    },
+    {
+      "userId": "c5e0",
+      "name": "Test ",
+      "type": "income",
+      "category": "Investment",
+      "amount": 20,
+      "date": "2026-04-01T18:30:04.334Z",
+      "id": "eLn6_4D"
+    },
+    {
+      "userId": "c5e0",
+      "name": "Test",
+      "type": "income",
+      "category": "Investment",
+      "amount": 10,
+      "date": "2026-04-01T19:03:02.266Z",
+      "id": "_K-WAuO"
     }
   ],
   "categories": [

@@ -3,8 +3,8 @@ import HeaderTitle from "../header/HeaderTitle";
 import PageHeader from "../header/PageHeader";
 import { Button } from "@/components/ui/button";
 import { IconPlus } from "@tabler/icons-react";
-import AddTransactionFormContent from "../dashboardPage/addTransactions/AddTransactionFormContent";
 import TransactionsManager from "./transactionsManager/TransactionsManager";
+import TransactionFormContent from "@/components/ui/forms/TransactionFormContent";
 
 function TransactionsPage() {
   return (
@@ -22,7 +22,7 @@ function TransactionsPage() {
           }
           title="Add Transaction"
           description=""
-          content={<AddTransactionFormContent />}
+          content={<TransactionFormContent />}
         />
       </PageHeader>
       <TransactionsManager />
