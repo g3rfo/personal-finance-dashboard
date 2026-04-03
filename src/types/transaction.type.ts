@@ -18,3 +18,5 @@ export interface PaginatedTransactionsResponse {
 }
 
 export type TransactionType = "all" | "income" | "expense";
+
+export type TransactionFormType = "create" | "edit";

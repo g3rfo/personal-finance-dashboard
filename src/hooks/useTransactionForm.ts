@@ -1,24 +1,19 @@
-import { addTransaction } from "@/features/store/asyncThunks/transactionsThunks";
-import { useAppDispatch, useAppSelector } from "@/features/store/hooks";
+import { useAppSelector } from "@/features/store/hooks";
 import {
   selectExpenseCategoriesNames,
   selectIncomeCategoriesNames,
 } from "@/features/store/selectors/categoriesSelectors";
 import type { TransactionData } from "@/types/transaction.type";
 import { formatDateForInput, formatDateToStore } from "@/utils/dateFormatters";
-import { createContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   useForm,
   useWatch,
   type SubmitErrorHandler,
   type SubmitHandler,
 } from "react-hook-form";
-
-export const TransactionFormContext = createContext<ReturnType<
-  typeof useTransactionForm
-> | null>(null);
-
-export const Provider = TransactionFormContext.Provider;
+import useTransactionFormHandleSubmit from "./useTransactionFormHandleSubmit";
+import { FormTypeContext } from "@/context/transactionFormContext";
 
 function useTransactionForm() {
   // Set default type and category based on available categories
@@ -63,10 +58,14 @@ function useTransactionForm() {
   }, [categoryOptions, selectedCategory, setValue]);
 
   // Transaction state management
-  const dispatch = useAppDispatch();
   const [pending, setPending] = useState<boolean>(false);
 
   // Handle form submission
+
+  const type = useContext(FormTypeContext);
+
+  const handleSubmitFunction = useTransactionFormHandleSubmit(type);
+
   const onSubmit: SubmitHandler<TransactionData> = async (data) => {
     try {
       setPending(true);
@@ -77,8 +76,7 @@ function useTransactionForm() {
 
       data.date = formatDateToStore(data.date);
 
-      console.log("Submitting transaction:", data);
-      await dispatch(addTransaction(data)).unwrap();
+      handleSubmitFunction(data);
     } catch (error) {
       console.error("Error adding transaction:", error);
     } finally {

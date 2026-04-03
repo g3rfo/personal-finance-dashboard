@@ -13,6 +13,7 @@ import {
 import { useEffect } from "react";
 import { useAppDispatch } from "@/features/store/hooks";
 import TransactionFormContent from "@/components/ui/forms/TransactionFormContent";
+import type { TransactionFormType } from "@/types/transaction.type";
 
 function DashboardPage() {
   const dispatch = useAppDispatch();
@@ -21,6 +22,8 @@ function DashboardPage() {
     dispatch(fetchTransactions(1));
     dispatch(fetchMonthlyTransactions());
   }, []);
+
+  const type: TransactionFormType = "create";
 
   return (
     <>
@@ -37,7 +40,7 @@ function DashboardPage() {
           }
           title="Add Transaction"
           description=""
-          content={<TransactionFormContent />}
+          content={<TransactionFormContent type={type} />}
         />
       </PageHeader>
       <Stats />

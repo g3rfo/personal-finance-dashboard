@@ -141,9 +141,8 @@ export const deleteTransaction = createAsyncThunk(
 
 export const updateTransaction = createAsyncThunk(
   "transactions/updateTransaction",
-  async (transactionData: Omit<Transaction, "userID">) => {
-    const userId = localStorage.getItem("token");
-    if (!userId) {
+  async (transactionData: Transaction) => {
+    if (!transactionData.userId) {
       throw new Error("User ID not found in localStorage");
     }
 

@@ -35,6 +35,7 @@ export interface TransactionsState {
     error: string | null;
   };
   filtered: PaginatedTransactionsState;
+  selectedId: string | null;
 }
 
 const initialState: TransactionsState = {
@@ -59,12 +60,20 @@ const initialState: TransactionsState = {
     loading: false,
     error: null,
   },
+  selectedId: null,
 };
 
 const transactionsSlice = createSlice({
   name: "transactions",
   initialState,
-  reducers: {},
+  reducers: {
+    selectTransactionId(state, action: PayloadAction<string>) {
+      state.selectedId = action.payload;
+    },
+    deselectTransactionId(state) {
+      state.selectedId = null;
+    }
+  },
   extraReducers: (builder) => {
     builder
       // fetchTransactions
