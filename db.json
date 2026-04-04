@@ -163,11 +163,11 @@
     },
     {
       "userId": "c5e0",
-      "name": "Last",
-      "amount": 1000,
+      "name": "Last to first",
+      "amount": 3500,
       "type": "expense",
       "category": "Rent",
-      "date": "2026-03-26T16:49:46.042Z",
+      "date": "2026-04-04T18:56:35.157Z",
       "id": "_9KV_mU"
     },
     {
@@ -217,48 +217,21 @@
     },
     {
       "userId": "c5e0",
-      "name": "gjfdkgdf",
+      "name": "Try to edit",
       "amount": 20,
       "type": "expense",
       "category": "Food & Dinning",
-      "date": "2026-03-26T18:06:09.082Z",
+      "date": "2026-04-04T18:56:07.400Z",
       "id": "3zBwFQA"
     },
     {
       "userId": "c5e0",
-      "name": "fdfdh",
-      "amount": 20,
+      "name": "Try to add ",
       "type": "income",
       "category": "Salary",
-      "date": "2026-03-26T18:06:23.007Z",
-      "id": "4spCZ-6"
-    },
-    {
-      "userId": "c5e0",
-      "name": "gfjkdfkgjdfgkd",
-      "amount": 4214,
-      "type": "expense",
-      "category": "Education",
-      "date": "2026-03-31T20:45:06.797Z",
-      "id": "ctuDBFR"
-    },
-    {
-      "userId": "c5e0",
-      "name": "Test ",
-      "type": "income",
-      "category": "Investment",
-      "amount": 20,
-      "date": "2026-04-01T18:30:04.334Z",
-      "id": "eLn6_4D"
-    },
-    {
-      "userId": "c5e0",
-      "name": "Test",
-      "type": "income",
-      "category": "Investment",
-      "amount": 10,
-      "date": "2026-04-01T19:03:02.266Z",
-      "id": "_K-WAuO"
+      "amount": 2500,
+      "date": "2026-04-04T18:57:20.315Z",
+      "id": "V91l1fd"
     }
   ],
   "categories": [

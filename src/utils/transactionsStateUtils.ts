@@ -1,23 +1,20 @@
 import type { TransactionsState } from "@/features/store/slices/transactionsSlice";
 
+const statesKeys = [
+  "paginated",
+  "monthly",
+  "filtered",
+] as const satisfies (keyof TransactionsState)[];
+
 const setLoadingState = (state: TransactionsState, loading: boolean) => {
-  for (const key in state) {
-    const typedKey = key as keyof TransactionsState;
-    if (typeof state[typedKey].loading === "boolean") {
-      state[typedKey].loading = loading;
-    }
+  for (const key of statesKeys) {
+    state[key].loading = loading;
   }
 };
 
 const setErrorState = (state: TransactionsState, error: string | null) => {
-  for (const key in state) {
-    const typedKey = key as keyof TransactionsState;
-    if (
-      typeof state[typedKey].error === "string" ||
-      state[typedKey].error === null
-    ) {
-      state[typedKey].error = error;
-    }
+  for (const key of statesKeys) {
+    state[key].error = error;
   }
 };
 

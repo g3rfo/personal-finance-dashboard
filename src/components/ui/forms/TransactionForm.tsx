@@ -11,6 +11,7 @@ import { TransactionFormContext } from "@/context/transactionFormContext";
 function TransactionForm() {
   const contextValue = useTransactionForm();
   const Provider = TransactionFormContext.Provider;
+  
   return (
     <Provider value={contextValue}>
       <form onSubmit={contextValue.handleFormSubmit} className="space-y-6">

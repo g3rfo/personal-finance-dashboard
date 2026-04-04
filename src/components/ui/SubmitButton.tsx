@@ -8,7 +8,7 @@ interface SubmitButtonProps {
 
 function SubmitButton({ pending, title }: SubmitButtonProps) {
   return (
-    <Button className="text-base flex-1" type="submit" disabled={pending}>
+    <Button className="flex-1 text-base" type="submit" disabled={pending}>
       {pending ? <Spinner className="size-6" /> : title}
     </Button>
   );

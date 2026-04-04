@@ -1,9 +1,8 @@
-import useTransactionForm, {
-  TransactionFormContext,
-} from "@/hooks/useTransactionForm";
+import { TransactionFormContext } from "@/context/transactionFormContext";
 import { Field, FieldLabel } from "../../field";
 import InputError from "./InputError";
 import { useContext } from "react";
+import type useTransactionForm from "@/hooks/useTransactionForm";
 
 interface InputCardProps {
   label: string;

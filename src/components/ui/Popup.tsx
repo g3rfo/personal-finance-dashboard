@@ -8,20 +8,29 @@ import {
 } from "@/components/ui/dialog";
 
 interface PopupProps {
-  trigger: React.ReactNode;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  trigger?: React.ReactNode;
   content: React.ReactNode;
   title: string;
-  description: string;
+  description?: string;
 }
 
-function Popup({ trigger, content, title, description }: PopupProps) {
+function Popup({
+  open,
+  onOpenChange,
+  trigger,
+  content,
+  title,
+  description,
+}: PopupProps) {
   return (
-    <Dialog>
-      <DialogTrigger asChild>{trigger}</DialogTrigger>
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      {trigger && <DialogTrigger asChild>{trigger}</DialogTrigger>}
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
-          <DialogDescription>{description}</DialogDescription>
+          <DialogDescription>{description ?? ""}</DialogDescription>
         </DialogHeader>
         {content}
       </DialogContent>

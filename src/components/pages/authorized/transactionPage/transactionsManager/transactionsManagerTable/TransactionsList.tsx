@@ -5,9 +5,14 @@ import TransactionTitle from "../../../dashboardPage/recentTransaction/recentTra
 import { formatToOutputDate } from "@/utils/dateFormatters";
 import TransactionAmount from "../../../dashboardPage/recentTransaction/recentTransactionCard/RecentTransactionAmount";
 import ChangeOrDelete from "@/components/ui/ChangeOrDelete";
+import { useContext } from "react";
+import { TransactionManagerContext } from "@/context/transactionManagerContext";
 
 function TransactionsList() {
-  const { transactions, onDeleteHandler } = useManagerContent();
+  const { transactions, onDeleteHandler, onEditHandler } = useContext(
+    TransactionManagerContext,
+  ) as ReturnType<typeof useManagerContent>;
+
   const transactionsOutputInfo = useTransactionOutputInfo(transactions);
 
   return transactions.map((transaction, index) => {
@@ -32,7 +37,10 @@ function TransactionsList() {
           />
         </TableCell>
         <TableCell align="right">
-          <ChangeOrDelete onDelete={() => onDeleteHandler(transaction.id)} />
+          <ChangeOrDelete
+            onDelete={() => onDeleteHandler(transaction.id)}
+            onEdit={() => onEditHandler(transaction.id)}
+          />
         </TableCell>
       </TableRow>
     );

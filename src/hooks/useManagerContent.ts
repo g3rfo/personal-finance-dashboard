@@ -1,5 +1,10 @@
-import { deleteTransaction, fetchFilteredTransactions } from "@/features/store/asyncThunks/transactionsThunks";
+import {
+  deleteTransaction,
+  fetchFilteredTransactions,
+} from "@/features/store/asyncThunks/transactionsThunks";
 import { useAppDispatch, useAppSelector } from "@/features/store/hooks";
+import { setSelectedTransactionId } from "@/features/store/slices/transactionsSlice";
+import { useState } from "react";
 
 function useManagerContent() {
   const { monthFrom, monthTo, type, category } = useAppSelector(
@@ -25,6 +30,13 @@ function useManagerContent() {
     );
   };
 
+  const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
+
+  const onEditHandler = (transactionId: string) => {
+    setIsPopupOpen(true);
+    dispatch(setSelectedTransactionId(transactionId));
+  };
+
   const onDeleteHandler = (transactionId: string) => {
     dispatch(deleteTransaction(transactionId));
   };
@@ -36,8 +48,10 @@ function useManagerContent() {
     loading,
     transactionsLength,
     error,
+    isPopupOpen,
+    setIsPopupOpen,
     onDeleteHandler,
-
+    onEditHandler,
   };
 }
 

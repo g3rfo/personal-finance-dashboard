@@ -129,13 +129,7 @@ export const addTransaction = createAsyncThunk(
 export const deleteTransaction = createAsyncThunk(
   "transactions/deleteTransaction",
   async (transactionId: string) => {
-    const { data } = await axios.delete(
-      `${apiURL}/transactions/${transactionId}`,
-    );
-
-    if (data.id !== transactionId) {
-      throw new Error("Transaction id mismatch");
-    }
+    await axios.delete(`${apiURL}/transactions/${transactionId}`);
   },
 );
 

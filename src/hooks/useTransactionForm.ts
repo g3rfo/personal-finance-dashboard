@@ -90,6 +90,8 @@ function useTransactionForm() {
 
   const handleFormSubmit = handleSubmit(onSubmit, onInvalid);
 
+  const formSubmitButtonMessage = type === "create" ? "Add Transaction" : "Update Transaction";
+
   return {
     control,
     register,
@@ -99,6 +101,7 @@ function useTransactionForm() {
     expenseCategories,
     incomeCategories,
     categoryOptions,
+    formSubmitButtonMessage,
   };
 }
 

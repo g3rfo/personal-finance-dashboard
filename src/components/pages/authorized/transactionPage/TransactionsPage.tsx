@@ -5,11 +5,8 @@ import { Button } from "@/components/ui/button";
 import { IconPlus } from "@tabler/icons-react";
 import TransactionsManager from "./transactionsManager/TransactionsManager";
 import TransactionFormContent from "@/components/ui/forms/TransactionFormContent";
-import type { TransactionFormType } from "@/types/transaction.type";
 
 function TransactionsPage() {
-  const type: TransactionFormType = "edit";
-
   return (
     <>
       <PageHeader>
@@ -25,7 +22,7 @@ function TransactionsPage() {
           }
           title="Add Transaction"
           description=""
-          content={<TransactionFormContent type={type} />}
+          content={<TransactionFormContent type="create" />}
         />
       </PageHeader>
       <TransactionsManager />

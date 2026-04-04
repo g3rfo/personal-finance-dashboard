@@ -67,12 +67,12 @@ const transactionsSlice = createSlice({
   name: "transactions",
   initialState,
   reducers: {
-    selectTransactionId(state, action: PayloadAction<string>) {
+    setSelectedTransactionId(state, action: PayloadAction<string>) {
       state.selectedId = action.payload;
     },
-    deselectTransactionId(state) {
+    unsetSelectedTransactionId(state) {
       state.selectedId = null;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -201,5 +201,8 @@ const transactionsSlice = createSlice({
       });
   },
 });
+
+export const { setSelectedTransactionId, unsetSelectedTransactionId } =
+  transactionsSlice.actions;
 
 export default transactionsSlice.reducer;
