@@ -1,4 +1,4 @@
-import type { Category, CategoryResponse } from "@/types/category.type";
+import type { Category } from "@/types/category.type";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -8,46 +8,31 @@ export const fetchCategories = createAsyncThunk(
   "categories/fetchCategories",
   async () => {
     const userId = localStorage.getItem("token");
-    const { data } = await axios.get<CategoryResponse[]>(
-      `${apiURL}/categories`,
-      {
-        params: {
-          userId,
-        },
+    const { data } = await axios.get<Category[]>(`${apiURL}/categories`, {
+      params: {
+        userId,
       },
-    );
+    });
 
-    const categories: Category[] = data.map(
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      ({ userId, ...category }: { userId: string } & Category) => category,
-    );
-
-    return categories;
+    return data;
   },
 );
 
 export const addCategory = createAsyncThunk(
   "categories/addCategory",
   async (categoryData: Category) => {
-    const userId = localStorage.getItem("token");
-    const { data } = await axios.post<CategoryResponse>(
-      `${apiURL}/categories`,
-      {
-        ...categoryData,
-        userId,
-      },
-    );
+    const { data } = await axios.post<Category>(`${apiURL}/categories`, {
+      categoryData,
+    });
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { userId: _, ...category } = data;
-    return category as Category;
+    return data;
   },
 );
 
 export const deleteCategory = createAsyncThunk(
   "categories/deleteCategory",
   async (categoryId: string) => {
-    const { data } = await axios.delete<CategoryResponse>(
+    const { data } = await axios.delete<Category>(
       `${apiURL}/categories/${categoryId}`,
     );
     return data.id as string;

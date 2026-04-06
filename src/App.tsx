@@ -1,4 +1,10 @@
-import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import PageWrap from "./components/pages/authorized/PageWrap";
 import AuthPage from "./components/pages/notAuthorized/AuthPage";
 import RequireAuth from "./components/pages/RequireAuth";
@@ -8,9 +14,11 @@ import { useAppDispatch } from "./features/store/hooks";
 import { fetchUserData } from "./features/store/asyncThunks/userThunks";
 import { loginUser } from "./features/store/slices/userSlice";
 import RegistrationPage from "./components/pages/notAuthorized/RegistrationPage";
+import TransactionsPage from "./components/pages/authorized/transactionPage/TransactionsPage";
 
 function App() {
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -23,9 +31,16 @@ function App() {
       } else {
         dispatch(fetchUserData(token));
       }
-      navigate("/dashboard");
+
+      if (
+        location.pathname === "/" ||
+        location.pathname === "/auth" ||
+        location.pathname === "/registration"
+      ) {
+        navigate("/dashboard", { replace: true });
+      }
     }
-  }, []);
+  }, [dispatch, location.pathname, navigate]);
 
   return (
     <div className="w-full min-h-screen flex">
@@ -45,7 +60,11 @@ function App() {
           <Route
             key="transactions"
             path="/transactions"
-            element={<PageWrap>Transactions</PageWrap>}
+            element={
+              <PageWrap>
+                <TransactionsPage />
+              </PageWrap>
+            }
           />
           <Route path="/categories" element={<PageWrap>Categories</PageWrap>} />
           <Route path="/budgets" element={<PageWrap>Budgets</PageWrap>} />
