@@ -20,7 +20,7 @@ function RecentTransactionCard({
   categoryColor,
 }: RecentTransactionCardProps) {
   return (
-    <Field orientation="horizontal" className="gap-2 py-1 px-3">
+    <Field orientation="horizontal" className="gap-2 py-1 px-2">
       <TransactionTitle
         categoryColor={categoryColor}
         name={name}

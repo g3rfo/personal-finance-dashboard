@@ -11,7 +11,7 @@ function PageWrap({ children }: { children: React.ReactNode }) {
   }, [dispatch]);
 
   return (
-    <div className="w-full h-full flex">
+    <div className="min-w-2xl w-screen h-screen flex">
       <Aside />
       <div className="ml-63.5 p-8 flex-1 flex flex-col gap-6">{children}</div>
     </div>
