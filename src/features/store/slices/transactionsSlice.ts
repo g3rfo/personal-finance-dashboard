@@ -192,6 +192,7 @@ const transactionsSlice = createSlice({
       })
       .addCase(updateTransaction.fulfilled, (state) => {
         transactionsFulfilledState(state);
+        state.selectedId = null;
       })
       .addCase(updateTransaction.rejected, (state, action) => {
         transactionsRejectedState(

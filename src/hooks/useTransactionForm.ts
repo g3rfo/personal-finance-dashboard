@@ -14,8 +14,16 @@ import {
 } from "react-hook-form";
 import useTransactionFormHandleSubmit from "./useTransactionFormHandleSubmit";
 import { FormTypeContext } from "@/context/transactionFormContext";
+import useTransactionToEditFormData from "./useTransactionToEditFormData";
 
 function useTransactionForm() {
+  // Determine form type
+  const type = useContext(FormTypeContext);
+
+  // Get transaction data on edit
+  let transactionValues: TransactionData | null = null;
+  transactionValues = useTransactionToEditFormData();
+
   // Set default type and category based on available categories
   const expenseCategories = useAppSelector(selectExpenseCategoriesNames);
   const incomeCategories = useAppSelector(selectIncomeCategoriesNames);
@@ -27,6 +35,24 @@ function useTransactionForm() {
     "";
   const userId = localStorage.getItem("token") || "";
 
+  let defaultValues: TransactionData = {
+    userId,
+    name: "",
+    type: defaultType,
+    category: defaultCategory,
+    amount: 0,
+    date: formatDateForInput(new Date()),
+  };
+
+  if (type === "edit") {
+    if (transactionValues) {
+      defaultValues = {
+        ...transactionValues,
+        date: formatDateForInput(transactionValues.date),
+      };
+    }
+  }
+
   const {
     control,
     register,
@@ -34,14 +60,7 @@ function useTransactionForm() {
     setValue,
     formState: { errors },
   } = useForm<TransactionData>({
-    defaultValues: {
-      userId,
-      name: "",
-      type: defaultType,
-      category: defaultCategory,
-      amount: 0,
-      date: formatDateForInput(new Date()),
-    },
+    defaultValues,
   });
 
   // Watch type and category to update category options dynamically
@@ -62,8 +81,6 @@ function useTransactionForm() {
 
   // Handle form submission
 
-  const type = useContext(FormTypeContext);
-
   const handleSubmitFunction = useTransactionFormHandleSubmit(type);
 
   const onSubmit: SubmitHandler<TransactionData> = async (data) => {
@@ -74,9 +91,19 @@ function useTransactionForm() {
         return;
       }
 
-      data.date = formatDateToStore(data.date);
+      const normalizedDate =
+        type === "edit" &&
+        transactionValues &&
+        data.date === formatDateForInput(transactionValues.date)
+          ? transactionValues.date
+          : formatDateToStore(data.date);
 
-      handleSubmitFunction(data);
+      const payload: TransactionData = {
+        ...data,
+        date: normalizedDate,
+      };
+
+      await handleSubmitFunction(payload);
     } catch (error) {
       console.error("Error adding transaction:", error);
     } finally {
@@ -89,8 +116,8 @@ function useTransactionForm() {
   };
 
   const handleFormSubmit = handleSubmit(onSubmit, onInvalid);
-
-  const formSubmitButtonMessage = type === "create" ? "Add Transaction" : "Update Transaction";
+  const formSubmitButtonMessage =
+    type === "create" ? "Add Transaction" : "Update Transaction";
 
   return {
     control,

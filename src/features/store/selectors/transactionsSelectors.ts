@@ -5,6 +5,10 @@ export const selectMonthlyTransactions = (state: RootState) => {
   return state.transactions.monthly.transactions;
 };
 
+export const selectFilteredTransactions = (state: RootState) => {
+  return state.transactions.filtered.transactions;
+};
+
 const calculateStats = (
   transactions: ReturnType<typeof selectMonthlyTransactions>,
 ) => {
@@ -29,3 +33,11 @@ export const selectStats = createSelector(
   [selectMonthlyTransactions],
   (transactions) => calculateStats(transactions),
 );
+
+const makeSelectTransactionById = (id: string) => {
+  return createSelector([selectFilteredTransactions], (transactions) => {
+    return transactions.find((t) => t.id === id) ?? null;
+  });
+};
+
+export const selectTransactionsDataToEdit = makeSelectTransactionById;
