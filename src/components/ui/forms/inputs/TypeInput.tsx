@@ -27,7 +27,7 @@ function TypeInput() {
           rules={{ required: "Type is required" }}
           render={({ field }) => (
             <Select
-              name="type"
+              name="type-select"
               value={field.value}
               onValueChange={field.onChange}
             >

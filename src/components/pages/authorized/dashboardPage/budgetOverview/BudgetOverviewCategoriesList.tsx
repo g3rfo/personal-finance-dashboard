@@ -9,6 +9,7 @@ function BudgetOverviewCategoriesList() {
   return categories.map((category) => (
     <CategoryCard
       key={category.id}
+      id={category.id}
       name={category.name}
       type={category.type}
       spent={spentByCategories[category.name] || 0}

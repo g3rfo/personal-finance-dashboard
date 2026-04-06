@@ -8,6 +8,7 @@ function BudgetOverviewContent() {
   if (categoriesLength === 0) {
     return <BudgetOverviewEmptyCategories />;
   }
+
   return <BudgetOverviewCategoriesList />;
 }
 

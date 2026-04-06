@@ -16,7 +16,7 @@ function CategoryFilter() {
 
   return (
     <div className="flex items-center gap-2">
-      <FieldLabel htmlFor="category" className="text-sm font-medium">
+      <FieldLabel htmlFor="category-filter" className="text-sm font-medium">
         Category:
       </FieldLabel>
       <Select
@@ -24,7 +24,7 @@ function CategoryFilter() {
         value={category}
         onValueChange={(value) => dispatch(setCategoryFilter(value))}
       >
-        <SelectTrigger id="category">
+        <SelectTrigger id="category-filter">
           <SelectValue placeholder="Select a category" />
         </SelectTrigger>
         <SelectContent>

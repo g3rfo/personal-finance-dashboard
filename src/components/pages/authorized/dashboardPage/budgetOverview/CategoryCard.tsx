@@ -1,12 +1,13 @@
 import {
   Field,
   FieldContent,
-  FieldLabel,
+  FieldGroup,
   FieldTitle,
 } from "@/components/ui/field";
 import { Progress } from "@/components/ui/progress";
 
 interface CategoryProps {
+  id: string;
   name: string;
   type: "income" | "expense";
   spent: number;
@@ -16,6 +17,7 @@ interface CategoryProps {
 }
 
 function CategoryCard({
+  id,
   name,
   type,
   spent,
@@ -45,7 +47,7 @@ function CategoryCard({
 
   return (
     <Field className="gap-2">
-      <FieldLabel className="flex justify-between items-center">
+      <FieldGroup className="flex flex-row justify-between items-center">
         <div className="flex items-center gap-2">
           <div
             style={{ backgroundColor: `${color}1A` }}
@@ -55,12 +57,13 @@ function CategoryCard({
           </div>
           <FieldTitle>{name}</FieldTitle>
         </div>
-        <div className="text-[#4B5563]">
+        <FieldTitle className="text-[#4B5563]">
           ${spent.toFixed(2)} / ${budget.toFixed(2)}
-        </div>
-      </FieldLabel>
-      <FieldContent>
+        </FieldTitle>
+      </FieldGroup>
+      <FieldContent id={`${id}-progress`}>
         <Progress
+          id={`${id}-progress`}
           color={progressColor}
           value={progressValue > 100 ? 100 : progressValue}
         />

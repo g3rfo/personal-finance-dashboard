@@ -27,7 +27,7 @@ function CategoryInput() {
           rules={{ required: "Category is required" }}
           render={({ field }) => (
             <Select
-              name="category"
+              name="category-select"
               value={field.value}
               onValueChange={field.onChange}
             >
