@@ -34,7 +34,7 @@ function AmountInput() {
             id="amount"
             type="number"
             placeholder="Enter amount"
-            step={5}
+            step={0.01}
             className=""
           />
         </InputGroup>
