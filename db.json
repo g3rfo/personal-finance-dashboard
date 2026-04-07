@@ -235,12 +235,21 @@
     },
     {
       "userId": "c5e0",
-      "name": "new transaction",
+      "name": "new transaction edit",
       "type": "income",
       "category": "Salary",
-      "amount": 1500,
+      "amount": 1600,
       "date": "2026-04-06T11:56:22.348Z",
       "id": "74Lwv2Q"
+    },
+    {
+      "userId": "c5e0",
+      "name": "gfd",
+      "type": "expense",
+      "category": "Food & Dinning",
+      "amount": 20,
+      "date": "2026-04-07T18:30:08.852Z",
+      "id": "qGEK7o9"
     }
   ],
   "categories": [
