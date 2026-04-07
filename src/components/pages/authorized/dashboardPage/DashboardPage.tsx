@@ -1,6 +1,4 @@
-import PageHeader from "../header/PageHeader";
 import { IconPlus } from "@tabler/icons-react";
-import HeaderTitle from "../header/HeaderTitle";
 import Stats from "./stats/Stats";
 import BudgetOverview from "./budgetOverview/BudgetOverview";
 import RecentTransactions from "./recentTransaction/RecentTransactions";
@@ -13,6 +11,7 @@ import {
 import { useEffect } from "react";
 import { useAppDispatch } from "@/features/store/hooks";
 import TransactionFormContent from "@/components/ui/forms/TransactionFormContent";
+import PageLayout from "../PageLayout";
 
 function DashboardPage() {
   const dispatch = useAppDispatch();
@@ -23,12 +22,10 @@ function DashboardPage() {
   }, []);
 
   return (
-    <>
-      <PageHeader>
-        <HeaderTitle
-          title="Dashboard"
-          description="Welcome back! Here's your financial overview"
-        />
+    <PageLayout
+      title="Dashboard"
+      description="Welcome back! Here's your financial overview"
+      popup={
         <Popup
           trigger={
             <Button>
@@ -38,13 +35,17 @@ function DashboardPage() {
           title="Add Transaction"
           content={<TransactionFormContent type="create" />}
         />
-      </PageHeader>
-      <Stats />
-      <div className="flex flex-wrap gap-4">
-        <BudgetOverview />
-        <RecentTransactions />
-      </div>
-    </>
+      }
+      content={
+        <>
+          <Stats />
+          <div className="flex flex-wrap gap-4">
+            <BudgetOverview />
+            <RecentTransactions />
+          </div>
+        </>
+      }
+    />
   );
 }
 

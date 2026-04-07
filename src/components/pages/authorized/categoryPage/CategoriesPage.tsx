@@ -1,17 +1,14 @@
 import Popup from "@/components/ui/Popup";
-import HeaderTitle from "../header/HeaderTitle";
-import PageHeader from "../header/PageHeader";
 import { Button } from "@/components/ui/button";
 import { IconPlus } from "@tabler/icons-react";
+import PageLayout from "../PageLayout";
 
 function CategoriesPage() {
   return (
-    <>
-      <PageHeader>
-        <HeaderTitle
-          title="Categories"
-          description="Organize your transactions with custom categories"
-        />
+    <PageLayout
+      title="Categories"
+      description="Organize your transactions with custom categories"
+      popup={
         <Popup
           trigger={
             <Button>
@@ -22,8 +19,8 @@ function CategoriesPage() {
           description=""
           content={null}
         />
-      </PageHeader>
-    </>
+      }
+    />
   );
 }
 
