@@ -1,5 +1,6 @@
 import PageLayout from "../PageLayout";
 import AddCategoryPopup from "@/components/ui/popups/AddCategoryPopup";
+import CategoriesContent from "./CategoriesContent";
 
 function CategoriesPage() {
   return (
@@ -7,6 +8,7 @@ function CategoriesPage() {
       title="Categories"
       description="Organize your transactions with custom categories"
       popup={<AddCategoryPopup />}
+      content={<CategoriesContent />}
     />
   );
 }
