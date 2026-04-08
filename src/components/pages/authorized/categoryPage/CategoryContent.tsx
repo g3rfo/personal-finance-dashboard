@@ -7,12 +7,10 @@ import EmptyCategories from "./EmptyCategories";
 interface CategoryContentProps {
   title: string;
   type: "income" | "expense";
+  children?: React.ReactNode;
 }
 
-function CategoryContent({
-  title,
-  type,
-}: CategoryContentProps) {
+function CategoryContent({ title, type, children }: CategoryContentProps) {
   const categoriesContext = useContext(CategoriesContext);
   if (!categoriesContext) {
     throw new Error("CategoriesContext is not provided");
@@ -26,7 +24,9 @@ function CategoryContent({
         <CardTitle className="text-lg">{title}</CardTitle>
         <CategoriesNumber number={length[type] || 0} type={type} />
       </CardHeader>
-      <CardContent>{length[type] === 0 ? <EmptyCategories /> : null}</CardContent>
+      <CardContent>
+        {length[type] === 0 ? <EmptyCategories /> : children}
+      </CardContent>
     </Card>
   );
 }
