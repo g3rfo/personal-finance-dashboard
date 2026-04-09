@@ -1,16 +1,16 @@
+import { TransactionFormTypeContext } from "@/context/formTypeContext";
 import ErrorTransactionForm from "./ErrorTransactionForm";
 import TransactionForm from "./TransactionForm";
-import useTransactionFormContent from "@/hooks/useTransactionFormContent";
-import { FormTypeContext } from "@/context/transactionFormContext";
-import type { TransactionFormType } from "@/types/transaction.type";
+import useTransactionFormContent from "@/hooks/useHasNoCategories";
+import type { FormActionType } from "@/types/form.type";
 
 interface TransactionFormContentProps {
-  type: TransactionFormType;
+  type: FormActionType;
 }
 
 function TransactionFormContent({ type }: TransactionFormContentProps) {
   const { hasNoCategories } = useTransactionFormContent();
-  const Provider = FormTypeContext.Provider;
+  const Provider = TransactionFormTypeContext.Provider;
 
   if (hasNoCategories) {
     return <ErrorTransactionForm />;

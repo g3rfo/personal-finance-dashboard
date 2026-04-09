@@ -6,6 +6,8 @@ import {
   FieldGroup,
   FieldTitle,
 } from "@/components/ui/field";
+import { CategoriesContext } from "@/context/categoryContext";
+import { useContext } from "react";
 
 interface CategoryProps {
   id: string;
@@ -16,6 +18,12 @@ interface CategoryProps {
 }
 
 function CategoryCard({ id, name, budget, icon, color }: CategoryProps) {
+  const { onEditHandler, onDeleteHandler } =
+    useContext(CategoriesContext) || {};
+  if (!onEditHandler || !onDeleteHandler) {
+    return null;
+  }
+
   const IconComponent = icon;
   return (
     <Field id={id} className="flex-row gap-2 border rounded-xl p-4">
@@ -36,7 +44,10 @@ function CategoryCard({ id, name, budget, icon, color }: CategoryProps) {
         </div>
       </FieldGroup>
       <FieldContent>
-        <ChangeOrDelete />
+        <ChangeOrDelete
+          onEdit={() => onEditHandler(id)}
+          onDelete={() => onDeleteHandler(id)}
+        />
       </FieldContent>
     </Field>
   );

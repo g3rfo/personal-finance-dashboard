@@ -1,4 +1,4 @@
-import TransactionFormContent from "../forms/TransactionFormContent";
+import TransactionFormContent from "../forms/transactionForm/TransactionFormContent";
 import Popup from "../Popup";
 
 interface EditTransactionsPopupProps {

@@ -17,6 +17,7 @@ function AmountInput() {
   return (
     <InputCard
       label="Amount"
+      context={TransactionFormContext}
       children={
         <InputGroup>
           <InputGroupAddon align="inline-start">
@@ -35,7 +36,6 @@ function AmountInput() {
             type="number"
             placeholder="Enter amount"
             step={0.01}
-            className=""
           />
         </InputGroup>
       }

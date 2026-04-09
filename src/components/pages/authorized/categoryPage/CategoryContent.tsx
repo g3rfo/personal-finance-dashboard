@@ -1,22 +1,26 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CategoriesNumber from "@/components/ui/CategoriesNumber";
-import { CategoriesContext } from "@/context/categoriesContext";
+import { CategoriesContext } from "@/context/categoryContext";
 import { useContext } from "react";
 import EmptyCategories from "./EmptyCategories";
+import CategoriesList from "./CategoriesList";
+import Loading from "@/components/ui/Loading";
+import Error from "@/components/ui/Error";
 
 interface CategoryContentProps {
   title: string;
   type: "income" | "expense";
-  children?: React.ReactNode;
 }
 
-function CategoryContent({ title, type, children }: CategoryContentProps) {
+function CategoryContent({ title, type }: CategoryContentProps) {
   const categoriesContext = useContext(CategoriesContext);
+
   if (!categoriesContext) {
-    throw new Error("CategoriesContext is not provided");
+    return null;
   }
 
-  const { length } = categoriesContext;
+  const { length, loading, error } = categoriesContext;
+  const content = length[type] === 0 ? <EmptyCategories /> : <CategoriesList type={type} />;
 
   return (
     <Card>
@@ -25,7 +29,9 @@ function CategoryContent({ title, type, children }: CategoryContentProps) {
         <CategoriesNumber number={length[type] || 0} type={type} />
       </CardHeader>
       <CardContent>
-        {length[type] === 0 ? <EmptyCategories /> : children}
+        {loading && <Loading />}
+        {error && <Error message={error} />}
+        {!loading && !error && content}
       </CardContent>
     </Card>
   );

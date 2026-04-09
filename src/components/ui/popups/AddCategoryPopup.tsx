@@ -1,3 +1,4 @@
+import CategoryFormContent from "../forms/categoryForm/CategoryFormContent";
 import HeaderPopupTriggerButton from "../HeaderPopupTriggerButton";
 import Popup from "../Popup";
 
@@ -7,7 +8,7 @@ function AddCategoryPopup() {
       trigger={<HeaderPopupTriggerButton title="Add Category" />}
       title="Add Category"
       description=""
-      content={null}
+      content={<CategoryFormContent type="create" />}
     />
   );
 }

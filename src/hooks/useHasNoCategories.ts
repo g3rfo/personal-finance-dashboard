@@ -4,7 +4,7 @@ import {
   selectIncomeCategoriesNames,
 } from "@/features/store/selectors/categoriesSelectors";
 
-function useTransactionFormContent() {
+function useHasNoCategories() {
   const expenseCategories = useAppSelector(selectExpenseCategoriesNames);
   const incomeCategories = useAppSelector(selectIncomeCategoriesNames);
   const hasNoCategories =
@@ -15,4 +15,4 @@ function useTransactionFormContent() {
   };
 }
 
-export default useTransactionFormContent;
+export default useHasNoCategories;

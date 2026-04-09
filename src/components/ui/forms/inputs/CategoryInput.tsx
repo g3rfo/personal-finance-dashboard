@@ -20,6 +20,7 @@ function CategoryInput() {
   return (
     <InputCard
       label="Category"
+      context={TransactionFormContext}
       children={
         <Controller
           name="category"

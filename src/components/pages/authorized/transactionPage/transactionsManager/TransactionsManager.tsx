@@ -14,7 +14,7 @@ function TransactionsManager() {
         <ManagerHeader />
       </CardHeader>
       <CardContent className="overflow-hidden">
-        <ScrollArea className="h-full flex flex-col gap-2 pr-3">
+        <ScrollArea className="h-full max-h-178 flex flex-col gap-2 pr-3">
           <ManagerContent />
         </ScrollArea>
       </CardContent>

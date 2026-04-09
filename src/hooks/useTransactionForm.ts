@@ -13,12 +13,12 @@ import {
   type SubmitHandler,
 } from "react-hook-form";
 import useTransactionFormHandleSubmit from "./useTransactionFormHandleSubmit";
-import { FormTypeContext } from "@/context/transactionFormContext";
 import useTransactionToEditFormData from "./useTransactionToEditFormData";
+import { TransactionFormTypeContext } from "@/context/formTypeContext";
 
 function useTransactionForm() {
   // Determine form type
-  const type = useContext(FormTypeContext);
+  const type = useContext(TransactionFormTypeContext);
 
   // Get transaction data on edit
   let transactionValues: TransactionData | null = null;
@@ -80,7 +80,6 @@ function useTransactionForm() {
   const [pending, setPending] = useState<boolean>(false);
 
   // Handle form submission
-
   const handleSubmitFunction = useTransactionFormHandleSubmit(type);
 
   const onSubmit: SubmitHandler<TransactionData> = async (data) => {
@@ -105,7 +104,7 @@ function useTransactionForm() {
 
       await handleSubmitFunction(payload);
     } catch (error) {
-      console.error("Error adding transaction:", error);
+      console.error("Error submitting transaction:", error);
     } finally {
       setPending(false);
     }

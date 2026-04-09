@@ -1,5 +1,8 @@
-import { useAppSelector } from "@/features/store/hooks";
+import { deleteCategory } from "@/features/store/asyncThunks/categoriesThunks";
+import { useAppDispatch, useAppSelector } from "@/features/store/hooks";
+import { setSelectedCategoryId } from "@/features/store/slices/categoriesSlice";
 import type { Category } from "@/types/category.type";
+import { useState } from "react";
 
 function useCategoriesContent() {
   const { categories, loading, error } = useAppSelector(
@@ -21,12 +24,29 @@ function useCategoriesContent() {
     income: incomeCategories,
   };
 
+  const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
+
+  const dispatch = useAppDispatch();
+
+  const onEditHandler = (categoryId: string) => {
+    setIsPopupOpen(true);
+    dispatch(setSelectedCategoryId(categoryId));
+  };
+
+  const onDeleteHandler = (categoryId: string) => {
+    dispatch(deleteCategory(categoryId));
+  };
+
   return {
     categories,
     loading,
     error,
     length,
     categoriesByType,
+    isPopupOpen,
+    setIsPopupOpen,
+    onEditHandler,
+    onDeleteHandler,
   };
 }
 

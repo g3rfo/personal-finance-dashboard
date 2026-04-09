@@ -12,14 +12,14 @@ function useTransactionFormHandleSubmit(action: "create" | "edit") {
   switch (action) {
     case "create":
       return (data: TransactionData) => {
-        dispatch(addTransaction(data));
+        return dispatch(addTransaction(data));
       };
     case "edit":
       if (!id) {
         return () => {};
       }
       return (data: TransactionData) => {
-        dispatch(updateTransaction({ ...data, id }));
+        return dispatch(updateTransaction({ ...data, id }));
       };
     default:
       return () => {};

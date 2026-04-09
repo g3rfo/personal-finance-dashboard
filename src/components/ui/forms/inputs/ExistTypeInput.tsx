@@ -1,8 +1,7 @@
-import { CategoryFormContext } from "@/context/categoryFormContext";
-import type useCategoryForm from "@/hooks/useCategoryForm";
-import { useContext } from "react";
-import InputCard from "./InputCard";
 import { Controller } from "react-hook-form";
+import InputCard from "./InputCard";
+import useTransactionForm from "@/hooks/useTransactionForm";
+import { TransactionFormContext } from "@/context/transactionFormContext";
 import {
   Select,
   SelectContent,
@@ -11,16 +10,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../select";
+import { useContext } from "react";
 
-function TypeInput() {
-  const { control } = useContext(CategoryFormContext) as ReturnType<
-    typeof useCategoryForm
-  >;
+function ExistTypeInput() {
+  const { control, expenseCategories, incomeCategories } = useContext(
+    TransactionFormContext,
+  ) as ReturnType<typeof useTransactionForm>;
 
   return (
     <InputCard
       label="Type"
-      context={CategoryFormContext}
+      context={TransactionFormContext}
       children={
         <Controller
           name="type"
@@ -37,8 +37,12 @@ function TypeInput() {
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectItem value="expense">Expense</SelectItem>
-                  <SelectItem value="income">Income</SelectItem>
+                  {expenseCategories.length > 0 && (
+                    <SelectItem value="expense">Expense</SelectItem>
+                  )}
+                  {incomeCategories.length > 0 && (
+                    <SelectItem value="income">Income</SelectItem>
+                  )}
                 </SelectGroup>
               </SelectContent>
             </Select>
@@ -49,4 +53,4 @@ function TypeInput() {
   );
 }
 
-export default TypeInput;
+export default ExistTypeInput;

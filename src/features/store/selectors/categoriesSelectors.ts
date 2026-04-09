@@ -36,3 +36,11 @@ export const selectCategoriesDataForTransactions = createSelector(
     return categoryData;
   },
 );
+
+const makeSelectCategoryById = (id: string) => {
+  return createSelector([selectCategories], (categories) => {
+    return categories?.find((c) => c.id === id) ?? null;
+  });
+};
+
+export const selectCategoriesDataToEdit = makeSelectCategoryById;

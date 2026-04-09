@@ -1,4 +1,4 @@
-import { CategoriesContext } from "@/context/categoriesContext";
+import { CategoriesContext } from "@/context/categoryContext";
 import { useContext } from "react";
 import CategoryCard from "./CategoryCard";
 import { CATEGORY_COLORS } from "@/constants/categoryColors";
