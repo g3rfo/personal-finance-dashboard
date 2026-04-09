@@ -8,6 +8,10 @@ export const fetchCategories = createAsyncThunk(
   "categories/fetchCategories",
   async () => {
     const userId = localStorage.getItem("token");
+    if (!userId) {
+      throw new Error("User ID not found in localStorage");
+    }
+
     const { data } = await axios.get<Category[]>(`${apiURL}/categories`, {
       params: {
         userId,
@@ -20,21 +24,25 @@ export const fetchCategories = createAsyncThunk(
 
 export const addCategory = createAsyncThunk(
   "categories/addCategory",
-  async (categoryData: Category) => {
-    const { data } = await axios.post<Category>(`${apiURL}/categories`, {
+  async (categoryData: Omit<Category, "id">) => {
+    await axios.post<Category>(`${apiURL}/categories`, {
       categoryData,
     });
-
-    return data;
   },
 );
 
 export const deleteCategory = createAsyncThunk(
   "categories/deleteCategory",
   async (categoryId: string) => {
-    const { data } = await axios.delete<Category>(
-      `${apiURL}/categories/${categoryId}`,
-    );
-    return data.id as string;
+    await axios.delete<Category>(`${apiURL}/categories/${categoryId}`);
+  },
+);
+
+export const updateCategory = createAsyncThunk(
+  "categories/updateCategory",
+  async (categoryData: Category) => {
+    await axios.patch<Category>(`${apiURL}/categories/${categoryData.id}`, {
+      categoryData,
+    });
   },
 );
