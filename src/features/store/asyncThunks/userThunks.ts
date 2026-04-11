@@ -1,6 +1,5 @@
 import type {
   User,
-  UserAuthData,
   UserRegistrationData,
   UserServerResponse,
 } from "@/types/user.type";
@@ -30,13 +29,10 @@ export const registerUser = createAsyncThunk(
       ...userData,
     });
 
-    await postDefaultCategories(data.id);
+    if (!data || !data.id) {
+      throw new Error("User registration failed");
+    }
 
-    return {
-      id: data.id,
-      name: data.name,
-      email: data.email,
-      token: data.id,
-    } as UserAuthData;
+    await postDefaultCategories(data.id);
   },
 );

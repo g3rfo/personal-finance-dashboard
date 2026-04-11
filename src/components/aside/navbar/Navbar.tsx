@@ -2,7 +2,6 @@ import {
   IconLayoutDashboard,
   IconReportMoney,
   IconFolder,
-  IconWallet,
   IconDeviceAnalytics,
   IconSettings,
 } from "@tabler/icons-react";
@@ -25,10 +24,6 @@ function Navbar() {
           <NavbarLink path="/categories">
             <IconFolder stroke={1.5} />
             Categories
-          </NavbarLink>
-          <NavbarLink path="/budgets">
-            <IconWallet stroke={1.5} />
-            Budgets
           </NavbarLink>
           <NavbarLink path="/analytics">
             <IconDeviceAnalytics stroke={1.5} />

@@ -7,8 +7,8 @@ function useBudgetOverview() {
     (state) => state.categories,
   );
   const categoriesNames = useAppSelector(selectCategoriesNames) || [];
-  const transactions = useAppSelector(
-    (state) => state.transactions.monthly.transactions,
+  const { transactions } = useAppSelector(
+    (state) => state.transactions.monthly,
   );
   const spentByCategories =
     transactionsSumupByCategories(transactions, categoriesNames) || {};

@@ -1,9 +1,16 @@
 import { TableCell, TableRow } from "@/components/ui/table";
 import ViewMore from "@/components/ui/ViewMore";
-import useManagerContent from "@/hooks/useManagerContent";
+import { useContext } from "react";
+import { TransactionManagerContext } from "@/context/transactionManagerContext";
 
 function TransactionsManagerViewMoreButton() {
-  const { viewMoreHandler } = useManagerContent();
+  const transactionManagerContextValue = useContext(TransactionManagerContext);
+
+  if (!transactionManagerContextValue) {
+    return null;
+  }
+
+  const { viewMoreHandler } = transactionManagerContextValue;
 
   return (
     <TableRow>

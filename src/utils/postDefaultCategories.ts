@@ -4,10 +4,9 @@ import axios from "axios";
 const apiURL = import.meta.env.VITE_SERVER_URL;
 
 export const postDefaultCategories = async (userId: string) => {
-  const categories = DEFAULT_CATEGORIES.map(({id, ...category}) => ({
-    id: `${userId}${id}`,
+  const categories = DEFAULT_CATEGORIES.map((category) => ({
+    userId: userId,
     ...category,
-    userId 
   }));
 
   try {

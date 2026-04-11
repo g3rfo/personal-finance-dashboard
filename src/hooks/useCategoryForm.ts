@@ -42,7 +42,7 @@ function useCategoryForm() {
 
   // Category state management
   const [pending, setPending] = useState<boolean>(false);
-  
+
   // Handle form submission
   const handleSubmitFunction = useCategoryFormHandleSubmit(type);
 

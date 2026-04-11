@@ -13,7 +13,7 @@ export const formatToOutputDate = (
 
 export const getMonthlyDateBounds = (month?: Date) => {
   const now: Date = month ? month : new Date();
- 
+
   const startDate = new Date(
     now.getFullYear(),
     now.getMonth(),
@@ -26,7 +26,7 @@ export const getMonthlyDateBounds = (month?: Date) => {
     0,
     0,
     0,
-    -1
+    -1,
   ).toISOString();
   return { startDate, nextMonthStartDate };
 };

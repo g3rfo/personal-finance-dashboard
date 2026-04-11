@@ -1,7 +1,9 @@
 import type { Transaction } from "@/types/transaction.type";
 
-
-export const transactionsSumupByCategories = (transactions: Transaction[], categoriesNames: string[]) => {
+export const transactionsSumupByCategories = (
+  transactions: Transaction[],
+  categoriesNames: string[],
+) => {
   if (!categoriesNames.length) {
     return;
   }
@@ -19,4 +21,4 @@ export const transactionsSumupByCategories = (transactions: Transaction[], categ
   });
 
   return sumup;
-}
+};

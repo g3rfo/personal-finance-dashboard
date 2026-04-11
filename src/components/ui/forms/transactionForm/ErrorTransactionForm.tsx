@@ -12,7 +12,7 @@ function ErrorTransactionForm() {
       </FieldGroup>
       <FieldGroup>
         <Field orientation="horizontal">
-          <DialogCloseButton />
+          <DialogCloseButton type="button" />
         </Field>
       </FieldGroup>
     </div>

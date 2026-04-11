@@ -11,7 +11,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { registerUser } from "@/features/store/asyncThunks/userThunks";
 import { useAppDispatch } from "@/features/store/hooks";
 import type { UserRegistrationData } from "@/types/user.type";
-import { isUserAlreadyExist } from "@/utils/isUserAlreadyExist";
+import { isUserAlreadyExist } from "@/utils/userData";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -39,10 +39,16 @@ function RegistrationPage() {
 
       const isUserExist = await isUserAlreadyExist(data.email);
 
-      if (isUserExist) {
+      if (isUserExist === true) {
         setError("email", {
           type: "server",
           message: "User with this email already exists",
+        });
+        return;
+      } else if (isUserExist === null) {
+        setError("email", {
+          type: "server",
+          message: "Failed to check user existence",
         });
         return;
       }
@@ -55,13 +61,13 @@ function RegistrationPage() {
         return;
       }
 
-      dispatch(
+      await dispatch(
         registerUser({
           name: data.name,
           email: data.email,
           password: data.password,
         }),
-      );
+      ).unwrap();
 
       navigate("/dashboard");
     } catch (error) {
@@ -77,7 +83,7 @@ function RegistrationPage() {
         onSubmit={handleSubmit(onSubmit)}
         className="w-80 p-6 bg-white rounded-lg shadow-md"
       >
-        <FieldGroup>
+        <FieldGroup className="gap-4">
           <FieldLegend data-variant="title">Registration</FieldLegend>
           <Field>
             <FieldLabel className="text-md" htmlFor="name">

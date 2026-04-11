@@ -7,7 +7,9 @@ import { setCategoryFilter } from "@/features/store/slices/transactionsFilterSli
 import { useEffect, useMemo } from "react";
 
 function useCategoryFilter() {
-  const { category, type } = useAppSelector((state) => state.transactionsFilter);
+  const { category, type } = useAppSelector(
+    (state) => state.transactionsFilter,
+  );
   const dispatch = useAppDispatch();
 
   const incomeCategories = useAppSelector(selectIncomeCategoriesNames);
@@ -33,7 +35,7 @@ function useCategoryFilter() {
     }
   }, [category, categories, dispatch]);
 
-  return {category, categories};
+  return { category, categories };
 }
 
 export default useCategoryFilter;

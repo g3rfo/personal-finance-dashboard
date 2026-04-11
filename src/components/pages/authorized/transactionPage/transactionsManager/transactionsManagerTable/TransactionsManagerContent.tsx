@@ -1,25 +1,24 @@
-import useManagerContent from "@/hooks/useManagerContent";
 import EmptyTransactions from "./EmptyTransactions";
 import TransactionsList from "./TransactionsList";
 import { TransactionManagerContext } from "@/context/transactionManagerContext";
 import EditTransactionsPopup from "@/components/ui/popups/EditTransactionPopup";
+import { useContext } from "react";
 
 function TransactionsManagerContent() {
-  const TransactionManagerContextValue = useManagerContent();
+  const transactionManagerContextValue = useContext(TransactionManagerContext);
 
-  const Provider = TransactionManagerContext.Provider;
+  if (!transactionManagerContextValue) {
+    return null;
+  }
 
-  if (TransactionManagerContextValue.transactionsLength === 0)
+  if (transactionManagerContextValue.transactionsLength === 0)
     return <EmptyTransactions />;
 
   return (
-    <Provider value={TransactionManagerContextValue}>
-      <EditTransactionsPopup
-        isPopupOpen={TransactionManagerContextValue.isPopupOpen}
-        setIsPopupOpen={TransactionManagerContextValue.setIsPopupOpen}
-      />
+    <>
+      <EditTransactionsPopup />
       <TransactionsList />
-    </Provider>
+    </>
   );
 }
 

@@ -39,12 +39,15 @@ function AuthPage() {
     try {
       setPending(true);
 
-      const { data } = await axios.get<UserServerResponse[]>(`${apiURL}/users`, {
-        params: {
-          email: formData.email,
-          password: formData.password,
+      const { data } = await axios.get<UserServerResponse[]>(
+        `${apiURL}/users`,
+        {
+          params: {
+            email: formData.email,
+            password: formData.password,
+          },
         },
-      });
+      );
 
       if (!data || data.length === 0) {
         setError("email", {
@@ -55,7 +58,11 @@ function AuthPage() {
       }
 
       dispatch(
-        loginUser({ name: data[0].name, email: data[0].email, token: data[0].id }),
+        loginUser({
+          name: data[0].name,
+          email: data[0].email,
+          token: data[0].id,
+        }),
       );
 
       navigate("/dashboard");
@@ -73,7 +80,7 @@ function AuthPage() {
         onSubmit={handleSubmit(onSubmit)}
         className="w-80 p-6 bg-white rounded-lg shadow-md"
       >
-        <FieldGroup>
+        <FieldGroup className="gap-4">
           <FieldLegend data-variant="title">
             Sign in to your account
           </FieldLegend>

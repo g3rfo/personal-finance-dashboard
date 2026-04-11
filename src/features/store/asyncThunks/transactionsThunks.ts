@@ -7,18 +7,21 @@ import type {
 } from "../../../types/transaction.type";
 import { TRANSACTIONS_PER_PAGE } from "@/constants/transactions";
 import { getMonthlyDateBounds } from "@/utils/dateFormatters";
+import type { FilterQuery } from "../slices/transactionsSlice";
+import { userIdVerification } from "@/utils/userData";
 
 const apiURL = import.meta.env.VITE_SERVER_URL;
 
 export const fetchTransactions = createAsyncThunk(
   "transactions/fetchTransactions",
   async (pageNumber: number) => {
-    const userId = localStorage.getItem("token");
+    userIdVerification(localStorage.getItem("token"));
+
     const { data, headers } = await axios.get<Transaction[]>(
       `${apiURL}/transactions`,
       {
         params: {
-          userId,
+          userId: localStorage.getItem("token") || "",
           _page: pageNumber,
           _limit: TRANSACTIONS_PER_PAGE,
           _sort: "date",
@@ -40,6 +43,7 @@ export const fetchMonthlyTransactions = createAsyncThunk(
   "transactions/fetchMonthlyTransactions",
   async () => {
     const userId = localStorage.getItem("token");
+    userIdVerification(localStorage.getItem("token"));
     const { startDate, nextMonthStartDate } = getMonthlyDateBounds();
 
     const { data } = await axios.get<Transaction[]>(`${apiURL}/transactions`, {
@@ -69,14 +73,10 @@ export const fetchFilteredTransactions = createAsyncThunk(
     type: string;
     pageNumber: number;
   }) => {
-    const userId = localStorage.getItem("token");
-
-    if (!userId) {
-      throw new Error("User ID not found in localStorage");
-    }
+    userIdVerification(localStorage.getItem("token"));
 
     const params: Record<string, string | number> = {
-      userId: userId,
+      userId: localStorage.getItem("token") || "",
       _page: pageNumber,
       _limit: TRANSACTIONS_PER_PAGE,
       _sort: "date",
@@ -108,13 +108,19 @@ export const fetchFilteredTransactions = createAsyncThunk(
       transactions: data,
       page: pageNumber,
       total,
-    } as PaginatedTransactionsResponse;
+      monthFrom,
+      monthTo,
+      category,
+      type,
+    } as PaginatedTransactionsResponse & FilterQuery;
   },
 );
 
 export const addTransaction = createAsyncThunk(
   "transactions/addTransaction",
   async (transactionData: TransactionData) => {
+    userIdVerification(localStorage.getItem("token"));
+
     const { data } = await axios.post<Transaction>(
       `${apiURL}/transactions`,
       transactionData,
@@ -123,22 +129,26 @@ export const addTransaction = createAsyncThunk(
     if (data.name !== transactionData.name) {
       throw new Error("Transaction name mismatch");
     }
+
+    return data;
   },
 );
 
 export const deleteTransaction = createAsyncThunk(
   "transactions/deleteTransaction",
   async (transactionId: string) => {
+    userIdVerification(localStorage.getItem("token"));
+
     await axios.delete(`${apiURL}/transactions/${transactionId}`);
+
+    return transactionId;
   },
 );
 
 export const updateTransaction = createAsyncThunk(
   "transactions/updateTransaction",
   async (transactionData: Transaction) => {
-    if (!transactionData.userId) {
-      throw new Error("User ID not found in localStorage");
-    }
+    userIdVerification(localStorage.getItem("token"));
 
     const { data } = await axios.patch<Transaction>(
       `${apiURL}/transactions/${transactionData.id}`,
@@ -148,5 +158,7 @@ export const updateTransaction = createAsyncThunk(
     if (data.id !== transactionData.id) {
       throw new Error("Transaction id mismatch");
     }
+
+    return data;
   },
 );

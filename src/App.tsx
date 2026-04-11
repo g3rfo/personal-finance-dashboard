@@ -8,14 +8,14 @@ import {
 import PageWrap from "./components/pages/authorized/PageWrap";
 import AuthPage from "./components/pages/notAuthorized/AuthPage";
 import RequireAuth from "./components/pages/RequireAuth";
-import { useEffect } from "react";
 import DashboardPage from "./components/pages/authorized/dashboardPage/DashboardPage";
-import { useAppDispatch } from "./features/store/hooks";
-import { fetchUserData } from "./features/store/asyncThunks/userThunks";
-import { loginUser } from "./features/store/slices/userSlice";
 import RegistrationPage from "./components/pages/notAuthorized/RegistrationPage";
 import TransactionsPage from "./components/pages/authorized/transactionPage/TransactionsPage";
 import CategoriesPage from "./components/pages/authorized/categoryPage/CategoriesPage";
+import { useAppDispatch } from "./features/store/hooks";
+import { useEffect } from "react";
+import { loginUser } from "./features/store/slices/userSlice";
+import { fetchUserData } from "./features/store/asyncThunks/userThunks";
 
 function App() {
   const navigate = useNavigate();
@@ -26,20 +26,27 @@ function App() {
     const token = localStorage.getItem("token");
     const userData = localStorage.getItem("userData");
 
-    if (token) {
-      if (userData) {
+    if (!token) {
+      return;
+    }
+
+    if (userData) {
+      try {
         dispatch(loginUser(JSON.parse(userData)));
-      } else {
+      } catch {
+        localStorage.removeItem("userData");
         dispatch(fetchUserData(token));
       }
+    } else {
+      dispatch(fetchUserData(token));
+    }
 
-      if (
-        location.pathname === "/" ||
-        location.pathname === "/auth" ||
-        location.pathname === "/registration"
-      ) {
-        navigate("/dashboard", { replace: true });
-      }
+    if (
+      location.pathname === "/" ||
+      location.pathname === "/auth" ||
+      location.pathname === "/registration"
+    ) {
+      navigate("/dashboard", { replace: true });
     }
   }, [dispatch, location.pathname, navigate]);
 
@@ -49,34 +56,13 @@ function App() {
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/registration" element={<RegistrationPage />} />
         <Route element={<RequireAuth />}>
-          <Route
-            key="dashboard"
-            path="/dashboard"
-            element={
-              <PageWrap>
-                <DashboardPage />
-              </PageWrap>
-            }
-          />
-          <Route
-            key="transactions"
-            path="/transactions"
-            element={
-              <PageWrap>
-                <TransactionsPage />
-              </PageWrap>
-            }
-          />
-          <Route
-            path="/categories"
-            element={
-              <PageWrap>
-                <CategoriesPage />
-              </PageWrap>
-            }
-          />
-          <Route path="/analytics" element={<PageWrap>Analytics</PageWrap>} />
-          <Route path="/settings" element={<PageWrap>Settings</PageWrap>} />
+          <Route element={<PageWrap />}>
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/transactions" element={<TransactionsPage />} />
+            <Route path="/categories" element={<CategoriesPage />} />
+            <Route path="/analytics" element={<>Analytics</>} />
+            <Route path="/settings" element={<>Settings</>} />
+          </Route>
         </Route>
         <Route>
           <Route path="*" element={<Navigate to="/dashboard" replace />} />

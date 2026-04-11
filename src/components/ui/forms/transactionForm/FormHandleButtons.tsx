@@ -12,7 +12,7 @@ function FormHandleButtons() {
 
   return (
     <Field orientation="horizontal">
-      <DialogCloseButton />
+      <DialogCloseButton type="button" />
       <SubmitButton pending={pending} title={formSubmitButtonMessage} />
     </Field>
   );

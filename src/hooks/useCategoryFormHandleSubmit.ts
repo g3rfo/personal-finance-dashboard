@@ -3,6 +3,10 @@ import {
   updateCategory,
 } from "@/features/store/asyncThunks/categoriesThunks";
 import { useAppDispatch, useAppSelector } from "@/features/store/hooks";
+import {
+  setAddCategoryPopupState,
+  setEditCategoryPopupState,
+} from "@/features/store/slices/popupsSlice";
 import type { CategoryFormData } from "@/types/category.type";
 
 function useCategoryFormHandleSubmit(action: "create" | "edit") {
@@ -11,15 +15,17 @@ function useCategoryFormHandleSubmit(action: "create" | "edit") {
 
   switch (action) {
     case "create":
-      return (data: CategoryFormData) => {
-        return dispatch(addCategory(data));
+      return async (data: CategoryFormData) => {
+        await dispatch(addCategory(data));
+        dispatch(setAddCategoryPopupState(false));
       };
     case "edit":
       if (!id) {
         return () => {};
       }
-      return (data: CategoryFormData) => {
-        return dispatch(updateCategory({ ...data, id }));
+      return async (data: CategoryFormData) => {
+        await dispatch(updateCategory({ ...data, id }));
+        dispatch(setEditCategoryPopupState(false));
       };
     default:
       return () => {};
