@@ -1,37 +1,19 @@
 {
   "users": [
     {
-      "name": "user",
-      "email": "user@example.com",
-      "password": "password123",
-      "id": "gd932fgds"
-    },
-    {
       "name": "ggdfgdfgdf",
       "email": "user3@example.com",
       "password": "password123",
       "id": "O8O-B6i"
+    },
+    {
+      "name": "user",
+      "email": "user@example.com",
+      "password": "password123",
+      "id": "NAtNAHP"
     }
   ],
   "categories": [
-    {
-      "userId": "gd932fgds",
-      "name": "Food & Dinning",
-      "budget": 600,
-      "type": "expense",
-      "iconName": "food",
-      "color": "orange",
-      "id": "gjgj35j2"
-    },
-    {
-      "userId": "O8O-B6i",
-      "name": "Food & Dinning",
-      "budget": 600,
-      "type": "expense",
-      "iconName": "food",
-      "color": "orange",
-      "id": "NA_7vHB"
-    },
     {
       "userId": "O8O-B6i",
       "name": "Salary",
@@ -42,95 +24,132 @@
       "id": "Gam8DRS"
     },
     {
-      "userId": "O8O-B6i",
-      "name": "Investment",
-      "budget": 0,
-      "type": "income",
-      "iconName": "investments",
-      "color": "aquagreen",
-      "id": "UbJAQt8"
+      "userId": "NAtNAHP",
+      "name": "Food & Dinning",
+      "budget": 600,
+      "type": "expense",
+      "iconName": "food",
+      "color": "orange",
+      "id": "16WInnV"
     },
     {
-      "userId": "O8O-B6i",
+      "userId": "NAtNAHP",
       "name": "Shopping",
       "budget": 400,
       "type": "expense",
       "iconName": "shopping",
       "color": "pink",
-      "id": "OqoXje-"
+      "id": "UZgsjGq"
     },
     {
-      "userId": "O8O-B6i",
+      "userId": "NAtNAHP",
       "name": "Rent",
       "budget": 1200,
       "type": "expense",
       "iconName": "housing",
       "color": "red",
-      "id": "CSM1woF"
+      "id": "1G-VoZ3"
     },
     {
-      "userId": "O8O-B6i",
+      "userId": "NAtNAHP",
       "name": "Entertainment",
       "budget": 200,
       "type": "expense",
       "iconName": "entertainment",
       "color": "sky",
-      "id": "aLZujdZ"
+      "id": "vealMXL"
     },
     {
-      "userId": "O8O-B6i",
+      "userId": "NAtNAHP",
       "name": "Education",
       "budget": 300,
       "type": "expense",
       "iconName": "education",
       "color": "blue",
-      "id": "q2zggg_"
+      "id": "qxHicV2"
     },
     {
-      "userId": "O8O-B6i",
+      "userId": "NAtNAHP",
       "name": "HealthCare",
       "budget": 150,
       "type": "expense",
       "iconName": "healthcare",
       "color": "pinkred",
-      "id": "pmJTg7_"
+      "id": "pNRofkF"
     },
     {
-      "userId": "O8O-B6i",
+      "userId": "NAtNAHP",
       "name": "Transportation",
       "budget": 300,
       "type": "expense",
       "iconName": "transport",
       "color": "purple",
-      "id": "dViA3KB"
+      "id": "j1WZlON"
     },
     {
-      "userId": "O8O-B6i",
-      "name": "Education",
-      "budget": 300,
+      "userId": "NAtNAHP",
+      "name": "Salary",
+      "budget": 0,
+      "type": "income",
+      "iconName": "savings",
+      "color": "green",
+      "id": "bifAVgL"
+    },
+    {
+      "userId": "NAtNAHP",
+      "name": "Investment",
+      "budget": 0,
+      "type": "income",
+      "iconName": "investments",
+      "color": "aquagreen",
+      "id": "KXGuAK1"
+    },
+    {
+      "userId": "NAtNAHP",
+      "name": "Gym",
       "type": "expense",
-      "iconName": "education",
+      "iconName": "sport",
       "color": "blue",
-      "id": "vFYA5ns"
-    },
-    {
-      "userId": "O8O-B6i",
-      "name": "Transportation",
-      "budget": 300,
-      "type": "expense",
-      "iconName": "transport",
-      "color": "purple",
-      "id": "ya1Gr_r"
-    },
-    {
-      "userId": "O8O-B6i",
-      "name": "HealthCare",
       "budget": 150,
-      "type": "expense",
-      "iconName": "healthcare",
-      "color": "pinkred",
-      "id": "QDA359u"
+      "id": "ZTd9YPt"
     }
   ],
-  "transactions": []
+  "transactions": [
+    {
+      "userId": "NAtNAHP",
+      "name": "Rent",
+      "type": "expense",
+      "category": "Rent",
+      "amount": 2500,
+      "date": "2026-04-12T19:43:16.078Z",
+      "id": "jgfF35j"
+    },
+    {
+      "userId": "NAtNAHP",
+      "name": "Restorant",
+      "type": "expense",
+      "category": "Food & Dinning",
+      "amount": 125,
+      "date": "2026-04-03T19:44:31.469Z",
+      "id": "TFeJCIG"
+    },
+    {
+      "userId": "NAtNAHP",
+      "name": "Salary",
+      "type": "income",
+      "category": "Salary",
+      "amount": 5000,
+      "date": "2026-04-07T19:45:45.527Z",
+      "id": "Om4J25a"
+    },
+    {
+      "userId": "NAtNAHP",
+      "name": "Abonnement",
+      "type": "expense",
+      "category": "Gym",
+      "amount": 120,
+      "date": "2026-04-12T19:47:00.940Z",
+      "id": "bfrJmMQ"
+    }
+  ]
 }
