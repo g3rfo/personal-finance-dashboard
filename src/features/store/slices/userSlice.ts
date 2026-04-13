@@ -39,16 +39,11 @@ const userSlice = createSlice({
           saveUserData(state, action.payload);
         },
       )
-      .addCase(
-        registerUser.fulfilled,
-        (state, action: PayloadAction<UserAuthData>) => {
-          saveUserData(state, {
-            name: action.payload.name,
-            email: action.payload.email,
-          });
-          localStorage.setItem("token", action.payload.token);
-        },
-      );
+      .addCase(registerUser.fulfilled, () => {
+        alert(
+          "Registration successful! Please log in with your new credentials.",
+        );
+      });
   },
 });
 

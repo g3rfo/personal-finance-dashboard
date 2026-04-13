@@ -3,6 +3,10 @@ import {
   updateTransaction,
 } from "@/features/store/asyncThunks/transactionsThunks";
 import { useAppDispatch, useAppSelector } from "@/features/store/hooks";
+import {
+  setAddTransactionPopupState,
+  setEditTransactionPopupState,
+} from "@/features/store/slices/popupsSlice";
 import type { TransactionData } from "@/types/transaction.type";
 
 function useTransactionFormHandleSubmit(action: "create" | "edit") {
@@ -11,15 +15,17 @@ function useTransactionFormHandleSubmit(action: "create" | "edit") {
 
   switch (action) {
     case "create":
-      return (data: TransactionData) => {
-        dispatch(addTransaction(data));
+      return async (data: TransactionData) => {
+        await dispatch(addTransaction(data));
+        dispatch(setAddTransactionPopupState(false));
       };
     case "edit":
       if (!id) {
         return () => {};
       }
-      return (data: TransactionData) => {
-        dispatch(updateTransaction({ ...data, id }));
+      return async (data: TransactionData) => {
+        await dispatch(updateTransaction({ ...data, id }));
+        dispatch(setEditTransactionPopupState(false));
       };
     default:
       return () => {};

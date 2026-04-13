@@ -1,4 +1,8 @@
-import type { TransactionsState } from "@/features/store/slices/transactionsSlice";
+import type {
+  FilterQuery,
+  TransactionsState,
+} from "@/features/store/slices/transactionsSlice";
+import type { Transaction } from "@/types/transaction.type";
 
 const statesKeys = [
   "paginated",
@@ -18,19 +22,72 @@ const setErrorState = (state: TransactionsState, error: string | null) => {
   }
 };
 
-export const transactionsPendingState = (state: TransactionsState) => {
-  setLoadingState(state, true);
-  setErrorState(state, null);
-};
-
-export const transactionsFulfilledState = (state: TransactionsState) => {
-  setLoadingState(state, false);
-};
-
 export const transactionsRejectedState = (
   state: TransactionsState,
   errorMessage: string,
 ) => {
   setLoadingState(state, false);
   setErrorState(state, errorMessage);
+};
+
+export const sortTransactionsByDateDesc = (transactions: Transaction[]) => {
+  return [...transactions].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  );
+};
+
+export const withTransactionUpsert = (
+  transactions: Transaction[],
+  transaction: Transaction,
+) => {
+  const withoutCurrent = transactions.filter(
+    (item) => item.id !== transaction.id,
+  );
+  return sortTransactionsByDateDesc([...withoutCurrent, transaction]);
+};
+
+export const isTransactionInDateRange = (
+  transactionDate: string,
+  from?: string,
+  to?: string,
+) => {
+  const value = new Date(transactionDate).getTime();
+
+  if (from && value < new Date(from).getTime()) {
+    return false;
+  }
+
+  if (to && value > new Date(to).getTime()) {
+    return false;
+  }
+
+  return true;
+};
+
+export const matchesFilteredQuery = (
+  transaction: Transaction,
+  query: FilterQuery | null,
+) => {
+  if (!query) {
+    return false;
+  }
+
+  if (
+    !isTransactionInDateRange(transaction.date, query.monthFrom, query.monthTo)
+  ) {
+    return false;
+  }
+
+  if (
+    query.category !== "All Categories" &&
+    transaction.category !== query.category
+  ) {
+    return false;
+  }
+
+  if (query.type !== "all" && transaction.type !== query.type) {
+    return false;
+  }
+
+  return true;
 };

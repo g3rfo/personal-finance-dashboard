@@ -1,23 +1,32 @@
-import useTransactionForm from "@/hooks/useTransactionForm";
 import { TransactionFormContext } from "@/context/transactionFormContext";
 import { Input } from "../../input";
 import InputCard from "./InputCard";
 import { useContext } from "react";
+import { CategoryFormContext } from "@/context/categoryFormContext";
+import type { FieldValues, UseFormRegister } from "react-hook-form";
 
-function NameInput() {
-  const { register } = useContext(TransactionFormContext) as ReturnType<
-    typeof useTransactionForm
-  >;
+interface NameInputProps {
+  placeholder: string;
+  context: typeof TransactionFormContext | typeof CategoryFormContext;
+}
+
+function NameInput({ context, placeholder }: NameInputProps) {
+  const { register } = useContext(
+    context as React.Context<{ register: UseFormRegister<FieldValues> } | null>,
+  ) as {
+    register: UseFormRegister<FieldValues>;
+  };
 
   return (
     <InputCard
       label="Name"
+      context={context}
       children={
         <Input
           id="name"
           type="text"
           autoComplete="on"
-          placeholder="Enter transaction name"
+          placeholder={placeholder}
           {...register("name", {
             required: "Name is required",
             minLength: {

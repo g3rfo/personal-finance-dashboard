@@ -1,32 +1,15 @@
-import Popup from "@/components/ui/Popup";
-import HeaderTitle from "../header/HeaderTitle";
-import PageHeader from "../header/PageHeader";
-import { Button } from "@/components/ui/button";
-import { IconPlus } from "@tabler/icons-react";
 import TransactionsManager from "./transactionsManager/TransactionsManager";
-import TransactionFormContent from "@/components/ui/forms/TransactionFormContent";
+import PageLayout from "../PageLayout";
+import AddTransactionPopup from "@/components/ui/popups/AddTransactionPopup";
 
 function TransactionsPage() {
   return (
-    <>
-      <PageHeader>
-        <HeaderTitle
-          title="Transactions"
-          description="Manage all your income and expenses"
-        />
-        <Popup
-          trigger={
-            <Button>
-              <IconPlus /> Add Transaction
-            </Button>
-          }
-          title="Add Transaction"
-          description=""
-          content={<TransactionFormContent type="create" />}
-        />
-      </PageHeader>
-      <TransactionsManager />
-    </>
+    <PageLayout
+      title="Transactions"
+      description="Manage all your income and expenses"
+      popup={<AddTransactionPopup />}
+      content={<TransactionsManager />}
+    />
   );
 }
 

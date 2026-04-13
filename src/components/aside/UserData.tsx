@@ -3,7 +3,8 @@ import { Avatar, AvatarFallback } from "../ui/avatar";
 import Outline from "../ui/Outline";
 
 function UserData() {
-  const { name, email } = useAppSelector((state) => state.user);
+  const name = useAppSelector((state) => state.user.name);
+  const email = useAppSelector((state) => state.user.email);
 
   const initials = name.split(" ").map((word) => word[0]).join("").toUpperCase();
 

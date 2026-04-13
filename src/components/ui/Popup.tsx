@@ -6,6 +6,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import DialogCloseButton from "./DialogCloseButton";
 
 interface PopupProps {
   open?: boolean;
@@ -27,7 +28,8 @@ function Popup({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       {trigger && <DialogTrigger asChild>{trigger}</DialogTrigger>}
-      <DialogContent>
+      <DialogContent showCloseButton={false}>
+        <DialogCloseButton type="icon" />
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
           <DialogDescription>{description ?? ""}</DialogDescription>

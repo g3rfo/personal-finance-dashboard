@@ -21,6 +21,7 @@ function DateInput() {
   return (
     <InputCard
       label="Date"
+      context={TransactionFormContext}
       children={
         <Controller
           name="date"

@@ -4,24 +4,34 @@ import {
   addCategory,
   deleteCategory,
   fetchCategories,
+  updateCategory,
 } from "../asyncThunks/categoriesThunks";
 
 interface CategoriesState {
   categories: Category[];
   loading: boolean;
   error: string | null;
+  selectedId: string | null;
 }
 
 const initialState: CategoriesState = {
   categories: [],
   loading: false,
   error: null,
+  selectedId: null,
 };
 
 const categoriesSlice = createSlice({
   name: "categories",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    setSelectedCategoryId(state, action: PayloadAction<string | null>) {
+      state.selectedId = action.payload;
+    },
+    unsetSelectedCategoryId(state) {
+      state.selectedId = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       // Fetch categories
@@ -43,40 +53,59 @@ const categoriesSlice = createSlice({
 
       // Add category
       .addCase(addCategory.pending, (state) => {
-        state.loading = true;
         state.error = null;
       })
       .addCase(
         addCategory.fulfilled,
         (state, action: PayloadAction<Category>) => {
-          state.loading = false;
           state.categories.push(action.payload);
+
+          state.selectedId = null;
         },
       )
       .addCase(addCategory.rejected, (state, action) => {
-        state.loading = false;
         state.error = action.error.message || "Failed to add category";
       })
 
       // Delete category
       .addCase(deleteCategory.pending, (state) => {
-        state.loading = true;
         state.error = null;
       })
       .addCase(
         deleteCategory.fulfilled,
         (state, action: PayloadAction<string>) => {
-          state.loading = false;
           state.categories = state.categories.filter(
             (category) => category.id !== action.payload,
           );
+
+          state.selectedId = null;
         },
       )
       .addCase(deleteCategory.rejected, (state, action) => {
-        state.loading = false;
         state.error = action.error.message || "Failed to delete category";
+      })
+
+      // Update category
+      .addCase(updateCategory.pending, (state) => {
+        state.error = null;
+      })
+      .addCase(
+        updateCategory.fulfilled,
+        (state, action: PayloadAction<Category>) => {
+          state.categories = state.categories.map((category) =>
+            category.id === action.payload.id ? action.payload : category,
+          );
+
+          state.selectedId = null;
+        },
+      )
+      .addCase(updateCategory.rejected, (state, action) => {
+        state.error = action.error.message || "Failed to update category";
       });
   },
 });
+
+export const { setSelectedCategoryId, unsetSelectedCategoryId } =
+  categoriesSlice.actions;
 
 export default categoriesSlice.reducer;

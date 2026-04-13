@@ -3,6 +3,7 @@ import transactionsReducer from "./slices/transactionsSlice";
 import userReducer from "./slices/userSlice";
 import categoriesReducer from "./slices/categoriesSlice";
 import transactionsFilterReducer from "./slices/transactionsFilterSlice";
+import popupsReducer from "./slices/popupsSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     transactions: transactionsReducer,
     transactionsFilter: transactionsFilterReducer,
     categories: categoriesReducer,
+    popups: popupsReducer,
   },
 });
 

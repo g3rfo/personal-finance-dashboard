@@ -1,9 +1,12 @@
-export interface Category {
-  id: string;
-  userId: string;
+export interface CategoryFormData {
   name: string;
   type: "income" | "expense";
-  budget: number;
   iconName: string;
   color: string;
+  budget: number;
+}
+
+export interface Category extends CategoryFormData {
+  id: string;
+  userId: string;
 }

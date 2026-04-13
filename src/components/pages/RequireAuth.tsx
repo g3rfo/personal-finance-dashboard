@@ -1,3 +1,4 @@
+import { resetData } from "@/utils/userData";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 function RequireAuth() {
@@ -18,10 +19,5 @@ function RequireAuth() {
 
   return <Outlet />;
 }
-
-const resetData = () => {
-  localStorage.removeItem("token");
-  localStorage.removeItem("userData");
-};
 
 export default RequireAuth;

@@ -5,24 +5,29 @@ import TransactionsManagerViewMoreButton from "./TransactionsManagerViewMoreButt
 import TransactionsManagerLoading from "./TransactionsManagerLoading";
 import ManagerTableHeads from "./ManagerTableHeads";
 import TransactionsError from "./TransactionsError";
+import { TransactionManagerContext } from "@/context/transactionManagerContext";
 
 function TransactionsManagerTable() {
-  const { hasNextPage, loading, error } = useManagerContent();
+  const contextValue = useManagerContent();
+  const { loading, error, hasNextPage } = contextValue;
+  const Provider = TransactionManagerContext.Provider;
 
   return (
-    <Table>
-      <TableHeader>
-        <ManagerTableHeads />
-      </TableHeader>
-      <TableBody>
-        {loading && <TransactionsManagerLoading />}
-        {error && <TransactionsError message={error} />}
-        {!loading && !error && <TransactionsManagerContent />}
-        {hasNextPage && !loading && !error && (
-          <TransactionsManagerViewMoreButton />
-        )}
-      </TableBody>
-    </Table>
+    <Provider value={contextValue}>
+      <Table>
+        <TableHeader>
+          <ManagerTableHeads />
+        </TableHeader>
+        <TableBody>
+          {loading && <TransactionsManagerLoading />}
+          {error && <TransactionsError message={error} />}
+          {!loading && !error && <TransactionsManagerContent />}
+          {hasNextPage && !loading && !error && (
+            <TransactionsManagerViewMoreButton />
+          )}
+        </TableBody>
+      </Table>
+    </Provider>
   );
 }
 

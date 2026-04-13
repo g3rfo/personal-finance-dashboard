@@ -1,4 +1,5 @@
-import type { Category } from "@/types/category.type";
+import type { Category, CategoryFormData } from "@/types/category.type";
+import { userIdVerification } from "@/utils/userData";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -7,10 +8,11 @@ const apiURL = import.meta.env.VITE_SERVER_URL;
 export const fetchCategories = createAsyncThunk(
   "categories/fetchCategories",
   async () => {
-    const userId = localStorage.getItem("token");
+    userIdVerification(localStorage.getItem("token"));
+
     const { data } = await axios.get<Category[]>(`${apiURL}/categories`, {
       params: {
-        userId,
+        userId: localStorage.getItem("token") || "",
       },
     });
 
@@ -20,9 +22,11 @@ export const fetchCategories = createAsyncThunk(
 
 export const addCategory = createAsyncThunk(
   "categories/addCategory",
-  async (categoryData: Category) => {
+  async (categoryData: CategoryFormData) => {
+    userIdVerification(localStorage.getItem("token"));
     const { data } = await axios.post<Category>(`${apiURL}/categories`, {
-      categoryData,
+      userId: localStorage.getItem("token") || "",
+      ...categoryData,
     });
 
     return data;
@@ -32,9 +36,24 @@ export const addCategory = createAsyncThunk(
 export const deleteCategory = createAsyncThunk(
   "categories/deleteCategory",
   async (categoryId: string) => {
-    const { data } = await axios.delete<Category>(
-      `${apiURL}/categories/${categoryId}`,
-    );
-    return data.id as string;
+    userIdVerification(localStorage.getItem("token"));
+    await axios.delete<Category>(`${apiURL}/categories/${categoryId}`);
+
+    return categoryId;
+  },
+);
+
+export const updateCategory = createAsyncThunk(
+  "categories/updateCategory",
+  async (categoryData: CategoryFormData & { id: string }) => {
+    userIdVerification(localStorage.getItem("token"));
+
+    const { id, ...payload } = categoryData;
+    const { data } = await axios.patch<Category>(`${apiURL}/categories/${id}`, {
+      userId: localStorage.getItem("token") || "",
+      ...payload,
+    });
+
+    return data;
   },
 );

@@ -1,14 +1,42 @@
+import { useAppDispatch } from "@/features/store/hooks";
 import { Button } from "./button";
-import { DialogClose } from "./dialog";
+import { resetPopupsState } from "@/features/store/slices/popupsSlice";
+import { XIcon } from "lucide-react";
 
-function DialogCloseButton() {
-  return (
-    <DialogClose asChild>
-      <Button type="button" variant="outline" className="flex-1 text-base">
-        Close
-      </Button>
-    </DialogClose>
-  );
+interface DialogCloseButtonProps {
+  type: "button" | "icon";
+}
+
+function DialogCloseButton({ type }: DialogCloseButtonProps) {
+  const dispatch = useAppDispatch();
+
+  switch (type) {
+    case "icon":
+      return (
+        <Button
+          type="button"
+          variant="outline"
+          size="icon-xs-sm"
+          className="absolute right-6 top-6 text-base"
+          onClick={() => dispatch(resetPopupsState())}
+        >
+          <XIcon />
+        </Button>
+      );
+    case "button":
+      return (
+        <Button
+          type="button"
+          variant="outline"
+          className="flex-1 text-base"
+          onClick={() => dispatch(resetPopupsState())}
+        >
+          Close
+        </Button>
+      );
+    default:
+      return null;
+  }
 }
 
 export default DialogCloseButton;

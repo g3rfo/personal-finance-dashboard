@@ -1,8 +1,7 @@
-import type { Category } from "@/types/category.type";
+import type { CategoryFormData } from "@/types/category.type";
 
-export const DEFAULT_CATEGORIES: Category[] = [
+export const DEFAULT_CATEGORIES: CategoryFormData[] = [
   {
-    id: `c1`,
     name: "Food & Dinning",
     budget: 600,
     type: "expense",
@@ -10,7 +9,6 @@ export const DEFAULT_CATEGORIES: Category[] = [
     color: "orange",
   },
   {
-    id: `c2`,
     name: "Shopping",
     budget: 400,
     type: "expense",
@@ -18,7 +16,6 @@ export const DEFAULT_CATEGORIES: Category[] = [
     color: "pink",
   },
   {
-    id: `c3`,
     name: "Rent",
     budget: 1200,
     type: "expense",
@@ -26,7 +23,6 @@ export const DEFAULT_CATEGORIES: Category[] = [
     color: "red",
   },
   {
-    id: `c4`,
     name: "Entertainment",
     budget: 200,
     type: "expense",
@@ -34,7 +30,6 @@ export const DEFAULT_CATEGORIES: Category[] = [
     color: "sky",
   },
   {
-    id: `c5`,
     name: "Education",
     budget: 300,
     type: "expense",
@@ -42,7 +37,6 @@ export const DEFAULT_CATEGORIES: Category[] = [
     color: "blue",
   },
   {
-    id: `c6`,
     name: "HealthCare",
     budget: 150,
     type: "expense",
@@ -50,7 +44,6 @@ export const DEFAULT_CATEGORIES: Category[] = [
     color: "pinkred",
   },
   {
-    id: `c7`,
     name: "Transportation",
     budget: 300,
     type: "expense",
@@ -58,7 +51,6 @@ export const DEFAULT_CATEGORIES: Category[] = [
     color: "purple",
   },
   {
-    id: `c8`,
     name: "Salary",
     budget: 0,
     type: "income",
@@ -66,7 +58,6 @@ export const DEFAULT_CATEGORIES: Category[] = [
     color: "green",
   },
   {
-    id: `c9`,
     name: "Investment",
     budget: 0,
     type: "income",

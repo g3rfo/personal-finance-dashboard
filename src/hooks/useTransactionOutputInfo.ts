@@ -10,8 +10,8 @@ function useTransactionOutputInfo(transactions: Transaction[]) {
   const transactionsOutputInfo = transactions.map((transaction) =>
     getTransactionOutputInfo(
       categoryData[transaction.category]?.iconName,
-      categoryData[transaction.category]?.color
-    )
+      categoryData[transaction.category]?.color,
+    ),
   );
 
   return transactionsOutputInfo;

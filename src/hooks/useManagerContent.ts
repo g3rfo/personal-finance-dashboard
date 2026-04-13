@@ -3,19 +3,20 @@ import {
   fetchFilteredTransactions,
 } from "@/features/store/asyncThunks/transactionsThunks";
 import { useAppDispatch, useAppSelector } from "@/features/store/hooks";
+import { setEditTransactionPopupState } from "@/features/store/slices/popupsSlice";
 import { setSelectedTransactionId } from "@/features/store/slices/transactionsSlice";
-import { useState } from "react";
 
 function useManagerContent() {
-  const { monthFrom, monthTo, type, category } = useAppSelector(
-    (state) => state.transactionsFilter,
-  );
   const { transactions, page, hasNextPage, loading, error } = useAppSelector(
     (state) => state.transactions.filtered,
+  );
+  const { monthFrom, monthTo, type, category } = useAppSelector(
+    (state) => state.transactionsFilter,
   );
   const transactionsLength = transactions.length;
 
   const dispatch = useAppDispatch();
+  
   const viewMoreHandler = () => {
     if (!hasNextPage || loading) return;
 
@@ -30,10 +31,8 @@ function useManagerContent() {
     );
   };
 
-  const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
-
   const onEditHandler = (transactionId: string) => {
-    setIsPopupOpen(true);
+    dispatch(setEditTransactionPopupState(true));
     dispatch(setSelectedTransactionId(transactionId));
   };
 
@@ -48,8 +47,6 @@ function useManagerContent() {
     loading,
     transactionsLength,
     error,
-    isPopupOpen,
-    setIsPopupOpen,
     onDeleteHandler,
     onEditHandler,
   };
