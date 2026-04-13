@@ -250,6 +250,15 @@
       "amount": 20,
       "date": "2026-04-07T18:30:08.852Z",
       "id": "qGEK7o9"
+    },
+    {
+      "userId": "c5e0",
+      "name": "New pants",
+      "type": "expense",
+      "category": "Shopping",
+      "amount": 125,
+      "date": "2026-04-13T10:01:34.825Z",
+      "id": "jN9dUzW"
     }
   ],
   "categories": [

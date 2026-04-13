@@ -54,3 +54,13 @@ export const selectTotalTransactionsCount = createSelector(
   [selectMonthlyTransactions],
   (transactions) => transactions.length,
 );
+
+export const selectAvgDailySpending = createSelector(
+  [selectMonthlyTransactions],
+  (transactions) => {
+    const expenses = transactions.filter((t) => t.type === "expense");
+    const totalExpenses = expenses.reduce((sum, t) => sum + t.amount, 0);
+    const daysInMonth = new Date().getDate();
+    return totalExpenses / daysInMonth;
+  },
+);
