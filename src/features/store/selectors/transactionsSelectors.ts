@@ -9,6 +9,7 @@ export const selectFilteredTransactions = (state: RootState) => {
   return state.transactions.filtered.transactions;
 };
 
+// Dashboard stats selectors
 const calculateStats = (
   transactions: ReturnType<typeof selectMonthlyTransactions>,
 ) => {
@@ -34,6 +35,7 @@ export const selectStats = createSelector(
   (transactions) => calculateStats(transactions),
 );
 
+// Transaction edit selectors
 const makeSelectTransactionById = (id: string) => {
   return createSelector([selectFilteredTransactions], (transactions) => {
     return transactions.find((t) => t.id === id) ?? null;
@@ -41,3 +43,13 @@ const makeSelectTransactionById = (id: string) => {
 };
 
 export const selectTransactionsDataToEdit = makeSelectTransactionById;
+
+// Analytics selectors
+export const selectSavingsRate = createSelector(
+  [selectStats],
+  (stats) => {
+    if (stats.income === 0) return 0;
+    return (stats.total / stats.income) * 100;
+  }
+);
+
