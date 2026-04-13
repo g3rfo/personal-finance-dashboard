@@ -259,6 +259,33 @@
       "amount": 125,
       "date": "2026-04-13T10:01:34.825Z",
       "id": "jN9dUzW"
+    },
+    {
+      "userId": "c5e0",
+      "name": "Gym",
+      "type": "expense",
+      "category": "Entertainment",
+      "amount": 200,
+      "date": "2026-04-13T11:44:15.865Z",
+      "id": "P38vrjB"
+    },
+    {
+      "userId": "c5e0",
+      "name": "Salary",
+      "type": "income",
+      "category": "Salary",
+      "amount": 4000,
+      "date": "2026-04-13T12:33:19.714Z",
+      "id": "BG-Z_08"
+    },
+    {
+      "userId": "c5e0",
+      "name": "Investing",
+      "type": "income",
+      "category": "Investment",
+      "amount": 1000,
+      "date": "2026-04-13T12:33:31.427Z",
+      "id": "JQkEobA"
     }
   ],
   "categories": [

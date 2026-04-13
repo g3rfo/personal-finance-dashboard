@@ -15,8 +15,8 @@ interface StatsCardProps {
 function StatsCard({ title, content, icon }: StatsCardProps) {
   const Icon = icon.component;
   return (
-    <Card className="flex-row min-w-85 flex-1 gap-0">
-      <div className="flex flex-col flex-1">
+    <Card className="flex flex-col flex-1">
+      <div>
         <CardHeader>{title}</CardHeader>
         <CardContent
           className="text-3xl font-bold"

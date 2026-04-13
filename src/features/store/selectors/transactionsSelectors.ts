@@ -64,3 +64,29 @@ export const selectAvgDailySpending = createSelector(
     return totalExpenses / daysInMonth;
   },
 );
+
+export const selectCategoriesAmountsByType = createSelector(
+  [selectStats],
+  (stats) => {
+    return { totalExpenses: stats.expenses, totalIncome: stats.income };
+  },
+);
+
+const makeSelectTransactionsValuesByCategory = (type: "income" | "expense") => {
+  return createSelector([selectMonthlyTransactions], (transactions) => {
+    return transactions
+      .filter((t) => t.type === type)
+      .reduce(
+        (acc, t) => {
+          acc[t.category] = (acc[t.category] ?? 0) + t.amount;
+          return acc;
+        },
+        {} as Record<string, number>,
+      );
+  });
+};
+
+export const selectExpensesTransactionsValues =
+  makeSelectTransactionsValuesByCategory("expense");
+export const selectIncomeTransactionsValues =
+  makeSelectTransactionsValuesByCategory("income");
