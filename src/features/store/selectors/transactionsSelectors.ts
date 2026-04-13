@@ -45,11 +45,12 @@ const makeSelectTransactionById = (id: string) => {
 export const selectTransactionsDataToEdit = makeSelectTransactionById;
 
 // Analytics selectors
-export const selectSavingsRate = createSelector(
-  [selectStats],
-  (stats) => {
-    if (stats.income === 0) return 0;
-    return (stats.total / stats.income) * 100;
-  }
-);
+export const selectSavingsRate = createSelector([selectStats], (stats) => {
+  if (stats.income === 0) return 0;
+  return (stats.total / stats.income) * 100;
+});
 
+export const selectTotalTransactionsCount = createSelector(
+  [selectMonthlyTransactions],
+  (transactions) => transactions.length,
+);
