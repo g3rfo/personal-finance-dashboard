@@ -1,6 +1,6 @@
-import useIncomeCategoriesPieChartConfig from "@/hooks/useIncomeCategoriesPieChartConfig";
+import useIncomeCategoriesPieChartConfig from "@/hooks/analytics/useIncomeCategoriesPieChartConfig";
 import PieChartCard from "./PieChartCard";
-import useIncomeCategoriesPieChartData from "@/hooks/useIncomeCategoriesPieChartData";
+import useIncomeCategoriesPieChartData from "@/hooks/analytics/useIncomeCategoriesPieChartData";
 
 function IncomeByCategory() {
   const chartConfig = useIncomeCategoriesPieChartConfig();

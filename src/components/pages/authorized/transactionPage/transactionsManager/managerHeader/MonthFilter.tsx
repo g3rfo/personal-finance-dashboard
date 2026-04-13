@@ -11,7 +11,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import useMonthFilter from "@/hooks/useMonthFilter";
+import useMonthFilter from "@/hooks/transactions/useMonthFilter";
 import { IconCalendarWeek, IconX } from "@tabler/icons-react";
 
 function MonthFilter() {

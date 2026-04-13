@@ -1,4 +1,4 @@
-import useBudgetOverview from "@/hooks/useBudgetOverview";
+import useBudgetOverview from "@/hooks/dashboard/useBudgetOverview";
 import CategoryCard from "./CategoryCard";
 import { CATEGORY_ICONS } from "@/constants/categoryIcons";
 import { CATEGORY_COLORS } from "@/constants/categoryColors";

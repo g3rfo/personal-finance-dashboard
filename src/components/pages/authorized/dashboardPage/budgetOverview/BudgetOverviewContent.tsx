@@ -1,4 +1,4 @@
-import useBudgetOverview from "@/hooks/useBudgetOverview";
+import useBudgetOverview from "@/hooks/dashboard/useBudgetOverview";
 import BudgetOverviewEmptyCategories from "./BudgetOverviewEmptyCategories";
 import BudgetOverviewCategoriesList from "./BudgetOverviewCategoriesList";
 

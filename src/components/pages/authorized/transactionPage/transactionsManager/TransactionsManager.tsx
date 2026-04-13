@@ -1,7 +1,7 @@
 import { CardContent, CardHeader } from "@/components/ui/card";
 import ManagerHeader from "./managerHeader/ManagerHeader";
 import ManagerContent from "./transactionsManagerTable/TransactionsManagerTable";
-import useTransactionsManager from "@/hooks/useTransactionsManager";
+import useTransactionsManager from "@/hooks/transactions/useTransactionsManager";
 import ListCardWrap from "../../dashboardPage/ListCardWrap";
 import { ScrollArea } from "@/components/ui/scroll-area";
 

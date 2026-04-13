@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "@/features/store/hooks";
-import useTransactionOutputInfo from "./useTransactionOutputInfo";
+import useTransactionOutputInfo from "../transactions/useTransactionOutputInfo";
 import { fetchTransactions } from "@/features/store/asyncThunks/transactionsThunks";
 
 function useRecentTransactions() {

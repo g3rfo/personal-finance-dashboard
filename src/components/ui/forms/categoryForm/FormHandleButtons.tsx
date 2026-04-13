@@ -1,5 +1,5 @@
 import { CategoryFormContext } from "@/context/categoryFormContext";
-import type useCategoryForm from "@/hooks/useCategoryForm";
+import type useCategoryForm from "@/hooks/categoryForm/useCategoryForm";
 import { useContext } from "react";
 import { Field } from "../../field";
 import DialogCloseButton from "../../DialogCloseButton";

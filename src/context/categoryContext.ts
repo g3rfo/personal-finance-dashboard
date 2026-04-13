@@ -1,4 +1,4 @@
-import type useCategoriesContent from "@/hooks/useCategoriesContent";
+import type useCategoriesContent from "@/hooks/categories/useCategoriesContent";
 import { createContext } from "react";
 
 export const CategoriesContext = createContext<ReturnType<

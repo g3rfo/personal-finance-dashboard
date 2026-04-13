@@ -1,6 +1,6 @@
-import useExpenseCategoriesPieChartConfig from "@/hooks/useExpenseCategoriesPieChartConfig";
+import useExpenseCategoriesPieChartConfig from "@/hooks/analytics/useExpenseCategoriesPieChartConfig";
 import PieChartCard from "./PieChartCard";
-import useExpenseCategoriesPieChartData from "@/hooks/useExpenseCategoriesPieChartData";
+import useExpenseCategoriesPieChartData from "@/hooks/analytics/useExpenseCategoriesPieChartData";
 
 function ExpensesByCategory() {
   const chartConfig = useExpenseCategoriesPieChartConfig();

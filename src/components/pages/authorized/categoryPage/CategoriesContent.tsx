@@ -1,4 +1,4 @@
-import useCategoriesContent from "@/hooks/useCategoriesContent";
+import useCategoriesContent from "@/hooks/categories/useCategoriesContent";
 import { CategoriesContext } from "@/context/categoryContext";
 import CategoryContent from "./CategoryContent";
 import EditCategoryPopup from "@/components/ui/popups/EditCategoryPopup";

@@ -1,5 +1,5 @@
 import { Table, TableBody, TableHeader } from "@/components/ui/table";
-import useManagerContent from "@/hooks/useManagerContent";
+import useManagerContent from "@/hooks/transactions/useManagerContent";
 import TransactionsManagerContent from "./TransactionsManagerContent";
 import TransactionsManagerViewMoreButton from "./TransactionsManagerViewMoreButton";
 import TransactionsManagerLoading from "./TransactionsManagerLoading";
