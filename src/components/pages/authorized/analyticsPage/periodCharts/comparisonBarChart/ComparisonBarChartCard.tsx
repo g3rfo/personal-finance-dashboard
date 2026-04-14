@@ -1,11 +1,11 @@
 import PeriodChartCard from "../PeriodChartCard";
-import ComparisonBarChart from "./ComparisonBarChart";
+import ComparisonBarChartContent from "./ComparisonBarChartContent";
 
 function ComparisonBarChartCard() {
   return (
     <PeriodChartCard
       title="Monthly Comparison"
-      content={<ComparisonBarChart />}
+      content={<ComparisonBarChartContent />}
     />
   );
 }

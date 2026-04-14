@@ -2,7 +2,7 @@ import Error from "@/components/ui/Error";
 import Loading from "@/components/ui/Loading";
 import { AnalyticsContext } from "@/context/analyticsContext";
 import { useContext } from "react";
-import ComparisonBarChartCard from "./ComparisonBarChartCard";
+import ComparisonBarChart from "./ComparisonBarChart";
 
 function ComparisonBarChartContent() {
   const { loading, error } = useContext(AnalyticsContext);
@@ -17,7 +17,7 @@ function ComparisonBarChartContent() {
     );
   }
 
-  return <ComparisonBarChartCard />;
+  return <ComparisonBarChart />;
 }
 
 export default ComparisonBarChartContent;

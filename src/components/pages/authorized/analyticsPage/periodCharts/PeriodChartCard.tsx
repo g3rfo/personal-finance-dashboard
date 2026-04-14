@@ -7,9 +7,9 @@ interface PeriodChartCardProps {
 
 function PeriodChartCard({ title, content }: PeriodChartCardProps) {
   return (
-    <Card>
+    <Card className="flex-col min-w-145 flex-1">
       <CardHeader>
-        <CardTitle>{title}</CardTitle>
+        <CardTitle className="text-lg">{title}</CardTitle>
       </CardHeader>
       <CardContent>{content}</CardContent>
     </Card>

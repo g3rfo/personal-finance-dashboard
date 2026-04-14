@@ -1,11 +1,11 @@
 import PeriodChartCard from "../PeriodChartCard";
-import TrendLineChart from "./TrendLineChart";
+import TrendLineChartContent from "./TrendLineChartContent";
 
 function TrendLineChartCard() {
   return (
     <PeriodChartCard
       title="6-Month Trend"
-      content={<TrendLineChart />}
+      content={<TrendLineChartContent />}
     />
   );
 }
