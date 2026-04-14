@@ -1,4 +1,4 @@
-import type useTransactionForm from "@/hooks/useTransactionForm";
+import type useTransactionForm from "@/hooks/transactionForm/useTransactionForm";
 import DialogCloseButton from "../../DialogCloseButton";
 import { Field } from "../../field";
 import SubmitButton from "../../SubmitButton";

@@ -1,6 +1,6 @@
 import { TableCell, TableRow } from "@/components/ui/table";
-import useManagerContent from "@/hooks/useManagerContent";
-import useTransactionOutputInfo from "@/hooks/useTransactionOutputInfo";
+import useManagerContent from "@/hooks/transactions/useManagerContent";
+import useTransactionOutputInfo from "@/hooks/transactions/useTransactionOutputInfo";
 import TransactionTitle from "../../../dashboardPage/recentTransaction/recentTransactionCard/RecentTransactionTitle";
 import { formatToOutputDate } from "@/utils/dateFormatters";
 import TransactionAmount from "../../../dashboardPage/recentTransaction/recentTransactionCard/RecentTransactionAmount";

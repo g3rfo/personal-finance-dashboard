@@ -1,5 +1,5 @@
 import { CategoryFormContext } from "@/context/categoryFormContext";
-import useCategoryForm from "@/hooks/useCategoryForm";
+import useCategoryForm from "@/hooks/categoryForm/useCategoryForm";
 import { FieldSeparator } from "../../field";
 import FormHandleButtons from "./FormHandleButtons";
 import NameInput from "../inputs/NameInput";

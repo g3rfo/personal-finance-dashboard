@@ -8,6 +8,7 @@ import {
   fetchTransactions,
 } from "@/features/store/asyncThunks/transactionsThunks";
 import { Outlet } from "react-router-dom";
+import { fetchAnalyticsData } from "@/features/store/asyncThunks/analyticsDataThunks";
 
 function PageWrap({ children }: { children?: React.ReactNode }) {
   const dispatch = useAppDispatch();
@@ -25,6 +26,7 @@ function PageWrap({ children }: { children?: React.ReactNode }) {
         pageNumber: 1,
       }),
     );
+    dispatch(fetchAnalyticsData());
   }, [dispatch]);
 
   return (

@@ -16,6 +16,7 @@ import { useAppDispatch } from "./features/store/hooks";
 import { useEffect } from "react";
 import { loginUser } from "./features/store/slices/userSlice";
 import { fetchUserData } from "./features/store/asyncThunks/userThunks";
+import AnalyticsPage from "./components/pages/authorized/analyticsPage/AnalyticsPage";
 
 function App() {
   const navigate = useNavigate();
@@ -60,7 +61,7 @@ function App() {
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/transactions" element={<TransactionsPage />} />
             <Route path="/categories" element={<CategoriesPage />} />
-            <Route path="/analytics" element={<>Analytics</>} />
+            <Route path="/analytics" element={<AnalyticsPage />} />
             <Route path="/settings" element={<>Settings</>} />
           </Route>
         </Route>

@@ -1,4 +1,4 @@
-import useRecentTransactions from "@/hooks/useRecentTransactions";
+import useRecentTransactions from "@/hooks/dashboard/useRecentTransactions";
 import { formatToOutputDate } from "@/utils/dateFormatters";
 import RecentTransactionCard from "./recentTransactionCard/RecentTransactionCard";
 

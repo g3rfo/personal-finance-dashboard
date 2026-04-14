@@ -1,6 +1,6 @@
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Loading from "@/components/ui/Loading";
-import useBudgetOverview from "@/hooks/useBudgetOverview";
+import useBudgetOverview from "@/hooks/dashboard/useBudgetOverview";
 import BudgetOverviewContent from "./BudgetOverviewContent";
 import Error from "@/components/ui/Error";
 import DashboardListCard from "../DashboardListCard";

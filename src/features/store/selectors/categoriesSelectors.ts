@@ -1,5 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
+import { CATEGORY_COLORS } from "@/constants/categoryColors";
+import type { ChartConfig } from "@/components/ui/chart";
 
 export const selectCategories = (state: RootState) => {
   return state.categories.categories;
@@ -44,3 +46,45 @@ const makeSelectCategoryById = (id: string) => {
 };
 
 export const selectCategoriesDataToEdit = makeSelectCategoryById;
+
+// Analytics selectors
+export const selectExpenseCategoriesChartData = createSelector(
+  [selectCategories],
+  (categories) => {
+    return categories
+      ?.filter((c) => c.type === "expense")
+      .map((c) => ({
+        category: c.name,
+        color: c.color,
+      }));
+  },
+);
+
+const makeSelectCategoriesPieChartConfigData = (type: "income" | "expense") =>
+  createSelector([selectCategories], (categories) => {
+    return categories
+      ?.filter((c) => c.type === type)
+      .reduce(
+        (acc, c) => {
+          const name = c.name
+            .split(" ")
+            .map((word, index) => {
+              if (index === 0) return word.toLowerCase();
+              return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+            })
+            .join("");
+
+          acc[name] = {
+            label: c.name,
+            color: CATEGORY_COLORS[c.color] || "#ffffff",
+          };
+          return acc;
+        },
+        {} as ChartConfig,
+      );
+  });
+
+export const selectIncomeCategoriesPieChartConfigData =
+  makeSelectCategoriesPieChartConfigData("income");
+export const selectExpenseCategoriesPieChartConfigData =
+  makeSelectCategoriesPieChartConfigData("expense");

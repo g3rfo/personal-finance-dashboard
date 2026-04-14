@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/select";
 import { useAppDispatch } from "@/features/store/hooks";
 import { setCategoryFilter } from "@/features/store/slices/transactionsFilterSlice";
-import useCategoryFilter from "@/hooks/useCategoryFilter";
+import useCategoryFilter from "@/hooks/transactions/useCategoryFilter";
 
 function CategoryFilter() {
   const { category, categories } = useCategoryFilter();

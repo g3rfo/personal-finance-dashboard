@@ -1,4 +1,4 @@
-import type useCategoryForm from "@/hooks/useCategoryForm";
+import type useCategoryForm from "@/hooks/categoryForm/useCategoryForm";
 import { createContext } from "react";
 
 export const CategoryFormContext = createContext<ReturnType<

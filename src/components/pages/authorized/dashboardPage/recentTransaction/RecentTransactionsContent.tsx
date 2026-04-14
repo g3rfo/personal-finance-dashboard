@@ -1,4 +1,4 @@
-import useRecentTransactions from "@/hooks/useRecentTransactions";
+import useRecentTransactions from "@/hooks/dashboard/useRecentTransactions";
 import RecentEmptyTransactions from "./RecentEmptyTransactions";
 import RecentTransactionsList from "./RecentTransactionsList";
 

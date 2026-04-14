@@ -3,6 +3,7 @@ import {
   fetchFilteredTransactions,
 } from "@/features/store/asyncThunks/transactionsThunks";
 import { useAppDispatch, useAppSelector } from "@/features/store/hooks";
+import { updateValueOnTransactionDelete } from "@/features/store/slices/analyticsDataSlice";
 import { setEditTransactionPopupState } from "@/features/store/slices/popupsSlice";
 import { setSelectedTransactionId } from "@/features/store/slices/transactionsSlice";
 
@@ -16,7 +17,7 @@ function useManagerContent() {
   const transactionsLength = transactions.length;
 
   const dispatch = useAppDispatch();
-  
+
   const viewMoreHandler = () => {
     if (!hasNextPage || loading) return;
 
@@ -38,6 +39,12 @@ function useManagerContent() {
 
   const onDeleteHandler = (transactionId: string) => {
     dispatch(deleteTransaction(transactionId));
+    const deletedTransaction = transactions.find(
+      (transaction) => transaction.id === transactionId,
+    );
+    if (deletedTransaction) {
+      dispatch(updateValueOnTransactionDelete(deletedTransaction));
+    }
   };
 
   return {
