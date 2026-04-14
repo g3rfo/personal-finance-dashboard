@@ -10,6 +10,7 @@ function useExpenseCategoriesPieChartData() {
   const expenseCategoriesChartData = useAppSelector(
     selectExpenseCategoriesPieChartConfigData,
   );
+
   const { totalExpenses } = useAppSelector(selectCategoriesAmountsByType);
   const expensesTransactionsValues = useAppSelector(
     selectExpensesTransactionsValues,

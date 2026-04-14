@@ -31,6 +31,29 @@ export const getMonthlyDateBounds = (month?: Date) => {
   return { startDate, nextMonthStartDate };
 };
 
+export const getSixMonthDateBounds = () => {
+  const now = new Date();
+  const startDate = new Date(
+    now.getFullYear(),
+    now.getMonth() - 5,
+    1,
+    0,
+    0,
+    0,
+    0,
+  ).toISOString();
+  const endDate = new Date(
+    now.getFullYear(),
+    now.getMonth() + 1,
+    0,
+    23,
+    59,
+    59,
+    999,
+  ).toISOString();
+  return { startDate, endDate };
+};
+
 export const formatDateForInput = (date: Date | string): string => {
   const dateValue = typeof date === "string" ? new Date(date) : date;
   const year = dateValue.getFullYear();

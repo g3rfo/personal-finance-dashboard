@@ -163,15 +163,6 @@
     },
     {
       "userId": "c5e0",
-      "name": "Last to first",
-      "amount": 3500,
-      "type": "expense",
-      "category": "Rent",
-      "date": "2026-04-04T18:56:35.157Z",
-      "id": "_9KV_mU"
-    },
-    {
-      "userId": "c5e0",
       "name": "try",
       "amount": 10,
       "type": "expense",
@@ -286,6 +277,51 @@
       "amount": 1000,
       "date": "2026-04-13T12:33:31.427Z",
       "id": "JQkEobA"
+    },
+    {
+      "userId": "c5e0",
+      "name": "Rent",
+      "type": "expense",
+      "category": "Rent",
+      "amount": 3000,
+      "date": "2026-02-03T23:19:20.752Z",
+      "id": "ZaJ2-e4"
+    },
+    {
+      "userId": "c5e0",
+      "name": "Temka",
+      "type": "income",
+      "category": "Investment",
+      "amount": 6500,
+      "date": "2025-11-06T23:19:55.008Z",
+      "id": "KDm_ZR9"
+    },
+    {
+      "userId": "c5e0",
+      "name": "Rent",
+      "type": "expense",
+      "category": "Rent",
+      "amount": 3000,
+      "date": "2025-10-15T22:20:19.404Z",
+      "id": "2OscO8W"
+    },
+    {
+      "userId": "c5e0",
+      "name": "Salary",
+      "type": "income",
+      "category": "Salary",
+      "amount": 5000,
+      "date": "2025-12-09T23:41:21.294Z",
+      "id": "cKO85m_"
+    },
+    {
+      "userId": "c5e0",
+      "name": "Investment",
+      "type": "expense",
+      "category": "Rent",
+      "amount": 4000,
+      "date": "2025-10-09T23:21:14.018Z",
+      "id": "iQ942n2"
     }
   ],
   "categories": [
