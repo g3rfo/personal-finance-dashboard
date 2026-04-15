@@ -1,16 +1,20 @@
 import type { User, UserAuthData } from "@/types/user.type";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import { fetchUserData, registerUser } from "../asyncThunks/userThunks";
+import {
+  fetchUserData,
+  registerUser,
+  updateUserData,
+} from "../asyncThunks/userThunks";
 
 const saveUserData = (state: User, user: User) => {
   localStorage.setItem("userData", JSON.stringify(user));
 
-  state.name = user.name;
+  state.fullName = user.fullName;
   state.email = user.email;
 };
 
 const initialState: User = {
-  name: "",
+  fullName: "",
   email: "",
 };
 
@@ -43,7 +47,14 @@ const userSlice = createSlice({
         alert(
           "Registration successful! Please log in with your new credentials.",
         );
-      });
+      })
+      .addCase(
+        updateUserData.fulfilled,
+        (state, action: PayloadAction<User>) => {
+          saveUserData(state, action.payload);
+          alert("User data updated successfully!");
+        },
+      );
   },
 });
 

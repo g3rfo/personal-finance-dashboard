@@ -4,6 +4,7 @@ import type {
   UserServerResponse,
 } from "@/types/user.type";
 import { postDefaultCategories } from "@/utils/postDefaultCategories";
+import { userIdVerification } from "@/utils/userData";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -18,7 +19,7 @@ export const fetchUserData = createAsyncThunk(
       },
     });
 
-    return { name: data.name, email: data.email } as User;
+    return { fullName: data.fullName, email: data.email } as User;
   },
 );
 
@@ -34,5 +35,22 @@ export const registerUser = createAsyncThunk(
     }
 
     await postDefaultCategories(data.id);
+  },
+);
+
+export const updateUserData = createAsyncThunk(
+  "user/updateUserData",
+  async (userData: User) => {
+    const token = localStorage.getItem("token");
+    userIdVerification(token);
+
+    const { data } = await axios.patch<UserServerResponse>(
+      `${apiURL}/users/${token}`,
+      {
+        ...userData,
+      },
+    );
+
+    return { fullName: data.fullName, email: data.email } as User;
   },
 );

@@ -1,33 +1,36 @@
-import { TransactionFormContext } from "@/context/transactionFormContext";
 import { Input } from "../../input";
 import InputCard from "./InputCard";
 import { useContext } from "react";
-import { CategoryFormContext } from "@/context/categoryFormContext";
 import type { FieldValues, UseFormRegister } from "react-hook-form";
+import type { FormContextType } from "@/types/formContext.type";
+import { stringToCamelCase } from "@/utils/stringToCamelCase";
 
 interface NameInputProps {
+  label?: string;
   placeholder: string;
-  context: typeof TransactionFormContext | typeof CategoryFormContext;
+  context: FormContextType;
 }
 
-function NameInput({ context, placeholder }: NameInputProps) {
+function NameInput({ context, placeholder, label }: NameInputProps) {
   const { register } = useContext(
     context as React.Context<{ register: UseFormRegister<FieldValues> } | null>,
   ) as {
     register: UseFormRegister<FieldValues>;
   };
 
+  const formatedLabel = stringToCamelCase(label || "Name");
+
   return (
     <InputCard
-      label="Name"
+      label={label || "Name"}
       context={context}
       children={
         <Input
-          id="name"
+          id={formatedLabel}
           type="text"
           autoComplete="on"
           placeholder={placeholder}
-          {...register("name", {
+          {...register(formatedLabel, {
             required: "Name is required",
             minLength: {
               value: 3,

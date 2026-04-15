@@ -59,7 +59,7 @@ function AuthPage() {
 
       dispatch(
         loginUser({
-          name: data[0].name,
+          fullName: data[0].fullName,
           email: data[0].email,
           token: data[0].id,
         }),

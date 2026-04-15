@@ -63,7 +63,7 @@ function RegistrationPage() {
 
       await dispatch(
         registerUser({
-          name: data.name,
+          fullName: data.fullName,
           email: data.email,
           password: data.password,
         }),
@@ -86,19 +86,19 @@ function RegistrationPage() {
         <FieldGroup className="gap-4">
           <FieldLegend data-variant="title">Registration</FieldLegend>
           <Field>
-            <FieldLabel className="text-md" htmlFor="name">
-              Name
+            <FieldLabel className="text-md" htmlFor="fullName">
+              Full Name
             </FieldLabel>
             <Input
-              id="name"
+              id="fullName"
               type="text"
-              {...register("name", {
-                required: "Name is required",
+              {...register("fullName", {
+                required: "Full name is required",
               })}
             />
-            {errors.name && (
+            {errors.fullName && (
               <FieldDescription className="text-destructive">
-                {errors.name.message}
+                {errors.fullName.message}
               </FieldDescription>
             )}
           </Field>
