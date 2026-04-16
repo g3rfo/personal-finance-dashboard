@@ -54,3 +54,15 @@ export const updateUserData = createAsyncThunk(
     return { fullName: data.fullName, email: data.email } as User;
   },
 );
+
+export const deleteUserData = createAsyncThunk(
+  "user/deleteUserData",
+  async () => {
+    const token = localStorage.getItem("token");
+    userIdVerification(token);
+
+    await axios.delete(`${apiURL}/users/${token}`);
+    console.log("User account deleted successfully");
+  },
+);
+

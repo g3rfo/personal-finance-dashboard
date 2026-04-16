@@ -1,7 +1,21 @@
 import IconFirstButton from "@/components/ui/IconFirstButton";
+import { useAppDispatch } from "@/features/store/hooks";
+import { logoutUser } from "@/features/store/slices/userSlice";
+import useDeleteUser from "@/hooks/accountData/useDeleteUser";
 import { IconLogout2, IconTrash } from "@tabler/icons-react";
+import { useNavigate } from "react-router";
 
 function AccountDataManager() {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    navigate("/auth");
+  };
+
+  const { handleDeleteAccount, pending } = useDeleteUser();
+
   return (
     <div className="mt-3 flex flex-row gap-4">
       <IconFirstButton
@@ -10,7 +24,7 @@ function AccountDataManager() {
         variant="outline"
         className="flex-1"
         onClick={() => {
-          console.log("Logging out...");
+          handleLogout();
         }}
       />
       <IconFirstButton
@@ -19,8 +33,9 @@ function AccountDataManager() {
         variant="destructive"
         className="flex-1 hover:bg-destructive/70"
         onClick={() => {
-          console.log("Deleting account...");
+          handleDeleteAccount();
         }}
+        disabled={pending}
       />
     </div>
   );

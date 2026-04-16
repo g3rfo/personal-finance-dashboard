@@ -5,6 +5,7 @@ import {
   registerUser,
   updateUserData,
 } from "../asyncThunks/userThunks";
+import { resetData } from "@/utils/userData";
 
 const saveUserData = (state: User, user: User) => {
   localStorage.setItem("userData", JSON.stringify(user));
@@ -30,8 +31,7 @@ const userSlice = createSlice({
       }
     },
     logoutUser: () => {
-      localStorage.removeItem("token");
-      localStorage.removeItem("userData");
+      resetData();
       return initialState;
     },
   },
