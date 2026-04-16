@@ -23,18 +23,14 @@ function AccountDataManager() {
         icon={<IconLogout2 />}
         variant="outline"
         className="flex-1"
-        onClick={() => {
-          handleLogout();
-        }}
+        onClick={handleLogout}
       />
       <IconFirstButton
         title="Delete Account"
         icon={<IconTrash />}
         variant="destructive"
         className="flex-1 hover:bg-destructive/70"
-        onClick={() => {
-          handleDeleteAccount();
-        }}
+        onClick={handleDeleteAccount}
         disabled={pending}
       />
     </div>

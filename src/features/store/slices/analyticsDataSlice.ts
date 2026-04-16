@@ -38,6 +38,9 @@ const analyticsDataSlice = createSlice({
   name: "analyticsData",
   initialState,
   reducers: {
+    resetAnalyticsData: () => {
+      return initialState;
+    },
     updateValueOnTransactionAdd: (
       state,
       action: PayloadAction<TransactionData>,
@@ -110,6 +113,7 @@ export const {
   updateValueOnTransactionAdd,
   updateValueOnTransactionDelete,
   updateValueOnTransactionEdit,
+  resetAnalyticsData,
 } = analyticsDataSlice.actions;
 
 export default analyticsDataSlice.reducer;

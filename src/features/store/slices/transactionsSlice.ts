@@ -5,6 +5,7 @@ import type {
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import {
   addTransaction,
+  deleteAllTransactions,
   deleteTransaction,
   fetchFilteredTransactions,
   fetchMonthlyTransactions,
@@ -380,6 +381,11 @@ const transactionsSlice = createSlice({
           state,
           action.error?.message || "Failed to update transaction",
         );
+      })
+
+      // deleteAllTransactions
+      .addCase(deleteAllTransactions.fulfilled, () => {
+        return initialState;
       });
   },
 });

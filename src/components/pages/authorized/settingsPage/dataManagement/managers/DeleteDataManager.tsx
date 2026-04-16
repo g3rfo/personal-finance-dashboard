@@ -1,7 +1,10 @@
 import { IconTrash } from "@tabler/icons-react";
 import ManagerCard from "../ManagerCard";
+import useDeleteData from "@/hooks/accountData/useDeleteData";
 
 function DeleteManagerData() {
+  const { handleDeleteData, pending } = useDeleteData();
+
   return (
     <ManagerCard
       cardTitle="Delete Data"
@@ -12,9 +15,8 @@ function DeleteManagerData() {
         title: "Delete",
         variant: "destructive",
         className: "w-24 hover:bg-destructive/70",
-        onClick: () => {
-          console.log("Deleting data...");
-        },
+        onClick: () => handleDeleteData(),
+        disabled: pending,
       }}
     />
   );

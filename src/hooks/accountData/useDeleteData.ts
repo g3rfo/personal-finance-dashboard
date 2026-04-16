@@ -1,38 +1,37 @@
 import { deleteAllCategories } from "@/features/store/asyncThunks/categoriesThunks";
 import { deleteAllTransactions } from "@/features/store/asyncThunks/transactionsThunks";
-import { deleteUserData } from "@/features/store/asyncThunks/userThunks";
 import { useAppDispatch } from "@/features/store/hooks";
-import { resetData, userIdVerification } from "@/utils/userData";
+import { resetAnalyticsData } from "@/features/store/slices/analyticsDataSlice";
+import { userIdVerification } from "@/utils/userData";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function useDeleteUser() {
+function useDeleteData() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const userId = localStorage.getItem("token");
 
   const [pending, setPending] = useState<boolean>(false);
 
-  const handleDeleteAccount = async () => {
+  const handleDeleteData = async () => {
     try {
       setPending(true);
       userIdVerification(userId);
 
-      await dispatch(deleteUserData());
       await dispatch(deleteAllTransactions(userId || "")).unwrap();
       await dispatch(deleteAllCategories(userId || "")).unwrap();
 
-      resetData();
-      navigate("/auth");
+      dispatch(resetAnalyticsData());
+      navigate("/dashboard");
     } catch (error) {
-      console.error("Error deleting user account:", error);
-      alert("An error occurred while deleting your account. Please try again.");
+      console.error("Error deleting user data:", error);
+      alert("An error occurred while deleting your data. Please try again.");
     } finally {
       setPending(false);
     }
   };
 
-  return { handleDeleteAccount, pending };
+  return { handleDeleteData, pending };
 }
 
-export default useDeleteUser;
+export default useDeleteData;
