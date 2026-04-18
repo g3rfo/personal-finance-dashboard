@@ -6,12 +6,14 @@ export interface IconFirstButtonProps extends React.ComponentProps<
 > {
   title?: string;
   icon?: React.ReactNode;
+  children?: React.ReactNode;
 }
 
-function IconFirstButton({ title, icon, ...props }: IconFirstButtonProps) {
+function IconFirstButton({ title, icon, children, ...props }: IconFirstButtonProps) {
   return (
     <Button {...props}>
       {icon || <IconPlus />} {title || ""}
+      {children || null}
     </Button>
   );
 }
