@@ -1,7 +1,10 @@
 import { IconDownload } from "@tabler/icons-react";
 import ManagerCard from "../ManagerCard";
+import useExportData from "@/hooks/accountData/useExportData";
 
 function ExportDataManager() {
+  const { pending, exportData } = useExportData();
+
   return (
     <ManagerCard
       cardTitle="Export Data"
@@ -12,8 +15,9 @@ function ExportDataManager() {
         variant: "outline",
         className: "w-24",
         onClick: () => {
-          console.log("Exporting data...");
+          exportData();
         },
+        disabled: pending,
       }}
     />
   );
