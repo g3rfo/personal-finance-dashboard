@@ -1,13 +1,13 @@
-import RecentEmptyTransactions from "./RecentEmptyTransactions";
 import RecentTransactionsList from "./RecentTransactionsList";
 import { useContext } from "react";
 import { RecentTransactionsContext } from "@/context/recentTransactionsContext";
+import Empty from "@/components/ui/Empty";
 
 function RecentTransactionsContent() {
   const { transactionsLength } = useContext(RecentTransactionsContext) || {};
 
   if (transactionsLength === 0) {
-    return <RecentEmptyTransactions />;
+    return <Empty message="No transactions yet" />;
   }
 
   return <RecentTransactionsList />;

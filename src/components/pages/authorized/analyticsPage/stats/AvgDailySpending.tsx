@@ -4,7 +4,7 @@ import { useAppSelector } from "@/features/store/hooks";
 import { selectAvgDailySpending } from "@/features/store/selectors/transactionsSelectors";
 
 function AvgDailySpending() {
-  const avgDailySpending = useAppSelector(selectAvgDailySpending); // Placeholder value, replace with actual selector
+  const avgDailySpending = useAppSelector(selectAvgDailySpending);
 
   return (
     <StatsCard

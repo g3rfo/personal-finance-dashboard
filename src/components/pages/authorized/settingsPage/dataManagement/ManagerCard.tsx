@@ -22,7 +22,9 @@ function ManagerCard({
   buttonProps,
 }: ManagerCardProps) {
   return (
-    <Card className={`flex-row justify-between items-center py-4 ${className || ""}`}>
+    <Card
+      className={`flex-row justify-between items-center py-4 ${className || ""}`}
+    >
       <CardHeader className="flex-1 gap-1">
         <CardTitle>{cardTitle}</CardTitle>
         <CardDescription>{description}</CardDescription>

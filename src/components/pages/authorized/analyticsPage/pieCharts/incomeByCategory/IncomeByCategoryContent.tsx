@@ -5,6 +5,7 @@ import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
 import useIncomeCategoriesPieChartData from "@/hooks/analytics/useIncomeCategoriesPieChartData";
 import useIncomeCategoriesPieChartConfig from "@/hooks/analytics/useIncomeCategoriesPieChartConfig";
+import Empty from "@/components/ui/Empty";
 
 function IncomeByCategoryContent() {
   const { loading, error } = useContext(AnalyticsContext);
@@ -22,11 +23,7 @@ function IncomeByCategoryContent() {
   }
 
   if (chartData.length === 0) {
-    return (
-      <div className="flex h-full items-center justify-center">
-        No income data available
-      </div>
-    );
+    return <Empty message="No income data available" />;
   }
 
   return (

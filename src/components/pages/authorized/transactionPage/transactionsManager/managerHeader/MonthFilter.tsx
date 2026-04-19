@@ -34,7 +34,10 @@ function MonthFilter() {
 
   return (
     <div className="flex items-center gap-2">
-      <FieldLabel htmlFor="month-filter" className="text-sm font-medium text-gray-700">
+      <FieldLabel
+        htmlFor="month-filter"
+        className="text-sm font-medium text-gray-700"
+      >
         Month
       </FieldLabel>
       <InputGroup className="w-full">
