@@ -5,7 +5,10 @@ import { Avatar, AvatarImage } from "../ui/avatar";
 function Logo() {
   return (
     <Outline className="p-6.25">
-      <Link to="/dashboard" className="w-full flex justify-start gap-3 items-center box-border cursor-pointer">
+      <Link
+        to="/dashboard"
+        className="w-full flex justify-start gap-3 items-center box-border cursor-pointer"
+      >
         <Avatar size="lg">
           <AvatarImage src="/images/logo.png" alt="Logo" />
         </Avatar>

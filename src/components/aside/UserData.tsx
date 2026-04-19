@@ -4,12 +4,14 @@ import AvatarComponent from "../ui/AvatarComponent";
 import { Link } from "react-router-dom";
 
 function UserData() {
-  const fullName = useAppSelector((state) => state.user.fullName);
-  const email = useAppSelector((state) => state.user.email);
+  const { fullName, email } = useAppSelector((state) => state.user);
 
   return (
     <Outline className="p-6.25">
-      <Link to="/settings" className="w-full flex justify-start gap-3 items-center box-border cursor-pointer">
+      <Link
+        to="/settings"
+        className="w-full flex justify-start gap-3 items-center box-border cursor-pointer"
+      >
         <AvatarComponent />
         <div>
           <h3 className="font-medium">{fullName}</h3>
