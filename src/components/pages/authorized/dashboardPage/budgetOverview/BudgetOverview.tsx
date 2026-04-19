@@ -4,9 +4,12 @@ import useBudgetOverview from "@/hooks/dashboard/useBudgetOverview";
 import BudgetOverviewContent from "./BudgetOverviewContent";
 import Error from "@/components/ui/Error";
 import DashboardListCard from "../DashboardListCard";
+import { BudgetOverviewContext } from "@/context/budgetOverviewContext";
 
 function BudgetOverview() {
-  const { loading, error } = useBudgetOverview();
+  const context = useBudgetOverview();
+  const Provider = BudgetOverviewContext.Provider;
+  const { loading, error } = context;
 
   return (
     <DashboardListCard
@@ -16,11 +19,13 @@ function BudgetOverview() {
         </CardHeader>
       }
       content={
-        <CardContent className="flex flex-col gap-2 px-2">
-          {loading && <Loading />}
-          {error && <Error message={error} />}
-          {!loading && !error && <BudgetOverviewContent />}
-        </CardContent>
+        <Provider value={context}>
+          <CardContent className="flex flex-col gap-2 px-2">
+            {loading && <Loading />}
+            {error && <Error message={error} />}
+            {!loading && !error && <BudgetOverviewContent />}
+          </CardContent>
+        </Provider>
       }
     />
   );
