@@ -5,23 +5,25 @@ import useRecentTransactions from "@/hooks/dashboard/useRecentTransactions";
 import RecentTransactionsHeader from "./RecentTransactionsHeader";
 import RecentTransactionsContent from "./RecentTransactionsContent";
 import DashboardListCard from "../DashboardListCard";
+import { RecentTransactionsContext } from "@/context/recentTransactionsContext";
 
 function RecentTransactions() {
-  const { loading, error, viewMoreHandler, hasNextPage } =
-    useRecentTransactions();
+  const context = useRecentTransactions();
+  const Provider = RecentTransactionsContext.Provider;
+  const { loading, error, viewMoreHandler, hasNextPage } = context;
 
   return (
     <DashboardListCard
       header={<RecentTransactionsHeader />}
       content={
-        <>
+        <Provider value={context}>
           {loading && <Loading />}
           {error && <Error message={error} />}
           {!loading && !error && <RecentTransactionsContent />}
           {hasNextPage && !loading && !error && (
             <ViewMore viewMoreHandler={viewMoreHandler} />
           )}
-        </>
+        </Provider>
       }
     />
   );
