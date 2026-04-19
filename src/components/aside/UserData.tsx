@@ -1,6 +1,7 @@
 import { useAppSelector } from "@/features/store/hooks";
 import Outline from "../ui/Outline";
 import AvatarComponent from "../ui/AvatarComponent";
+import { Link } from "react-router-dom";
 
 function UserData() {
   const fullName = useAppSelector((state) => state.user.fullName);
@@ -8,13 +9,13 @@ function UserData() {
 
   return (
     <Outline className="p-6.25">
-      <div className="w-full flex justify-start gap-3 items-center box-border">
+      <Link to="/settings" className="w-full flex justify-start gap-3 items-center box-border cursor-pointer">
         <AvatarComponent />
         <div>
           <h3 className="font-medium">{fullName}</h3>
           <p className="text-sm text-muted-foreground">{email}</p>
         </div>
-      </div>
+      </Link>
     </Outline>
   );
 }
