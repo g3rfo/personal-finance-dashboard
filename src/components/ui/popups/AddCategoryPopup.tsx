@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "@/features/store/hooks";
 import CategoryFormContent from "../forms/categoryForm/CategoryFormContent";
-import HeaderPopupTriggerButton from "../HeaderPopupTriggerButton";
+import IconFirstButton from "../IconFirstButton";
 import Popup from "../Popup";
 import { setAddCategoryPopupState } from "@/features/store/slices/popupsSlice";
 
@@ -15,7 +15,7 @@ function AddCategoryPopup() {
       open={addCategory}
       onOpenChange={changeState}
       trigger={
-        <HeaderPopupTriggerButton
+        <IconFirstButton
           title="Add Category"
           onClick={() => dispatch(setAddCategoryPopupState(true))}
         />

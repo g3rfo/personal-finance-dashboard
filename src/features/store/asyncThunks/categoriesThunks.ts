@@ -57,3 +57,19 @@ export const updateCategory = createAsyncThunk(
     return data;
   },
 );
+
+export const deleteAllCategories = createAsyncThunk(
+  "categories/deleteAllCategories",
+  async (userId: string) => {
+    const { data } = await axios.get(`${apiURL}/categories`, {
+      params: { userId },
+    });
+
+    for (const category of data) {
+      await axios.delete(`${apiURL}/categories/${category.id}`);
+    }
+
+    console.log("All categories deleted successfully");
+    return;
+  },
+);

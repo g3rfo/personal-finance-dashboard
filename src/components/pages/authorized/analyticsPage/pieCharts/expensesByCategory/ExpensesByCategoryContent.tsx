@@ -21,6 +21,14 @@ function ExpensesByCategoryContent() {
     return <Loading />;
   }
 
+  if (chartData.length === 0) {
+    return (
+      <div className="flex h-full items-center justify-center">
+        No expense data available
+      </div>
+    );
+  }
+
   return (
     <PieChartComponent
       chartConfig={chartConfig}

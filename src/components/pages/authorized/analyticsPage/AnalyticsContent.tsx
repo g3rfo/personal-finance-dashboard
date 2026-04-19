@@ -10,6 +10,7 @@ import ExpensesByCategory from "./pieCharts/expensesByCategory/ExpensesByCategor
 
 function AnalyticsContent() {
   const { analyticsData } = useAnalyticsContent();
+  
   const Provider = AnalyticsContext.Provider;
 
   return (

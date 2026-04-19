@@ -3,24 +3,24 @@
     {
       "id": "1",
       "email": "user@example.com",
-      "name": "John Doe",
+      "fullName": "John Doe",
       "password": "password123"
     },
     {
       "id": "e4bd",
-      "name": "user2",
+      "fullName": "user2",
       "email": "user2@example.com",
       "password": "password123"
     },
     {
       "id": "c5e0",
-      "name": "user3",
-      "email": "user3@example.com",
+      "fullName": "Rozhchenko Ivan",
+      "email": "rozhchenkoivan@gmail.com",
       "password": "password123"
     },
     {
       "id": "a117",
-      "name": "user4",
+      "fullName": "user4",
       "email": "user4@example.com",
       "password": "password123"
     }
@@ -163,15 +163,6 @@
     },
     {
       "userId": "c5e0",
-      "name": "Last to first",
-      "amount": 3500,
-      "type": "expense",
-      "category": "Rent",
-      "date": "2026-04-04T18:56:35.157Z",
-      "id": "_9KV_mU"
-    },
-    {
-      "userId": "c5e0",
       "name": "try",
       "amount": 10,
       "type": "expense",
@@ -250,6 +241,87 @@
       "amount": 20,
       "date": "2026-04-07T18:30:08.852Z",
       "id": "qGEK7o9"
+    },
+    {
+      "userId": "c5e0",
+      "name": "New pants",
+      "type": "expense",
+      "category": "Shopping",
+      "amount": 125,
+      "date": "2026-04-13T10:01:34.825Z",
+      "id": "jN9dUzW"
+    },
+    {
+      "userId": "c5e0",
+      "name": "Gym",
+      "type": "expense",
+      "category": "Entertainment",
+      "amount": 200,
+      "date": "2026-04-13T11:44:15.865Z",
+      "id": "P38vrjB"
+    },
+    {
+      "userId": "c5e0",
+      "name": "Salary",
+      "type": "income",
+      "category": "Salary",
+      "amount": 4000,
+      "date": "2026-04-13T12:33:19.714Z",
+      "id": "BG-Z_08"
+    },
+    {
+      "userId": "c5e0",
+      "name": "Investing",
+      "type": "income",
+      "category": "Investment",
+      "amount": 1000,
+      "date": "2026-04-13T12:33:31.427Z",
+      "id": "JQkEobA"
+    },
+    {
+      "userId": "c5e0",
+      "name": "Rent",
+      "type": "expense",
+      "category": "Rent",
+      "amount": 3000,
+      "date": "2026-02-03T23:19:20.752Z",
+      "id": "ZaJ2-e4"
+    },
+    {
+      "userId": "c5e0",
+      "name": "Temka",
+      "type": "income",
+      "category": "Investment",
+      "amount": 6500,
+      "date": "2025-11-06T23:19:55.008Z",
+      "id": "KDm_ZR9"
+    },
+    {
+      "userId": "c5e0",
+      "name": "Rent",
+      "type": "expense",
+      "category": "Rent",
+      "amount": 3000,
+      "date": "2025-10-15T22:20:19.404Z",
+      "id": "2OscO8W"
+    },
+    {
+      "userId": "c5e0",
+      "name": "Salary",
+      "type": "income",
+      "category": "Salary",
+      "amount": 5000,
+      "date": "2025-12-09T23:41:21.294Z",
+      "id": "cKO85m_"
+    },
+    {
+      "userId": "c5e0",
+      "name": "Investment",
+      "type": "expense",
+      "category": "Rent",
+      "amount": 4000,
+      "date": "2025-10-09T23:21:14.018Z",
+      "id": "iQ942n2"
     }
   ],
   "categories": [

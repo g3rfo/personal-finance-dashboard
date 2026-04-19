@@ -2,6 +2,7 @@ import type { Category } from "@/types/category.type";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import {
   addCategory,
+  deleteAllCategories,
   deleteCategory,
   fetchCategories,
   updateCategory,
@@ -101,6 +102,11 @@ const categoriesSlice = createSlice({
       )
       .addCase(updateCategory.rejected, (state, action) => {
         state.error = action.error.message || "Failed to update category";
+      })
+
+      // deleteAllCategories
+      .addCase(deleteAllCategories.fulfilled, () => {
+        return initialState;
       });
   },
 });

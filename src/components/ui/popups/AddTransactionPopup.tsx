@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "@/features/store/hooks";
 import TransactionFormContent from "../forms/transactionForm/TransactionFormContent";
-import HeaderPopupTriggerButton from "../HeaderPopupTriggerButton";
+import IconFirstButton from "../IconFirstButton";
 import Popup from "../Popup";
 import { setAddTransactionPopupState } from "@/features/store/slices/popupsSlice";
 
@@ -12,7 +12,7 @@ function AddTransactionPopup() {
     <Popup
       open={addTransaction}
       trigger={
-        <HeaderPopupTriggerButton
+        <IconFirstButton
           title="Add Transaction"
           onClick={() => dispatch(setAddTransactionPopupState(true))}
         />

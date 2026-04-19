@@ -17,6 +17,7 @@ import { useEffect } from "react";
 import { loginUser } from "./features/store/slices/userSlice";
 import { fetchUserData } from "./features/store/asyncThunks/userThunks";
 import AnalyticsPage from "./components/pages/authorized/analyticsPage/AnalyticsPage";
+import SettingsPage from "./components/pages/authorized/settingsPage/SettingsPage";
 
 function App() {
   const navigate = useNavigate();
@@ -62,7 +63,7 @@ function App() {
             <Route path="/transactions" element={<TransactionsPage />} />
             <Route path="/categories" element={<CategoriesPage />} />
             <Route path="/analytics" element={<AnalyticsPage />} />
-            <Route path="/settings" element={<>Settings</>} />
+            <Route path="/settings" element={<SettingsPage />} />
           </Route>
         </Route>
         <Route>

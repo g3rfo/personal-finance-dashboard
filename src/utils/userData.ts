@@ -29,7 +29,6 @@ export const resetData = () => {
 export const userIdVerification = (userId: string | null) => {
   if (!userId || typeof userId !== "string") {
     resetData();
-    alert("User authentication failed. Please log in again.");
     throw new Error("User verification failed");
   }
 };

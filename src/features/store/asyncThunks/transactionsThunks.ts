@@ -162,3 +162,19 @@ export const updateTransaction = createAsyncThunk(
     return data;
   },
 );
+
+export const deleteAllTransactions = createAsyncThunk(
+  "transactions/deleteAllTransactions",
+  async (userId: string) => {
+    const { data } = await axios.get(`${apiURL}/transactions`, {
+      params: { userId },
+    });
+
+    for (const transaction of data) {
+      await axios.delete(`${apiURL}/transactions/${transaction.id}`);
+    }
+
+    console.log("All transactions deleted successfully");
+    return;
+  },
+);
