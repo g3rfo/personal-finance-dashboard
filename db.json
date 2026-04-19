@@ -23,6 +23,12 @@
       "fullName": "user4",
       "email": "user4@example.com",
       "password": "password123"
+    },
+    {
+      "fullName": "user",
+      "email": "user5@example.com",
+      "password": "password123",
+      "id": "5AewLeY"
     }
   ],
   "transactions": [
@@ -486,6 +492,168 @@
       "iconName": "investments",
       "color": "aquagreen",
       "userId": "c5e0"
+    },
+    {
+      "userId": "7QNqLT-",
+      "name": "Food & Dinning",
+      "budget": 600,
+      "type": "expense",
+      "iconName": "food",
+      "color": "orange",
+      "id": "KyWnx0f"
+    },
+    {
+      "userId": "7QNqLT-",
+      "name": "Shopping",
+      "budget": 400,
+      "type": "expense",
+      "iconName": "shopping",
+      "color": "pink",
+      "id": "HNRYScf"
+    },
+    {
+      "userId": "7QNqLT-",
+      "name": "Rent",
+      "budget": 1200,
+      "type": "expense",
+      "iconName": "housing",
+      "color": "red",
+      "id": "FgD7MT-"
+    },
+    {
+      "userId": "7QNqLT-",
+      "name": "Entertainment",
+      "budget": 200,
+      "type": "expense",
+      "iconName": "entertainment",
+      "color": "sky",
+      "id": "J8_ACra"
+    },
+    {
+      "userId": "7QNqLT-",
+      "name": "Education",
+      "budget": 300,
+      "type": "expense",
+      "iconName": "education",
+      "color": "blue",
+      "id": "5exRmx2"
+    },
+    {
+      "userId": "7QNqLT-",
+      "name": "HealthCare",
+      "budget": 150,
+      "type": "expense",
+      "iconName": "healthcare",
+      "color": "pinkred",
+      "id": "3Pjm2vi"
+    },
+    {
+      "userId": "7QNqLT-",
+      "name": "Transportation",
+      "budget": 300,
+      "type": "expense",
+      "iconName": "transport",
+      "color": "purple",
+      "id": "Dy8b4lH"
+    },
+    {
+      "userId": "7QNqLT-",
+      "name": "Salary",
+      "budget": 0,
+      "type": "income",
+      "iconName": "savings",
+      "color": "green",
+      "id": "E8-7LjQ"
+    },
+    {
+      "userId": "7QNqLT-",
+      "name": "Investment",
+      "budget": 0,
+      "type": "income",
+      "iconName": "investments",
+      "color": "aquagreen",
+      "id": "OJS-qoO"
+    },
+    {
+      "userId": "5AewLeY",
+      "name": "Food & Dinning",
+      "budget": 600,
+      "type": "expense",
+      "iconName": "food",
+      "color": "orange",
+      "id": "0B4smhF"
+    },
+    {
+      "userId": "5AewLeY",
+      "name": "Shopping",
+      "budget": 400,
+      "type": "expense",
+      "iconName": "shopping",
+      "color": "pink",
+      "id": "CQ634Nc"
+    },
+    {
+      "userId": "5AewLeY",
+      "name": "Rent",
+      "budget": 1200,
+      "type": "expense",
+      "iconName": "housing",
+      "color": "red",
+      "id": "3FoLQpo"
+    },
+    {
+      "userId": "5AewLeY",
+      "name": "Entertainment",
+      "budget": 200,
+      "type": "expense",
+      "iconName": "entertainment",
+      "color": "sky",
+      "id": "kjGuGyg"
+    },
+    {
+      "userId": "5AewLeY",
+      "name": "Education",
+      "budget": 300,
+      "type": "expense",
+      "iconName": "education",
+      "color": "blue",
+      "id": "AxodwtF"
+    },
+    {
+      "userId": "5AewLeY",
+      "name": "HealthCare",
+      "budget": 150,
+      "type": "expense",
+      "iconName": "healthcare",
+      "color": "pinkred",
+      "id": "2MBj0bl"
+    },
+    {
+      "userId": "5AewLeY",
+      "name": "Transportation",
+      "budget": 300,
+      "type": "expense",
+      "iconName": "transport",
+      "color": "purple",
+      "id": "G1MxsBy"
+    },
+    {
+      "userId": "5AewLeY",
+      "name": "Salary",
+      "budget": 0,
+      "type": "income",
+      "iconName": "savings",
+      "color": "green",
+      "id": "FBT0VXa"
+    },
+    {
+      "userId": "5AewLeY",
+      "name": "Investment",
+      "budget": 0,
+      "type": "income",
+      "iconName": "investments",
+      "color": "aquagreen",
+      "id": "ScOeozO"
     }
   ]
 }

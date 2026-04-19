@@ -87,7 +87,7 @@ function useProfileForm() {
 
   const handleFormSubmit = handleSubmit(onSubmit, onInvalid);
 
-  return { register, handleSubmit, errors, pending, handleFormSubmit };
+  return { register, errors, pending, handleFormSubmit };
 }
 
 export default useProfileForm;

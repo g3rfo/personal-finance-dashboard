@@ -18,9 +18,9 @@ function ProfileForm() {
           <AvatarComponent size="form" />
         </div>
         <NameInput
+          label="Full Name"
           placeholder="Enter your full name"
           context={ProfileFormContext}
-          label="Full Name"
         />
         <EmailInput context={ProfileFormContext} />
         <div className="flex">

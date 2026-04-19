@@ -17,7 +17,6 @@ function CategoryForm() {
       <form onSubmit={contextValue.handleFormSubmit} className="space-y-6">
         <FieldSeparator />
         <NameInput
-          label="Category Name"
           placeholder="Enter category name"
           context={CategoryFormContext}
         />
