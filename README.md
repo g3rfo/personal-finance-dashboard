@@ -36,32 +36,32 @@
 <h2>Screenshots</h2>
 
 <ul>
-  <li><strong>Dashboard</strong></li>
-  <img src="./screenshots/DashboardPage.png" width="100%" />
+  <li><strong>Dashboard</strong></li><br>
+  <img src="public/screenshots/DashboardPage.png" width="100%" />
   <br><br>
 
-  <li><strong>Transactions</strong></li>
-  <img src="./screenshots/TransactionPage.png" width="100%" />
+  <li><strong>Transactions</strong></li><br>
+  <img src="public/screenshots/TransactionsPage.png" width="100%" />
   <br><br>
 
-  <li><strong>Categories</strong></li>
-  <img src="./screenshots/CategoriesPage.png" width="100%" />
+  <li><strong>Categories</strong></li><br>
+  <img src="public/screenshots/CategoriesPage.png" width="100%" />
   <br><br>
 
-  <li><strong>Analytics</strong></li>
-  <img src="./screenshots/AnalyticsPage.png" width="100%" />
+  <li><strong>Analytics</strong></li><br>
+  <img src="public/screenshots/AnalyticsPage.png" width="100%" />
   <br><br>
 
-  <li><strong>Settings</strong></li>
-  <img src="./screenshots/SettingsPage.png" width="100%" />
+  <li><strong>Settings</strong></li><br>
+  <img src="public/screenshots/SettingsPage.png" width="100%" />
   <br><br>
 
-  <li><strong>Add Transaction</strong></li>
-  <img src="./screenshots/AddTransaction.png" width="100%" />
+  <li><strong>Add Transaction</strong></li><br>
+  <img src="public/screenshots/AddTransaction.png" width="100%" />
   <br><br>
 
-  <li><strong>Add Category</strong></li>
-  <img src="./screenshots/AddCategory.png" width="100%" />
+  <li><strong>Add Category</strong></li><br>
+  <img src="public/screenshots/AddCategory.png" width="100%" />
 </ul>
 
 <br>
