@@ -1,5 +1,5 @@
 import { useAppDispatch } from "@/features/store/hooks";
-import { Button } from "./button";
+import { Button } from "../button";
 import { resetPopupsState } from "@/features/store/slices/popupsSlice";
 import { XIcon } from "lucide-react";
 

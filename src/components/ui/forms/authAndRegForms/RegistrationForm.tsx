@@ -1,10 +1,10 @@
 import EmailInput from "../inputs/EmailInput";
-import SubmitButton from "../../SubmitButton";
 import PasswordInput from "../inputs/PasswordInput";
 import useRegistrationForm from "@/hooks/authAndRegForms/useRegistrationForm";
-import { RegistrationFormContext } from "@/context/registrationFormContext";
+import { RegistrationFormContext } from "@/context/forms/registrationFormContext";
 import NameInput from "../inputs/NameInput";
 import ConfirmPasswordInput from "../inputs/SubmitPasswordInput";
+import SubmitButton from "../../custom/SubmitButton";
 
 function RegistrationForm() {
   const contextValue = useRegistrationForm();

@@ -5,14 +5,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import IconFirstButton from "@/components/ui/IconFirstButton";
-import IconFirstButtonProps from "@/components/ui/IconFirstButton";
+import IconFirstButton from "@/components/ui/custom/IconFirstButton";
+import { type IconFirstButtonProps } from "@/components/ui/custom/IconFirstButton";
 
 interface ManagerCardProps {
   cardTitle: string;
   description: string;
   className?: string;
-  buttonProps?: React.ComponentProps<typeof IconFirstButtonProps>;
+  buttonProps?: IconFirstButtonProps;
 }
 
 function ManagerCard({

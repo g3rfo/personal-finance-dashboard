@@ -1,9 +1,9 @@
-import { CategoryFormContext } from "@/context/categoryFormContext";
+import { CategoryFormContext } from "@/context/forms/categoryFormContext";
 import type useCategoryForm from "@/hooks/categoryForm/useCategoryForm";
 import { useContext } from "react";
 import { Field } from "../../field";
-import DialogCloseButton from "../../DialogCloseButton";
-import SubmitButton from "../../SubmitButton";
+import DialogCloseButton from "../../custom/DialogCloseButton";
+import SubmitButton from "../../custom/SubmitButton";
 
 function FormHandleButtons() {
   const { pending, formSubmitButtonMessage } = useContext(

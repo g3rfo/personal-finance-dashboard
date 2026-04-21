@@ -1,6 +1,6 @@
 import { useAppSelector } from "@/features/store/hooks";
 import CategoryFormContent from "../forms/categoryForm/CategoryFormContent";
-import Popup from "../Popup";
+import Popup from "../custom/Popup";
 
 function EditCategoryPopup() {
   const { editCategory } = useAppSelector((state) => state.popups);

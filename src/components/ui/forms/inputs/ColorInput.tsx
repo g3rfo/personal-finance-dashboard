@@ -1,4 +1,4 @@
-import { CategoryFormContext } from "@/context/categoryFormContext";
+import { CategoryFormContext } from "@/context/forms/categoryFormContext";
 import type useCategoryForm from "@/hooks/categoryForm/useCategoryForm";
 import { useContext } from "react";
 import InputCard from "./InputCard";
@@ -38,7 +38,7 @@ function ColorInput() {
                       aria-label={`Choose ${key} icon`}
                       className={`box-border flex justify-center items-center size-16 rounded-xl border-2 shadow-xs **:data-[slot=radio-group-indicator]:hidden data-[state=checked]:border-[#000000]/40`}
                       style={{ backgroundColor: `${color}` }}
-                    ></RadioGroupItem>
+                    />
                   </div>
                 );
               })}

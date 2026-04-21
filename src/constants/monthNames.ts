@@ -11,9 +11,9 @@ export const MONTH_NAMES = [
   "Oct",
   "Nov",
   "Dec",
-];
+] as const;
 
-export const fullMonthNames = [
+export const FULL_MONTH_NAMES = [
   "January",
   "February",
   "March",
@@ -26,4 +26,4 @@ export const fullMonthNames = [
   "October",
   "November",
   "December",
-];
+] as const;

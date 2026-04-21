@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import PieChartComponent from "../PieChartComponent";
 import { AnalyticsContext } from "@/context/analyticsContext";
-import Loading from "@/components/ui/Loading";
-import Error from "@/components/ui/Error";
+import Loading from "@/components/ui/custom/Loading";
+import Error from "@/components/ui/custom/Error";
 import useIncomeCategoriesPieChartData from "@/hooks/analytics/useIncomeCategoriesPieChartData";
 import useIncomeCategoriesPieChartConfig from "@/hooks/analytics/useIncomeCategoriesPieChartConfig";
-import Empty from "@/components/ui/Empty";
+import Empty from "@/components/ui/custom/Empty";
 
 function IncomeByCategoryContent() {
   const { loading, error } = useContext(AnalyticsContext);

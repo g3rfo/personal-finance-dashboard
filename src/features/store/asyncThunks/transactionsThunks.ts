@@ -15,13 +15,14 @@ const apiURL = import.meta.env.VITE_SERVER_URL;
 export const fetchTransactions = createAsyncThunk(
   "transactions/fetchTransactions",
   async (pageNumber: number) => {
-    userIdVerification(localStorage.getItem("token"));
+    const userId = localStorage.getItem("token");
+    userIdVerification(userId);
 
     const { data, headers } = await axios.get<Transaction[]>(
       `${apiURL}/transactions`,
       {
         params: {
-          userId: localStorage.getItem("token") || "",
+          userId: userId,
           _page: pageNumber,
           _limit: TRANSACTIONS_PER_PAGE,
           _sort: "date",
@@ -29,7 +30,7 @@ export const fetchTransactions = createAsyncThunk(
         },
       },
     );
-
+    console.log("Fetched transactions:", data);
     const total = Number(headers["x-total-count"]);
     return {
       transactions: data,
@@ -43,7 +44,7 @@ export const fetchMonthlyTransactions = createAsyncThunk(
   "transactions/fetchMonthlyTransactions",
   async () => {
     const userId = localStorage.getItem("token");
-    userIdVerification(localStorage.getItem("token"));
+    userIdVerification(userId);
     const { startDate, nextMonthStartDate } = getMonthlyDateBounds();
 
     const { data } = await axios.get<Transaction[]>(`${apiURL}/transactions`, {
@@ -54,7 +55,7 @@ export const fetchMonthlyTransactions = createAsyncThunk(
       },
     });
 
-    return data as Transaction[];
+    return data;
   },
 );
 
@@ -73,10 +74,11 @@ export const fetchFilteredTransactions = createAsyncThunk(
     type: string;
     pageNumber: number;
   }) => {
-    userIdVerification(localStorage.getItem("token"));
+    const userId = localStorage.getItem("token");
+    userIdVerification(userId);
 
     const params: Record<string, string | number> = {
-      userId: localStorage.getItem("token") || "",
+      userId: userId || "",
       _page: pageNumber,
       _limit: TRANSACTIONS_PER_PAGE,
       _sort: "date",
@@ -119,7 +121,8 @@ export const fetchFilteredTransactions = createAsyncThunk(
 export const addTransaction = createAsyncThunk(
   "transactions/addTransaction",
   async (transactionData: TransactionData) => {
-    userIdVerification(localStorage.getItem("token"));
+    const userId = localStorage.getItem("token");
+    userIdVerification(userId);
 
     const { data } = await axios.post<Transaction>(
       `${apiURL}/transactions`,
@@ -137,7 +140,8 @@ export const addTransaction = createAsyncThunk(
 export const deleteTransaction = createAsyncThunk(
   "transactions/deleteTransaction",
   async (transactionId: string) => {
-    userIdVerification(localStorage.getItem("token"));
+    const userId = localStorage.getItem("token");
+    userIdVerification(userId);
 
     await axios.delete(`${apiURL}/transactions/${transactionId}`);
 
@@ -148,7 +152,8 @@ export const deleteTransaction = createAsyncThunk(
 export const updateTransaction = createAsyncThunk(
   "transactions/updateTransaction",
   async (transactionData: Transaction) => {
-    userIdVerification(localStorage.getItem("token"));
+    const userId = localStorage.getItem("token");
+    userIdVerification(userId);
 
     const { data } = await axios.patch<Transaction>(
       `${apiURL}/transactions/${transactionData.id}`,

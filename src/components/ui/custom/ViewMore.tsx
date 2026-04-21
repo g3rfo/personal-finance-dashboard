@@ -1,6 +1,6 @@
-import { Button } from "./button";
-import { CardFooter } from "./card";
-import { FieldSeparator } from "./field";
+import { Button } from "../button";
+import { CardFooter } from "../card";
+import { FieldSeparator } from "../field";
 
 function ViewMore({ viewMoreHandler }: { viewMoreHandler: () => void }) {
   return (

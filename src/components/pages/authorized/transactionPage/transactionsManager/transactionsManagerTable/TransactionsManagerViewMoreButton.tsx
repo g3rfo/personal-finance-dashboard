@@ -1,5 +1,5 @@
 import { TableCell, TableRow } from "@/components/ui/table";
-import ViewMore from "@/components/ui/ViewMore";
+import ViewMore from "@/components/ui/custom/ViewMore";
 import { useContext } from "react";
 import { TransactionManagerContext } from "@/context/transactionManagerContext";
 

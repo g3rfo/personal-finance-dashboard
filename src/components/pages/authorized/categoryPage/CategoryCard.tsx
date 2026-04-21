@@ -1,4 +1,4 @@
-import ChangeOrDelete from "@/components/ui/ChangeOrDelete";
+import ChangeOrDelete from "@/components/ui/custom/ChangeOrDelete";
 import {
   Field,
   FieldContent,

@@ -13,6 +13,7 @@ function useBudgetOverview() {
   const spentByCategories =
     transactionsSumupByCategories(transactions, categoriesNames) || {};
   const categoriesLength = categories.length;
+
   return { categories, loading, error, spentByCategories, categoriesLength };
 }
 

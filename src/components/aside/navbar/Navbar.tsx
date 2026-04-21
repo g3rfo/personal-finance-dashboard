@@ -1,4 +1,4 @@
-import Outline from "../../ui/Outline";
+import Outline from "../../ui/custom/Outline";
 import NavbarContent from "./NavbarContent";
 
 function Navbar() {

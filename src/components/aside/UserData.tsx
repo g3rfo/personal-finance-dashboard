@@ -1,6 +1,6 @@
 import { useAppSelector } from "@/features/store/hooks";
-import Outline from "../ui/Outline";
-import AvatarComponent from "../ui/AvatarComponent";
+import Outline from "../ui/custom/Outline";
+import AvatarComponent from "../ui/custom/AvatarComponent";
 import { Link } from "react-router-dom";
 
 function UserData() {

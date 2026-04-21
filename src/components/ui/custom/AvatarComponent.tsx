@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback } from "./avatar";
+import { Avatar, AvatarFallback } from "../avatar";
 
 interface AvatarComponentProps {
   size?: "data" | "form";

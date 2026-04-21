@@ -1,7 +1,7 @@
 import BudgetOverviewCategoriesList from "./BudgetOverviewCategoriesList";
 import { useContext } from "react";
 import { BudgetOverviewContext } from "@/context/budgetOverviewContext";
-import Empty from "@/components/ui/Empty";
+import Empty from "@/components/ui/custom/Empty";
 
 function BudgetOverviewContent() {
   const { categoriesLength } = useContext(BudgetOverviewContext) || {};

@@ -6,7 +6,7 @@ import {
   type SubmitHandler,
 } from "react-hook-form";
 import useCategoryFormHandleSubmit from "./useCategoryFormHandleSubmit";
-import { CategoryFormTypeContext } from "@/context/formTypeContext";
+import { CategoryFormTypeContext } from "@/context/forms/formTypeContext";
 import useCategoryToEditFormData from "./useCategoryToEditFormData";
 
 function useCategoryForm() {

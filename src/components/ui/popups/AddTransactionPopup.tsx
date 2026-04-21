@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from "@/features/store/hooks";
 import TransactionFormContent from "../forms/transactionForm/TransactionFormContent";
-import IconFirstButton from "../IconFirstButton";
-import Popup from "../Popup";
+import IconFirstButton from "../custom/IconFirstButton";
+import Popup from "../custom/Popup";
 import { setAddTransactionPopupState } from "@/features/store/slices/popupsSlice";
 
 function AddTransactionPopup() {

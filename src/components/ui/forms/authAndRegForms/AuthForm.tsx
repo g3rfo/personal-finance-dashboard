@@ -1,8 +1,8 @@
-import { AuthFormContext } from "@/context/authFormContext";
+import { AuthFormContext } from "@/context/forms/authFormContext";
 import useAuthForm from "@/hooks/authAndRegForms/useAuthForm";
 import EmailInput from "../inputs/EmailInput";
-import SubmitButton from "../../SubmitButton";
 import PasswordInput from "../inputs/PasswordInput";
+import SubmitButton from "../../custom/SubmitButton";
 
 function AuthForm() {
   const contextValue = useAuthForm();

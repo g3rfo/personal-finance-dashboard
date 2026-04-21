@@ -1,4 +1,4 @@
-import Empty from "@/components/ui/Empty";
+import Empty from "@/components/ui/custom/Empty";
 import { TableCell, TableRow } from "@/components/ui/table";
 
 function EmptyTransactions() {

@@ -1,5 +1,5 @@
 import { IconPlus } from "@tabler/icons-react";
-import { Button } from "./button";
+import { Button } from "../button";
 
 export interface IconFirstButtonProps extends React.ComponentProps<
   typeof Button
@@ -9,7 +9,12 @@ export interface IconFirstButtonProps extends React.ComponentProps<
   children?: React.ReactNode;
 }
 
-function IconFirstButton({ title, icon, children, ...props }: IconFirstButtonProps) {
+function IconFirstButton({
+  title,
+  icon,
+  children,
+  ...props
+}: IconFirstButtonProps) {
   return (
     <Button {...props}>
       {icon || <IconPlus />} {title || ""}

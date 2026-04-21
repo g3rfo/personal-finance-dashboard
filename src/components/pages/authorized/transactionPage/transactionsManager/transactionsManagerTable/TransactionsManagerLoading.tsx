@@ -1,4 +1,4 @@
-import Loading from "@/components/ui/Loading";
+import Loading from "@/components/ui/custom/Loading";
 import { TableCell, TableRow } from "@/components/ui/table";
 
 function TransactionsManagerLoading() {

@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from "@/features/store/hooks";
 import CategoryFormContent from "../forms/categoryForm/CategoryFormContent";
-import IconFirstButton from "../IconFirstButton";
-import Popup from "../Popup";
+import IconFirstButton from "../custom/IconFirstButton";
+import Popup from "../custom/Popup";
 import { setAddCategoryPopupState } from "@/features/store/slices/popupsSlice";
 
 function AddCategoryPopup() {

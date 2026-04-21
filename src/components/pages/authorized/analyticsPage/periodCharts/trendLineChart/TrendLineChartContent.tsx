@@ -1,5 +1,5 @@
-import Error from "@/components/ui/Error";
-import Loading from "@/components/ui/Loading";
+import Error from "@/components/ui/custom/Error";
+import Loading from "@/components/ui/custom/Loading";
 import { AnalyticsContext } from "@/context/analyticsContext";
 import { useContext } from "react";
 import TrendLineChart from "./TrendLineChart";

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Outline from "../ui/Outline";
+import Outline from "../ui/custom/Outline";
 import { Avatar, AvatarImage } from "../ui/avatar";
 
 function Logo() {

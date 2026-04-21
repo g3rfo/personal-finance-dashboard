@@ -1,8 +1,8 @@
 import type useTransactionForm from "@/hooks/transactionForm/useTransactionForm";
-import DialogCloseButton from "../../DialogCloseButton";
+import DialogCloseButton from "../../custom/DialogCloseButton";
 import { Field } from "../../field";
-import SubmitButton from "../../SubmitButton";
-import { TransactionFormContext } from "@/context/transactionFormContext";
+import SubmitButton from "../../custom/SubmitButton";
+import { TransactionFormContext } from "@/context/forms/transactionFormContext";
 import { useContext } from "react";
 
 function FormHandleButtons() {

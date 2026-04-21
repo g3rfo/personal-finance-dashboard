@@ -8,7 +8,9 @@ function useRecentTransactions() {
   );
 
   const transactionsOutputInfo = useTransactionOutputInfo(transactions);
-  const transactionsLength = transactions.length;
+  const transactionsLength = Array.isArray(transactions)
+    ? transactions.length
+    : 0;
 
   const dispatch = useAppDispatch();
   const viewMoreHandler = () => {

@@ -4,7 +4,7 @@ import useTransactionOutputInfo from "@/hooks/transactions/useTransactionOutputI
 import TransactionTitle from "../../../dashboardPage/recentTransaction/recentTransactionCard/RecentTransactionTitle";
 import { formatToOutputDate } from "@/utils/dateFormatters";
 import TransactionAmount from "../../../dashboardPage/recentTransaction/recentTransactionCard/RecentTransactionAmount";
-import ChangeOrDelete from "@/components/ui/ChangeOrDelete";
+import ChangeOrDelete from "@/components/ui/custom/ChangeOrDelete";
 import { useContext } from "react";
 import { TransactionManagerContext } from "@/context/transactionManagerContext";
 

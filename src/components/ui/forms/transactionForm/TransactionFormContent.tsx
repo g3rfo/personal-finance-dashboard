@@ -1,4 +1,4 @@
-import { TransactionFormTypeContext } from "@/context/formTypeContext";
+import { TransactionFormTypeContext } from "@/context/forms/formTypeContext";
 import ErrorTransactionForm from "./ErrorTransactionForm";
 import TransactionForm from "./TransactionForm";
 import useTransactionFormContent from "@/hooks/transactionForm/useHasNoCategories";

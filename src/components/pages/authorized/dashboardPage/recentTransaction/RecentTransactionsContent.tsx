@@ -1,7 +1,7 @@
 import RecentTransactionsList from "./RecentTransactionsList";
 import { useContext } from "react";
 import { RecentTransactionsContext } from "@/context/recentTransactionsContext";
-import Empty from "@/components/ui/Empty";
+import Empty from "@/components/ui/custom/Empty";
 
 function RecentTransactionsContent() {
   const { transactionsLength } = useContext(RecentTransactionsContext) || {};

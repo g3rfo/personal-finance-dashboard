@@ -3,9 +3,9 @@ import PieChartComponent from "../PieChartComponent";
 import { AnalyticsContext } from "@/context/analyticsContext";
 import useExpenseCategoriesPieChartConfig from "@/hooks/analytics/useExpenseCategoriesPieChartConfig";
 import useExpenseCategoriesPieChartData from "@/hooks/analytics/useExpenseCategoriesPieChartData";
-import Loading from "@/components/ui/Loading";
-import Error from "@/components/ui/Error";
-import Empty from "@/components/ui/Empty";
+import Loading from "@/components/ui/custom/Loading";
+import Error from "@/components/ui/custom/Error";
+import Empty from "@/components/ui/custom/Empty";
 
 function ExpensesByCategoryContent() {
   const { loading, error } = useContext(AnalyticsContext);

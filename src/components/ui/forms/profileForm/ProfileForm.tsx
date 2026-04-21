@@ -1,9 +1,9 @@
 import useProfileForm from "@/hooks/profileForm/useProfileForm";
 import NameInput from "../inputs/NameInput";
-import { ProfileFormContext } from "@/context/profileFormContext";
+import { ProfileFormContext } from "@/context/forms/profileFormContext";
 import EmailInput from "../inputs/EmailInput";
-import SubmitButton from "../../SubmitButton";
-import AvatarComponent from "../../AvatarComponent";
+import AvatarComponent from "../../custom/AvatarComponent";
+import SubmitButton from "../../custom/SubmitButton";
 
 function ProfileForm() {
   const contextValue = useProfileForm();

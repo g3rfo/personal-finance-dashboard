@@ -1,5 +1,5 @@
 import { IconEdit, IconTrash } from "@tabler/icons-react";
-import { Button } from "./button";
+import { Button } from "../button";
 
 interface ChangeOrDeleteProps {
   onEdit?: () => void;
