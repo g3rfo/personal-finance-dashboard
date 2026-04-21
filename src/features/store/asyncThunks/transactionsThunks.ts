@@ -30,8 +30,9 @@ export const fetchTransactions = createAsyncThunk(
         },
       },
     );
-    console.log("Fetched transactions:", data);
+
     const total = Number(headers["x-total-count"]);
+
     return {
       transactions: data,
       page: pageNumber,
