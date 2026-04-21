@@ -1,4 +1,4 @@
-import { CategoryFormTypeContext } from "@/context/formTypeContext";
+import { CategoryFormTypeContext } from "@/context/forms/formTypeContext";
 import type { FormActionType } from "@/types/form.type";
 import CategoryForm from "./CategoryForm";
 

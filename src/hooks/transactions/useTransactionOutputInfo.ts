@@ -7,7 +7,9 @@ function useTransactionOutputInfo(transactions: Transaction[]) {
   const categoryData =
     useAppSelector(selectCategoriesDataForTransactions) || {};
 
-  const transactionsOutputInfo = transactions.map((transaction) =>
+  const safeTransactions = Array.isArray(transactions) ? transactions : [];
+
+  const transactionsOutputInfo = safeTransactions.map((transaction) =>
     getTransactionOutputInfo(
       categoryData[transaction.category]?.iconName,
       categoryData[transaction.category]?.color,

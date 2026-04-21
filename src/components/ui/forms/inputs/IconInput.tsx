@@ -1,4 +1,4 @@
-import { CategoryFormContext } from "@/context/categoryFormContext";
+import { CategoryFormContext } from "@/context/forms/categoryFormContext";
 import type useCategoryForm from "@/hooks/categoryForm/useCategoryForm";
 import { useContext } from "react";
 import InputCard from "./InputCard";

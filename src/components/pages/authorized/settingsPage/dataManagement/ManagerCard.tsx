@@ -5,14 +5,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import IconFirstButton from "@/components/ui/IconFirstButton";
-import IconFirstButtonProps from "@/components/ui/IconFirstButton";
+import IconFirstButton from "@/components/ui/custom/IconFirstButton";
+import { type IconFirstButtonProps } from "@/components/ui/custom/IconFirstButton";
 
 interface ManagerCardProps {
   cardTitle: string;
   description: string;
   className?: string;
-  buttonProps?: React.ComponentProps<typeof IconFirstButtonProps>;
+  buttonProps?: IconFirstButtonProps;
 }
 
 function ManagerCard({
@@ -22,7 +22,9 @@ function ManagerCard({
   buttonProps,
 }: ManagerCardProps) {
   return (
-    <Card className={`flex-row justify-between items-center py-4 ${className || ""}`}>
+    <Card
+      className={`flex-row justify-between items-center py-4 ${className || ""}`}
+    >
       <CardHeader className="flex-1 gap-1">
         <CardTitle>{cardTitle}</CardTitle>
         <CardDescription>{description}</CardDescription>

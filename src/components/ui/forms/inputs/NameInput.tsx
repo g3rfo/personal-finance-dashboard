@@ -1,9 +1,9 @@
 import { Input } from "../../input";
 import InputCard from "./InputCard";
-import { useContext } from "react";
 import type { FieldValues, UseFormRegister } from "react-hook-form";
 import type { FormContextType } from "@/types/formContext.type";
 import { stringToCamelCase } from "@/utils/stringToCamelCase";
+import useFormRegister from "@/hooks/useFormRegister";
 
 interface NameInputProps {
   label?: string;
@@ -12,11 +12,9 @@ interface NameInputProps {
 }
 
 function NameInput({ context, placeholder, label }: NameInputProps) {
-  const { register } = useContext(
+  const register = useFormRegister(
     context as React.Context<{ register: UseFormRegister<FieldValues> } | null>,
-  ) as {
-    register: UseFormRegister<FieldValues>;
-  };
+  );
 
   const formatedLabel = stringToCamelCase(label || "Name");
 

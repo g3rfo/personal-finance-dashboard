@@ -1,4 +1,4 @@
-import DialogCloseButton from "@/components/ui/DialogCloseButton";
+import DialogCloseButton from "@/components/ui/custom/DialogCloseButton";
 import { Field, FieldDescription, FieldGroup } from "@/components/ui/field";
 
 function ErrorTransactionForm() {

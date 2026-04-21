@@ -1,4 +1,4 @@
-import IconFirstButton from "@/components/ui/IconFirstButton";
+import IconFirstButton from "@/components/ui/custom/IconFirstButton";
 import { useAppDispatch } from "@/features/store/hooks";
 import { logoutUser } from "@/features/store/slices/userSlice";
 import useDeleteUser from "@/hooks/accountData/useDeleteUser";

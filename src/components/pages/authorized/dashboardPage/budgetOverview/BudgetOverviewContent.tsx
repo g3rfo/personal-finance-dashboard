@@ -1,12 +1,13 @@
-import useBudgetOverview from "@/hooks/dashboard/useBudgetOverview";
-import BudgetOverviewEmptyCategories from "./BudgetOverviewEmptyCategories";
 import BudgetOverviewCategoriesList from "./BudgetOverviewCategoriesList";
+import { useContext } from "react";
+import { BudgetOverviewContext } from "@/context/budgetOverviewContext";
+import Empty from "@/components/ui/custom/Empty";
 
 function BudgetOverviewContent() {
-  const { categoriesLength } = useBudgetOverview();
+  const { categoriesLength } = useContext(BudgetOverviewContext) || {};
 
   if (categoriesLength === 0) {
-    return <BudgetOverviewEmptyCategories />;
+    return <Empty message="No categories found. Please add some" />;
   }
 
   return <BudgetOverviewCategoriesList />;

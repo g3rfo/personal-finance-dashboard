@@ -1,19 +1,17 @@
 import type { FieldValues, UseFormRegister } from "react-hook-form";
 import { Input } from "../../input";
 import InputCard from "./InputCard";
-import { useContext } from "react";
 import type { FormContextType } from "@/types/formContext.type";
+import useFormRegister from "@/hooks/useFormRegister";
 
 interface EmailInputProps {
   context: FormContextType;
 }
 
 function EmailInput({ context }: EmailInputProps) {
-  const { register } = useContext(
+  const register = useFormRegister(
     context as React.Context<{ register: UseFormRegister<FieldValues> } | null>,
-  ) as {
-    register: UseFormRegister<FieldValues>;
-  };
+  );
 
   return (
     <InputCard

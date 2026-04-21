@@ -1,14 +1,18 @@
-import useRecentTransactions from "@/hooks/dashboard/useRecentTransactions";
 import { formatToOutputDate } from "@/utils/dateFormatters";
 import RecentTransactionCard from "./recentTransactionCard/RecentTransactionCard";
+import { RecentTransactionsContext } from "@/context/recentTransactionsContext";
+import { useContext } from "react";
+import { getDefaultCategoryInfo } from "@/utils/getDefaultCategoryInfo";
 
 function RecentTransactionsList() {
-  const { transactions, transactionsOutputInfo } = useRecentTransactions();
+  const { transactions, transactionsOutputInfo } =
+    useContext(RecentTransactionsContext) || {};
 
   return (
     <>
       {transactions?.map((transaction, index) => {
-        const { categoryIcon, categoryColor } = transactionsOutputInfo[index];
+        const { categoryIcon, categoryColor } =
+          transactionsOutputInfo?.[index] || getDefaultCategoryInfo();
 
         return (
           <RecentTransactionCard

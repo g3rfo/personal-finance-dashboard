@@ -5,7 +5,7 @@ import ExistTypeInput from "../inputs/ExistTypeInput";
 import CategoryInput from "../inputs/CategoryInput";
 import DateInput from "../inputs/DateInput";
 import FormHandleButtons from "./FormHandleButtons";
-import { TransactionFormContext } from "@/context/transactionFormContext";
+import { TransactionFormContext } from "@/context/forms/transactionFormContext";
 import NameInput from "../inputs/NameInput";
 
 function TransactionForm() {

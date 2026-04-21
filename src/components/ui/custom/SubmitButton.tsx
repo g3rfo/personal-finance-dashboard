@@ -1,5 +1,5 @@
-import { Button } from "./button";
-import { Spinner } from "./spinner";
+import { Button } from "../button";
+import { Spinner } from "../spinner";
 
 interface SubmitButtonProps {
   pending: boolean;

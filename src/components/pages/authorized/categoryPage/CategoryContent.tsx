@@ -1,11 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import CategoriesNumber from "@/components/ui/CategoriesNumber";
+import CategoriesNumber from "@/components/ui/custom/CategoriesNumber";
 import { CategoriesContext } from "@/context/categoryContext";
 import { useContext } from "react";
-import EmptyCategories from "./EmptyCategories";
 import CategoriesList from "./CategoriesList";
-import Loading from "@/components/ui/Loading";
-import Error from "@/components/ui/Error";
+import Loading from "@/components/ui/custom/Loading";
+import Error from "@/components/ui/custom/Error";
+import Empty from "@/components/ui/custom/Empty";
 
 interface CategoryContentProps {
   title: string;
@@ -20,7 +20,12 @@ function CategoryContent({ title, type }: CategoryContentProps) {
   }
 
   const { length, loading, error } = categoriesContext;
-  const content = length[type] === 0 ? <EmptyCategories /> : <CategoriesList type={type} />;
+  const content =
+    length[type] === 0 ? (
+      <Empty message="No categories yet" />
+    ) : (
+      <CategoriesList type={type} />
+    );
 
   return (
     <Card>

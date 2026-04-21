@@ -14,7 +14,7 @@ import {
 } from "react-hook-form";
 import useTransactionFormHandleSubmit from "./useTransactionFormHandleSubmit";
 import useTransactionToEditFormData from "./useTransactionToEditFormData";
-import { TransactionFormTypeContext } from "@/context/formTypeContext";
+import { TransactionFormTypeContext } from "@/context/forms/formTypeContext";
 
 function useTransactionForm() {
   // Determine form type

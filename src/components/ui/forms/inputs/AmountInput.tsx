@@ -6,7 +6,7 @@ import {
 } from "../../input-group";
 import InputCard from "./InputCard";
 import useTransactionForm from "@/hooks/transactionForm/useTransactionForm";
-import { TransactionFormContext } from "@/context/transactionFormContext";
+import { TransactionFormContext } from "@/context/forms/transactionFormContext";
 import { useContext } from "react";
 
 function AmountInput() {

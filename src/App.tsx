@@ -1,10 +1,4 @@
-import {
-  Navigate,
-  Route,
-  Routes,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import PageWrap from "./components/pages/authorized/PageWrap";
 import AuthPage from "./components/pages/notAuthorized/AuthPage";
 import RequireAuth from "./components/pages/RequireAuth";
@@ -12,45 +6,12 @@ import DashboardPage from "./components/pages/authorized/dashboardPage/Dashboard
 import RegistrationPage from "./components/pages/notAuthorized/RegistrationPage";
 import TransactionsPage from "./components/pages/authorized/transactionPage/TransactionsPage";
 import CategoriesPage from "./components/pages/authorized/categoryPage/CategoriesPage";
-import { useAppDispatch } from "./features/store/hooks";
-import { useEffect } from "react";
-import { loginUser } from "./features/store/slices/userSlice";
-import { fetchUserData } from "./features/store/asyncThunks/userThunks";
 import AnalyticsPage from "./components/pages/authorized/analyticsPage/AnalyticsPage";
 import SettingsPage from "./components/pages/authorized/settingsPage/SettingsPage";
+import useApp from "./hooks/useApp";
 
 function App() {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    const userData = localStorage.getItem("userData");
-
-    if (!token) {
-      return;
-    }
-
-    if (userData) {
-      try {
-        dispatch(loginUser(JSON.parse(userData)));
-      } catch {
-        localStorage.removeItem("userData");
-        dispatch(fetchUserData(token));
-      }
-    } else {
-      dispatch(fetchUserData(token));
-    }
-
-    if (
-      location.pathname === "/" ||
-      location.pathname === "/auth" ||
-      location.pathname === "/registration"
-    ) {
-      navigate("/dashboard", { replace: true });
-    }
-  }, [dispatch, location.pathname, navigate]);
+  useApp();
 
   return (
     <div className="w-full min-h-screen flex">

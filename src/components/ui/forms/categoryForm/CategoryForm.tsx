@@ -1,4 +1,4 @@
-import { CategoryFormContext } from "@/context/categoryFormContext";
+import { CategoryFormContext } from "@/context/forms/categoryFormContext";
 import useCategoryForm from "@/hooks/categoryForm/useCategoryForm";
 import { FieldSeparator } from "../../field";
 import FormHandleButtons from "./FormHandleButtons";
@@ -17,7 +17,6 @@ function CategoryForm() {
       <form onSubmit={contextValue.handleFormSubmit} className="space-y-6">
         <FieldSeparator />
         <NameInput
-          label="Category Name"
           placeholder="Enter category name"
           context={CategoryFormContext}
         />
